@@ -52,3 +52,11 @@ A user-supplied WAV revealed metallic, repetitive consonant speech. The source-c
 The Consonant Atlas now opens by default and its **34 buttons** directly type or audition each character. Use **Practice** to audition without filling the text box; use the **Conjunct Builder** for examples such as क्ष = क् + ष. Existing flick keys still work. See [the v1.5 audio audit](./qa/2026-10-26/AUDIO_INPUT_AUDIT_v1.5.md).
 
 Testing: 60/60 responsive/gesture/audio checks, 34/34 direction mappings, 1 native-browser touch swipe with exactly one sound source start, and 15/15 engine tests. **Actual phone touch comfort, phonetic realism and acoustic quality are not validated.** No user recording is published.
+
+## Responsive Cockpit 1.6
+
+The online-ready `index.html` now provides a **no-page-scroll active studio**: Type (two-thumb keyboard + text speech), Play (vowel pads + XY expression), Shape (nine knobs or formants), Export (samples or paged QA), Help (six topical lessons), and Home. The 34-consonant atlas and conjunct examples appear as a full-stage overlay; infrequently used settings stay accessible through in-stage menus. The original synthesis engine, patch loader, and WAV exporter remain operational.
+
+**Validation:** 122/122 automated functional tests passed in five viewport profiles, plus 15/15 built-in audio integrity tests. Nine viewport sizes checked for page overflow. See [responsive QA](./qa/2026-10-26/RESPONSIVE_COCKPIT_v1.6.md). Chromium only; physical device, Safari/WebKit and Firefox checks remain outstanding.
+
+**Privacy:** The public repository contains only the generic synthesizer. Any personalized voice calibration remains in a separate **private local HTML** provided directly to its owner, not in `index.html` or GitHub history.
