@@ -1,0 +1,72 @@
+{
+  "schema": "recursive-qa-run/v1",
+  "run_id": "svara-lab-2026-10-26",
+  "type": "synthetic_browser_personas_not_human_study",
+  "tested_build": "Svara Lab v1.3 QA candidate",
+  "pilot": {
+    "n": 3,
+    "before": {
+      "passed": 12,
+      "total": 21
+    },
+    "after": {
+      "passed": 21,
+      "total": 21
+    }
+  },
+  "expansion": {
+    "n": 12,
+    "roles": [
+      "novice",
+      "sanskrit_editor",
+      "music_producer"
+    ],
+    "viewports": [
+      [
+        320,
+        700
+      ],
+      [
+        360,
+        780
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        1440,
+        900
+      ]
+    ],
+    "before": {
+      "passed": 161,
+      "total": 165
+    },
+    "after": {
+      "passed": 165,
+      "total": 165,
+      "elapsed_s": 9.133
+    },
+    "budget_s": 90
+  },
+  "regression": {
+    "passed": 48,
+    "total": 48
+  },
+  "fixes": [
+    "raw-text Backspace no longer clears entire pasted phrase",
+    "two-pointer sustain stops only after final release",
+    "workspace selection updates aria-pressed",
+    "dependent Devanagari signs delete independently"
+  ],
+  "unverified": [
+    "no real participants",
+    "no native speaker rating",
+    "no hardware multitouch verification",
+    "not a usability conformance certification"
+  ],
+  "skill_repo": "Aggredicus/Local-Agent-Workshop",
+  "skill_path": "skills/recursive-user-qa/SKILL.md",
+  "report": "qa/2026-10-26/QA_REPORT.md"
+}

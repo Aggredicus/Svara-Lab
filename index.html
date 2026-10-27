@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080e19"><title>VĀṆĪ // Sanskrit Svara Lab — Personal Voice Study</title>
+<style>
+:root{color-scheme:dark;--bg:#070d18;--panel:#111b2c;--panel2:#16243a;--line:#273c54;--muted:#9ab0c6;--text:#eaf6ff;--mint:#6cfbd4;--rose:#ffadbc;--gold:#ffcd7e;--blue:#6cbcff;--warn:#f7bd71}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 40% at 55% -10%,#153249 0,transparent 75%),var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,select,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,select:focus-visible,input:focus-visible,.knob:focus-visible{outline:2px solid var(--mint);outline-offset:3px}a{color:var(--mint)}.shell{max-width:1520px;padding:22px 26px 75px;margin:auto}.top{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:4px 0 20px;border-bottom:1px solid #26394c}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.27em;font-weight:800;color:var(--mint)}h1,h2,h3,p{margin:0}h1{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.035em;font-weight:760}h1 span{color:var(--mint)}.sub{color:var(--muted);font-size:13px;max-width:640px;margin-top:6px}.topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.dot{width:7px;height:7px;display:inline-block;background:var(--mint);border-radius:50%;box-shadow:0 0 12px var(--mint)}.capsule{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:11px;letter-spacing:.08em}.layout{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(340px,.95fr);gap:16px;margin-top:20px}.panel{background:linear-gradient(155deg,rgba(22,36,57,.93),rgba(12,22,37,.97));border:1px solid var(--line);border-radius:20px;padding:19px;min-width:0;box-shadow:0 16px 45px #00000020}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.sectionlabel{text-transform:uppercase;letter-spacing:.20em;font-size:11px;font-weight:800;color:#c4d7e7}.small{color:var(--muted);font-size:11px}.state{font-size:10px;color:var(--mint);font-weight:700;letter-spacing:.14em}.hero{background:linear-gradient(110deg,#122b3c,#1a2237 75%);border:1px solid #375368;border-radius:17px;padding:21px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:17px;overflow:hidden;position:relative}.hero:after{content:'ॐ';position:absolute;right:-5px;top:-57px;font-size:200px;color:#d9ffe905;pointer-events:none}.bigglyph{font-size:82px;line-height:1.15;color:var(--mint);text-shadow:0 0 50px #6cfbd422;min-width:90px;text-align:center}.heroname{font-size:30px;font-weight:760}.heroipa{color:var(--gold);margin-left:9px;font-size:18px}.heroabout{color:var(--muted);margin-top:4px;max-width:550px}.chipline{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}.chip{font-size:10px;letter-spacing:.09em;border-radius:6px;border:1px solid #35526a;padding:3px 7px;color:#b8d7e6}.chip.warn{border-color:#6b5436;color:var(--gold)}.padgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.pad{touch-action:none;min-height:108px;border-radius:14px;border:1px solid #344759;background:linear-gradient(160deg,#1a2b42,#142136);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;user-select:none;transition:border-color .13s,background .13s,transform .13s;position:relative}.pad .dev{font-size:36px;font-weight:450;line-height:1.25}.pad .iast{font-size:13px;font-weight:700}.pad .ipa{font-size:10px;color:#819ab1}.pad .mark{position:absolute;top:7px;right:7px;color:#7898a7;font-size:10px}.pad.selected{border-color:var(--mint);box-shadow:inset 0 0 0 1px #6cfbd433,0 0 20px #6cfbd411;background:linear-gradient(155deg,#1c3946,#182e42)}.pad.pressed{transform:scale(.975);background:#285c61;border-color:#a0ffe8}.pad.rare{border-style:dashed}.pad.rare .dev{color:#e4d6fb}.muted{color:var(--muted)}.padfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;color:var(--muted);font-size:11px;flex-wrap:wrap}.controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.btn{border:1px solid #416075;background:#1d3548;padding:9px 13px;border-radius:10px;color:#e8f5ff;font-size:12px;font-weight:650;transition:background .15s;white-space:nowrap}.btn:hover{background:#2c4c5d}.btn.primary{color:#061519;border-color:#72f5d6;background:var(--mint)}.btn.primary:hover{background:#b5ffeb}.btn.danger{border-color:#5d4452;color:var(--rose)}.btn:disabled{opacity:.45;cursor:not-allowed}select,.select,input[type=number]{background:#111d2f;border:1px solid #35516a;border-radius:9px;color:#eaf6ff;padding:8px 9px;max-width:100%}option{background:#15253a}.tone{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.tone label{font-size:11px;color:var(--muted)}.tone label select{display:block;margin-top:5px;min-width:105px}.switch{display:inline-flex;gap:6px;align-items:center;color:var(--muted);font-size:11px}.switch input{accent-color:var(--mint);width:17px;height:17px}.vizbox{border:1px solid #28465a;background:radial-gradient(ellipse at 50% 20%,#12344470,transparent),#071321;border-radius:14px;margin:17px 0 0;position:relative;overflow:hidden}.vizbox canvas{width:100%;height:220px;display:block}.vizinfo{position:absolute;left:12px;top:10px;pointer-events:none;color:#82a4b9;font-size:10px;letter-spacing:.1em}.vizbottom{position:absolute;bottom:10px;left:12px;right:12px;display:flex;justify-content:space-between;color:#7f9dae;font-size:10px;pointer-events:none}.knobgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.knobbox{border:1px solid #2b455a;border-radius:14px;padding:14px 8px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:#0e1a2b}.knob{position:relative;width:66px;height:66px;border-radius:50%;border:1px solid #567587;background:radial-gradient(circle at 37% 33%,#30485a 0%,#132331 57%,#0a1521 73%);touch-action:none;cursor:ns-resize;box-shadow:0 5px 12px #0007,inset 0 0 0 4px #152a37}.knob::after{content:'';position:absolute;left:calc(50% - 2px);top:9px;width:4px;height:18px;border-radius:4px;background:var(--mint);transform-origin:2px 24px;transform:rotate(var(--angle));box-shadow:0 0 8px #6cfbd470}.knob:before{content:'';position:absolute;inset:-6px;border-radius:50%;border:3px solid transparent;border-top-color:var(--mint);transform:rotate(calc(var(--angle) + 180deg));opacity:.8}.knobval{font-variant-numeric:tabular-nums;font-size:17px;font-weight:700;color:#e3fff8}.knoblabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:750}.knobhint{font-size:10px;color:#819fb3;line-height:1.2;min-height:24px}.micro{color:#8ca7ba;font-size:11px;margin-top:10px}.formantbox{margin-top:15px;border-top:1px solid var(--line);padding-top:15px}.formantrow{display:grid;grid-template-columns:80px minmax(0,1fr) 55px;align-items:center;gap:10px;margin-top:11px}.formantrow label{font-size:12px;color:#b7d2e1}.formantrow input{width:100%;accent-color:var(--mint)}.formantrow output{text-align:right;color:var(--gold);font-variant-numeric:tabular-nums;font-size:12px}.resethint{margin-top:13px;color:#859dad;font-size:11px}.exportconfig{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-bottom:14px}.setting{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:5px}.setting select,.setting input{width:100%}.full{grid-column:1/-1}.meterwrap{height:8px;border-radius:9px;background:#071727;border:1px solid #345061;overflow:hidden;margin-top:10px}.meter{height:100%;background:linear-gradient(90deg,#66d6d2,#b8ffcb);width:0%;transition:width .1s}.log{font:11px/1.5 ui-monospace,monospace;color:#90abbf;min-height:43px;white-space:pre-wrap;word-break:break-word;margin-top:9px}.qa{margin-top:14px;padding:11px;background:#0c1928;border-radius:10px;border:1px solid #294459}.qahead{display:flex;gap:8px;align-items:center;justify-content:space-between}.results{font-size:11px;color:#bdd0e0;margin-top:9px;max-height:245px;overflow:auto}.checkrow{display:flex;gap:8px;justify-content:space-between;border-top:1px solid #1d3446;padding:4px 0}.pass{color:var(--mint)}.fail{color:var(--rose)}.footpanel{grid-column:1/-1}.bottomgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.note{color:#a1bacb;font-size:12px;line-height:1.65}.note strong{color:#e4f5ff}.noteslist{margin:10px 0;padding-left:19px}.noteslist li{margin:5px 0}.kbd{font:10px ui-monospace,monospace;background:#21394b;border:1px solid #4c6978;border-radius:4px;padding:2px 5px}.inlineborder{border:1px solid #334f63;border-radius:11px;padding:12px}.footer{font-size:10px;color:#829fb3;text-align:center;padding-top:30px;letter-spacing:.10em}.statusline{color:var(--muted);font-size:11px}#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#214b4f;border:1px solid var(--mint);color:white;padding:12px 18px;border-radius:11px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20;max-width:90vw;text-align:center}#toast.visible{opacity:1}@media(min-width:1180px){.leftcol{display:flex;flex-direction:column;gap:16px}.leftcol .panel:nth-child(1){flex:1}}@media(max-width:1100px){.padgrid{grid-template-columns:repeat(7,minmax(0,1fr))}.pad{min-height:85px}.pad .dev{font-size:28px}}@media(max-width:850px){.shell{padding:15px 12px 70px}.layout{grid-template-columns:1fr}.pad{min-height:95px}.pad .dev{font-size:34px}.bottomgrid{grid-template-columns:1fr}.top{gap:8px}.topright{width:100%}}@media(max-width:510px){.panel{padding:14px;border-radius:15px}.padgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.pad{min-height:87px}.pad .dev{font-size:31px}.hero{padding:11px;gap:10px}.bigglyph{font-size:60px;min-width:66px}.heroname{font-size:23px}.heroipa{font-size:14px}.pad .ipa{font-size:9px}.knobgrid{gap:6px}.knobbox{padding:10px 2px}.knob{width:56px;height:56px}.knob::after{top:5px;transform-origin:2px 22px}.knobval{font-size:14px}.knoblabel{font-size:9px}.vizbox canvas{height:180px}.controls .btn{padding:7px 10px}.exportconfig{gap:8px}.topright .capsule{font-size:9px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Version 1.1 touch-first gesture studio */
+.modebar{display:flex;gap:7px;margin:16px 0 10px;flex-wrap:wrap}.modebtn{border:1px solid var(--line);border-radius:11px;background:#132337;color:#a5c1d1;padding:10px 15px;font-weight:750;font-size:12px}.modebtn.active{background:#25565a;color:#dbfff4;border-color:#6cfbd4}.composer-module,.performance-module{margin-top:16px}.composerrow{display:flex;gap:12px;align-items:stretch;margin-bottom:14px}.scriptresult{background:linear-gradient(135deg,#081929,#112a39);border:1px solid #325b68;border-radius:14px;flex:1;padding:13px 16px;min-width:0}.littleheading{font-size:10px;letter-spacing:.18em;color:var(--mint);font-weight:800;display:flex;gap:12px;justify-content:space-between}.littleheading span{letter-spacing:normal;color:#84a6b5}.scriptdev{font-size:clamp(25px,4vw,38px);line-height:1.6;min-height:52px;overflow-wrap:anywhere;white-space:pre-wrap;font-weight:500;outline:0}.scriptdev:empty:before{content:'स';opacity:.25}.scriptiast{color:#aec6d9;font-size:14px;min-height:22px;white-space:pre-wrap;overflow-wrap:anywhere}.comptool{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:310px}.flicklayout{display:grid;grid-template-columns:1fr 1fr;gap:13px}.thumbhalf{min-width:0;padding:12px;border:1px solid #2b4357;background:#0a1727;border-radius:16px}.thumbtitle{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#ddfff7;font-size:11px;letter-spacing:.15em;font-weight:800;margin-bottom:11px}.thumbtitle span{font-size:10px;letter-spacing:.03em;font-weight:500;color:#8da9b7}.flickgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.flickkey{position:relative;min-height:86px;user-select:none;touch-action:none;border-radius:14px;border:1px solid #37546a;background:linear-gradient(155deg,#1a3045,#102334);color:#eafff7;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6px 2px;gap:1px;overflow:hidden}.flickkey:active,.flickkey.flicking{border-color:#66f1d4;background:#25565b}.flickmain{font-size:29px;line-height:1.1;pointer-events:none}.flicklatin{color:#d4e9ef;font-size:11px;font-weight:750;pointer-events:none}.flickfamily{color:#7d9fb5;font-size:9px;letter-spacing:.08em;pointer-events:none}.flickcorners{position:absolute;inset:0;pointer-events:none;font-size:10px;color:#8ab4c2}.flickcorners i{position:absolute;font-style:normal}.flickcorners .north{top:0;left:50%;transform:translateX(-50%)}.flickcorners .west{left:4px;top:40%}.flickcorners .east{right:4px;top:40%}.flickcorners .south{bottom:1px;left:50%;transform:translateX(-50%)}.flickbubble{position:fixed;z-index:25;min-width:84px;pointer-events:none;transform:translate(-50%,-100%);padding:7px 13px;border:1px solid #73ffe1;border-radius:15px;color:#eafff7;background:#204b58;box-shadow:0 12px 32px #000b;text-align:center;font-weight:700}.flickbubble strong{display:block;font-size:28px}.flickbubble small{font-size:11px;color:#c9e7ed}.typebar{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:7px;margin-top:11px}.typekey{min-height:54px;display:flex;align-items:center;flex-direction:column;justify-content:center;border-radius:10px;background:#172f42;border:1px solid #35566b;color:#e7f9ff;font-size:22px;touch-action:manipulation}.typekey small{font-size:9px;color:#9fc8d5;letter-spacing:.04em}.typekey.join{background:#244e51;border-color:#5dbea9}.composerbottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:11px;color:#9bb9c7;font-size:11px}.performanceLayout{display:grid;grid-template-columns:175px minmax(0,1fr);gap:15px}.gatecolumn{display:flex;flex-direction:column;gap:10px;align-items:stretch}.gatepad{border-radius:18px;min-height:173px;background:radial-gradient(circle at 50% 45%,#24475b,#0f2031);border:1px solid #406276;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;touch-action:none;user-select:none}.gatepad.active,.railgate.active{background:radial-gradient(circle at 50% 45%,#276b6c,#163844);border-color:var(--mint);box-shadow:0 0 25px #6cfbd425}.gatering{font-size:40px;color:var(--mint);line-height:1}.gatepad strong{font-size:13px;letter-spacing:.06em}.gatepad small{font-size:10px;color:#9dbdcb}.expressioncolumn{min-width:0}.expressionheader{display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.09em;color:#9dbacc;margin-bottom:8px}.expressionheader strong{color:var(--gold);font-size:13px}.xypad{height:173px;background:repeating-linear-gradient(90deg,transparent,transparent calc(25% - 1px),#244b5748 25%),repeating-linear-gradient(0deg,transparent,transparent calc(25% - 1px),#244b5748 25%),radial-gradient(ellipse at center,#1b4050,#081826);position:relative;border:1px solid #3b6971;border-radius:15px;touch-action:none;overflow:hidden;user-select:none;cursor:crosshair}.xyaxis{position:absolute;z-index:1;font-size:9px;pointer-events:none;color:#94b8c1;letter-spacing:.07em}.xaxis{bottom:8px;left:50%;transform:translateX(-50%)}.yaxis{top:7px;left:9px}.xycross{position:absolute;pointer-events:none;background:#5baca672}.xyvertical{width:1px;top:0;bottom:0;left:50%}.xyhorizontal{height:1px;top:50%;left:0;right:0}.xypuck{position:absolute;width:27px;height:27px;border:2px solid #bcffe8;border-radius:50%;background:#3ccfa388;box-shadow:0 0 18px #6cfbd470;pointer-events:none;left:50%;top:25%;transform:translate(-50%,-50%)}.xyinstructions{position:absolute;bottom:28px;left:0;right:0;text-align:center;font-size:10px;color:#a5c8d1;pointer-events:none}.finecontrols{display:flex;gap:12px;align-items:center;margin-top:10px}.finecontrols label{display:flex;align-items:center;flex:1;gap:6px;font-size:11px;color:#9bb9c8}.finecontrols input{width:100%;accent-color:var(--mint)}.stickyrail{display:none}.modulehidden{display:none!important}
+@media(max-width:1080px){.flickgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.flickkey{min-height:72px}.flickmain{font-size:26px}}
+@media(max-width:720px){.shell{padding-bottom:133px}.composerrow{flex-direction:column}.comptool{justify-content:flex-start;max-width:none}.comptool .btn{padding:8px}.flicklayout{gap:7px}.thumbhalf{padding:7px}.thumbtitle{font-size:10px;display:block;letter-spacing:.04em;margin-bottom:6px}.thumbtitle span{display:block}.flickgrid{gap:6px}.flickkey{min-height:72px;border-radius:12px}.typebar{grid-template-columns:repeat(4,minmax(0,1fr))}.typekey{min-height:46px}.composerbottom .btn{padding:7px}.performanceLayout{grid-template-columns:108px minmax(0,1fr);gap:9px}.gatepad{min-height:181px}.gatering{font-size:30px}.gatepad strong{font-size:10px}.gatecolumn .btn{padding:6px;font-size:10px;white-space:normal}.expressionheader{font-size:9px}.finecontrols{flex-wrap:wrap}.finecontrols label{min-width:44%}.modebar{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;position:sticky;top:0;z-index:9;background:#091523ed;padding:8px 0}.modebtn{padding:8px 2px;font-size:10px}.stickyrail{display:grid;position:fixed;left:0;bottom:0;width:100%;z-index:11;grid-template-columns:70px 1fr 1fr 38px;gap:7px;padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:#091c2bf2;border-top:1px solid #466271;backdrop-filter:blur(16px);box-shadow:0 -8px 20px #0005;align-items:center}.stickyrail button{background:#214155;border:1px solid #426775;border-radius:12px;color:#bff9e7;min-height:53px}.stickyrail .railgate.active{background:#256f65}.stickyrail .railgate span{display:block;font-size:10px}.stickyrail label{font-size:10px;color:#b2c9d7;display:flex;flex-direction:column;gap:4px;text-align:center}.stickyrail input{width:100%;accent-color:#6cfbd4}.stickyrail #railStop{color:var(--rose)}.footer{padding-bottom:5px}}
+@media(max-width:420px){.flickkey{min-height:66px}.flickmain{font-size:24px}.flicklatin{font-size:10px}.flickfamily{font-size:8px}.flickcorners{font-size:9px}.composer-module,.performance-module{padding:11px}.performanceLayout{grid-template-columns:95px minmax(0,1fr)}.finecontrols label{font-size:10px}}
+
+.patchdrawer{position:relative;z-index:12}.patchdrawer summary{list-style:none}.patchdrawer summary::-webkit-details-marker{display:none}.patchactions{position:absolute;top:calc(100% + 7px);right:0;background:#0c1d2e;border:1px solid #38596b;border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;gap:7px;min-width:240px;box-shadow:0 15px 35px #0009}.patchdrawer .btn{white-space:nowrap}@media(max-width:720px){.top{padding:0 0 11px;gap:6px}.top h1{font-size:25px}.top .eyebrow{font-size:9px;letter-spacing:.14em}.top .sub{font-size:11px;line-height:1.35;margin-top:3px;max-width:330px}.topright{gap:6px}.capsule{font-size:9px;padding:5px 8px}.patchdrawer summary{padding:6px 9px;font-size:10px}.modebar{margin-top:6px}.composerrow{gap:7px;margin-bottom:9px}.scriptresult{padding:8px 12px}.scriptdev{min-height:35px;line-height:1.35;font-size:27px}.scriptiast{font-size:12px;min-height:18px}.comptool .btn{padding:6px 8px;font-size:10px}.flicklayout{gap:6px}.flickkey{min-height:66px}.thumbhalf{padding:6px}.composer-module{margin-top:9px}}
+
+/* 1.3 QA: stable hit targets and uncluttered flick-keys */
+:root{--keyHit:70px}
+button{transform:none!important;min-width:0;box-sizing:border-box}
+.pad.pressed{transform:none!important;box-shadow:inset 0 0 0 2px #6cfbd480;}
+.gatepad{height:173px;min-height:173px;max-height:173px;flex-shrink:0;overflow:hidden;contain:layout paint;}
+.gatepad strong{display:block;inline-size:100%;height:20px;line-height:20px;white-space:nowrap;text-align:center;font-size:12px}
+.gatepad small{display:block;inline-size:100%;height:18px;line-height:18px;white-space:nowrap;text-align:center}
+.gatepad .gatering{width:100%;height:48px;line-height:48px;text-align:center;}
+#performanceStatus{flex:0 0 174px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis}
+#voiceStatus{display:block;min-width:180px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.expressionheader span{display:inline-flex;gap:6px;align-items:center}
+#bendReadout{display:inline-block;min-width:59px;text-align:right;font-variant-numeric:tabular-nums}
+#volumeReadout{display:inline-block;min-width:43px;text-align:right;font-variant-numeric:tabular-nums}
+.flickkey{min-width:0;min-height:82px;contain:layout paint;gap:2px;padding:7px 3px;overflow:hidden}
+.flickkey .flickcorners{display:none!important}
+.flickkey .flickmain,.flickkey .flicklatin,.flickkey .flickfamily{position:static;display:block;max-width:100%;overflow:hidden;text-overflow:clip;white-space:nowrap;text-align:center}
+.flickkey .flickmain{font-size:clamp(23px,2.3vw,32px);line-height:1.12}
+.flickkey .flicklatin{font-size:11px;line-height:1.2}
+.flickkey .flickfamily{font-size:9px;line-height:1.15}
+.flickbubble{width:184px;min-width:184px;max-width:184px;padding:8px;background:#13374a;border:2px solid #83ffe2;box-shadow:0 12px 30px #000c;}
+.compassgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;align-items:stretch}
+.compasscell{height:48px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:7px;border:1px solid #416278;background:#142d40;gap:0;}
+.compasscell.chosen{background:#277568;border-color:#b5ffe7}
+.compasscell span{font-size:10px;line-height:10px;color:#8fc7d1}
+.compasscell b{font-size:16px;line-height:21px}
+.compasscell small{font-size:9px;line-height:11px;color:#b9dee4}
+.scriptdev{outline:0;border:1px solid transparent;border-radius:8px;padding:3px 5px;min-height:55px;max-height:155px;overflow:auto;white-space:pre-wrap;word-break:break-word;cursor:text;}
+.scriptdev:focus-visible{border-color:#5edbbc;outline:2px solid #478977;outline-offset:0}
+.textplayer{border:1px solid #376777;background:#0b1d2b;border-radius:13px;padding:12px 14px;margin-bottom:13px;}
+.textplayerhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;}
+.textplayerhead strong{color:#bbffeb;font-size:11px;letter-spacing:.12em;white-space:nowrap}
+#textPlayStatus{font-size:10px;color:#a8d3da;text-align:right;white-space:nowrap;min-width:160px;font-variant-numeric:tabular-nums}
+.textplayerbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;min-height:42px}
+.textplayerbar .btn{flex-shrink:0;min-height:35px}
+.textspeed{display:flex;align-items:center;gap:7px;color:#9fc2cd;font-size:10px;letter-spacing:.07em;flex:1;min-width:145px}
+.textspeed input{flex:1;min-width:45px;accent-color:var(--mint)}
+.textspeed output{min-width:42px;text-align:right;font-variant-numeric:tabular-nums;color:#e5fffa}
+.speechhint{font-size:10px;line-height:1.45;color:#95b1c1;margin-top:8px}
+.help-module{margin-top:16px}[data-module]{scroll-margin-top:73px}.helpgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.helpcard{background:#0c1b2a;border:1px solid #304e62;border-radius:12px;padding:16px;min-height:164px}.helpcard h3{font-size:14px;color:#b6ffea;margin-bottom:9px}.helpcard p{color:#b1cbda;font-size:12px;line-height:1.65;margin-top:7px}
+@media(max-width:900px){.helpgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.modebar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;width:100%}.modebtn{min-width:0;line-height:1.15;overflow:hidden;text-overflow:clip}.modebtn{height:44px;padding:6px 0;font-size:10px;white-space:nowrap;overflow:hidden}.flickkey{height:77px;min-height:77px}.flickkey .flickmain{font-size:25px}.flickkey .flicklatin{font-size:10px}.flickkey .flickfamily{font-size:8px}.gatepad{height:181px;min-height:181px;max-height:181px}.gatepad strong{font-size:10px}.gatepad .gatering{height:43px;line-height:43px}.helpgrid{grid-template-columns:1fr}.helpcard{min-height:0}.textplayer{padding:10px}.textplayerhead{align-items:flex-start}.textplayerbar{gap:6px}.textplayerbar .btn{padding:8px 7px;font-size:10px}.textspeed{flex-basis:100%;padding-top:4px}.scriptdev{min-height:45px;max-height:125px}.performanceLayout{grid-template-columns:108px minmax(0,1fr)}#performanceStatus{flex-basis:115px;font-size:8px}#voiceStatus{min-width:0;max-width:140px;font-size:9px}}
+@media(max-width:420px){.flickkey{height:74px;min-height:74px}.flickkey .flickmain{font-size:24px}.textplayerhead strong{font-size:10px}#textPlayStatus{min-width:125px;font-size:9px}.performanceLayout{grid-template-columns:95px minmax(0,1fr)}.composer-module .panelhead .eyebrow{font-size:9px;letter-spacing:.07em}.composer-module .panelhead .sectionlabel{font-size:10px;letter-spacing:.1em}}
+/* v1.4: InScript-inspired phonetic varga and robust touch feedback */
+.flickoptions{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:12px}.flickoptions .switch{min-height:38px}.flickoptions .btn{font-size:11px}.flicklayout.inscript .thumbhalf:first-child{order:2}.flicklayout.inscript .thumbhalf:last-child{order:1}
+.lettermap{padding:10px 13px;margin-bottom:12px;background:#101f30;border:1px solid #426475;border-radius:14px}.lettermapcells{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:8px}.lettermaprow{background:#152b40;border:1px solid #325066;border-radius:10px;padding:8px}.lettermaprow strong{display:block;font-size:11px;color:var(--mint);margin-bottom:6px}.lettermapchips{display:flex;flex-wrap:wrap;gap:5px}.letterchip{display:inline-flex;align-items:center;justify-content:center;gap:4px;border-radius:7px;background:#213d50;padding:5px 7px;color:#ecfeff;font-size:16px}.letterchip small{font-size:9px;color:#c5dae3}.flickkey{touch-action:none;-webkit-user-select:none;-webkit-touch-callout:none;overscroll-behavior:contain}.flickbubble{pointer-events:none}
+@media(max-width:720px){.flickoptions{gap:5px}.flickoptions .switch{flex:1 1 100%;font-size:11px}.flickoptions .btn{flex:1 1 auto;padding:6px}.lettermapcells{grid-template-columns:1fr 1fr}.letterchip{font-size:14px;padding:4px}.letterchip small{font-size:8px}}
+@media(max-width:370px){.lettermapcells{grid-template-columns:1fr}}
+/* v1.5: discoverable atlas and reliable single-shot feedback */
+.flickoptions{align-items:center}.lettermap{display:block;max-height:none;overflow:visible}.lettermap[hidden]{display:none!important}
+.lettermaprow{overflow:hidden}.lettermapchips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+button.letterchip{border:1px solid #385c75;background:#1a3349;color:#f0fdff;cursor:pointer;display:flex;min-width:0;min-height:55px;align-items:center;justify-content:center;flex-direction:column;padding:5px 2px;font:inherit}
+button.letterchip:active,button.letterchip:focus-visible{background:#25665f;border-color:#85eedb;outline:2px solid #62d9c7;outline-offset:0}
+button.letterchip .atlasglyph{font-size:23px;line-height:26px;font-weight:750}
+button.letterchip .atlasroman{font-size:10px;line-height:14px;color:#d6eae9;font-weight:650}
+button.letterchip small{font-size:9px;line-height:12px;color:#a8c9d5;white-space:nowrap}
+.lettermapchips>.atlasblank{min-height:54px;border:1px dashed #26445a;border-radius:8px;opacity:.22}
+.atlaslead{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;margin-bottom:8px}
+.atlaslead strong{color:#b9ffe9;font-size:12px}.atlaslead span{font-size:10px;color:#98bacc}
+.practiceSwitch{background:#123244;padding:7px 8px;border-radius:9px;border:1px solid #326477;font-weight:700;white-space:normal;line-height:1.3}
+@media(max-width:720px){.lettermap{max-height:none}.lettermapcells{grid-template-columns:1fr}.lettermapchips{gap:3px}button.letterchip{min-height:55px;padding:4px 1px}.lettermaprow{padding:7px}}
+ .conjunctExamples{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:7px}.conjunctExamples button{display:flex;align-items:center;flex-direction:column;justify-content:center;gap:2px;min-height:66px;border-radius:11px;background:#183143;border:1px solid #476275;color:#dffff6;padding:7px 4px}.conjunctExamples button strong{font-size:26px;line-height:29px}.conjunctExamples button span{font-size:11px;color:#aac5d4;white-space:nowrap}.conjunctExamples button:focus-visible{outline:2px solid #73ecdc} 
+/* VĀṆĪ / SVARA LAB — adaptive no-scroll cockpit 1.6. Keep complete engine intact. */
+html{height:100%;overflow:hidden}body{height:100%;height:100dvh;min-height:0;overflow:hidden;overscroll-behavior:none}
+body.cockpit .shell{--rail-h:0px;max-width:1920px;height:100%;height:100dvh;min-height:0;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:6px;padding:7px 10px;margin:0 auto;overflow:hidden}
+body.cockpit .top{min-height:0;flex-wrap:nowrap;padding:2px 4px 5px;border-bottom:1px solid var(--line);gap:8px}
+body.cockpit .eyebrow{font-size:9px;letter-spacing:.1em}
+body.cockpit .top h1{font-size:clamp(18px,2.6vw,26px);line-height:1.12}
+body.cockpit .top .sub{display:none}
+body.cockpit .topright{width:auto;flex-wrap:nowrap}
+body.cockpit .capsule{font-size:9px;padding:4px 8px;white-space:nowrap}
+body.cockpit .topright .patchdrawer{position:relative}
+body.cockpit .patchdrawer summary.btn{padding:5px 9px;font-size:10px}
+body.cockpit #viewTabs{position:relative;inset:auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;width:100%;margin:0;background:transparent;padding:0;z-index:5}
+body.cockpit .modebtn{height:40px;min-width:0;max-width:none;white-space:nowrap;padding:4px 1px;font-size:clamp(10px,1.8vw,13px);line-height:1.08}
+body.cockpit #workspaceDeck{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;max-height:100%;overflow:hidden;border:1px solid #25465b;border-radius:14px;background:#0a1625}
+body.cockpit #workspaceDeck .panel{min-height:0;min-width:0;margin:0;border:0;border-radius:0;box-shadow:none;background:transparent;padding:clamp(7px,1.2vh,14px);overflow:hidden}
+body.cockpit #workspaceDeck [data-module].modulehidden{display:none!important}
+body.cockpit #workspaceDeck .panelhead{margin:0 0 6px;min-height:21px}
+body.cockpit #workspaceDeck .sectionlabel{font-size:10px;letter-spacing:.075em}
+body.cockpit #workspaceDeck .state{font-size:9px;letter-spacing:.02em;flex-shrink:1;text-align:right;max-width:44%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+body.cockpit .layout,body.cockpit .footer{display:none!important}
+body.cockpit #workspaceDeck .stage-module,body.cockpit #workspaceDeck .composer-module,body.cockpit #workspaceDeck .sculpt-module,body.cockpit #workspaceDeck .export-module,body.cockpit #workspaceDeck .performance-module,body.cockpit #workspaceDeck .help-module{flex:1 1 auto}
+/* compact compose — all primary typing controls in the active viewport */
+body.cockpit #composePanel{display:flex;flex-direction:column;gap:5px}
+body.cockpit #composePanel .composerrow{display:flex;flex-direction:row;gap:5px;margin:0;flex:0 0 auto;min-height:0}
+body.cockpit #composePanel .scriptresult{padding:4px 8px;border-radius:8px;min-width:0;flex:1}
+body.cockpit #composePanel .littleheading{font-size:9px}
+body.cockpit #composePanel .scriptdev{font-size:clamp(19px,4.8vw,28px);padding:1px 3px;min-height:32px;max-height:62px;line-height:1.25}
+body.cockpit #composePanel .scriptiast{font-size:10px;min-height:12px;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.cockpit #composePanel .comptool{display:flex;flex-direction:column;flex:0 0 67px;max-width:67px;gap:3px;justify-content:center}
+body.cockpit #composePanel .comptool .btn{white-space:normal;font-size:9px;padding:3px 2px;line-height:1;min-height:21px}
+body.cockpit #composePanel .textplayer{flex:0 0 auto;margin:0;padding:5px 7px;border-radius:9px}
+body.cockpit #composePanel .textplayerhead{margin:0 0 3px;align-items:center}
+body.cockpit #composePanel .textplayerhead strong{font-size:9px}
+body.cockpit #composePanel #textPlayStatus{min-width:0;font-size:9px}
+body.cockpit #composePanel .textplayerbar{gap:5px;min-height:0;flex-wrap:nowrap}
+body.cockpit #composePanel .textplayerbar .btn{min-height:27px;padding:5px 5px;font-size:10px}
+body.cockpit #composePanel .textspeed{min-width:0;flex:1;gap:3px;font-size:9px;white-space:nowrap}
+body.cockpit #composePanel .textspeed output{min-width:30px}
+body.cockpit #composePanel .speechhint{display:none}
+body.cockpit #composePanel .flickoptions{display:flex;flex:0 0 auto;gap:5px;align-items:center;margin:0;min-height:27px}
+body.cockpit #composePanel .flickoptions .btn{padding:5px 8px;font-size:10px;min-height:27px}
+body.cockpit #composePanel .flickoptions .switch,body.cockpit #composePanel #auditLetters,body.cockpit #composePanel #letterAuditStatus{display:none}
+body.cockpit #composePanel .flicklayout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;flex:1 1 auto;min-height:0;overflow:hidden}
+body.cockpit #composePanel .thumbhalf{display:flex;flex-direction:column;min-height:0;min-width:0;padding:5px;border-radius:10px;overflow:hidden}
+body.cockpit #composePanel .thumbtitle{flex:0 0 auto;display:flex;gap:4px;flex-wrap:wrap;margin:0 0 3px;font-size:9px;line-height:1.1}
+body.cockpit #composePanel .thumbtitle span{display:inline;font-size:9px;letter-spacing:0}
+body.cockpit #composePanel .flickgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:4px;flex:1 1 auto;min-height:0}
+body.cockpit #composePanel .flickkey{height:auto!important;min-height:0!important;width:100%;padding:2px;gap:0;border-radius:8px;overflow:hidden}
+body.cockpit #composePanel .flickmain{font-size:clamp(18px,4.3vw,32px);line-height:1.04}
+body.cockpit #composePanel .flicklatin{font-size:10px;line-height:1.05}
+body.cockpit #composePanel .flickfamily{font-size:8px;line-height:1.05}
+body.cockpit #composePanel .typebar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:0;flex:0 0 auto}
+body.cockpit #composePanel .typekey{height:39px;min-height:39px;padding:2px;border-radius:8px;font-size:20px;line-height:1}
+body.cockpit #composePanel .typekey small{font-size:8px;line-height:1}
+body.cockpit #composePanel .typebar>.typekey.extra-symbol{display:none!important}
+body.cockpit #composePanel .composerbottom{flex:0 0 auto;margin:0;gap:7px;font-size:10px;flex-wrap:nowrap}
+body.cockpit #composePanel #composeHint{display:none}
+body.cockpit #composePanel .composerbottom .btn{padding:4px 8px;font-size:10px}
+body.cockpit #composePanel .composerbottom .switch{font-size:10px}
+body.cockpit #composePanel .composerbottom input{height:14px;width:14px}
+body.cockpit .cockpit-more{border:1px solid #3e6675;background:#1c3a4d;border-radius:8px;padding:5px 9px;color:#d3fff2;font-size:10px;font-weight:700;white-space:nowrap}
+body.cockpit .cockpit-pop{display:none;position:absolute;z-index:18;background:#0e2335;border:1px solid #4b7b83;border-radius:12px;padding:10px;box-shadow:0 18px 40px #000b;max-width:min(96vw,400px)}
+body.cockpit .cockpit-pop[open]{display:flex;flex-direction:column;gap:9px}
+body.cockpit .cockpit-pop .switch{display:flex!important;font-size:12px}
+body.cockpit .cockpit-pop #auditLetters{display:block!important}
+body.cockpit .cockpit-pop #letterAuditStatus{display:block!important}
+body.cockpit .cockpit-pop .typekey{min-width:65px}
+body.cockpit #letterMap[hidden]{display:none!important}
+body.cockpit #letterMap{display:block;position:absolute;z-index:16;inset:0;max-height:none;overflow:hidden;background:#0d1b2c;padding:7px 9px;border:0;border-radius:0;margin:0}
+body.cockpit #letterMap>.small{display:none}
+body.cockpit #letterMap .atlaslead{margin:0 0 3px;line-height:1.1}
+body.cockpit #letterMap .atlaslead strong{font-size:10px}
+body.cockpit #letterMap .atlaslead span{font-size:9px}
+body.cockpit #letterMap .lettermapcells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin-top:0}
+body.cockpit #letterMap .lettermaprow{padding:2px 3px;border-radius:6px}
+body.cockpit #letterMap .lettermaprow strong{font-size:9px;margin:0 0 1px;line-height:1}
+body.cockpit #letterMap .lettermapchips{gap:2px}
+body.cockpit #letterMap button.letterchip{min-height:29px;height:29px;border-radius:4px;padding:1px}
+body.cockpit #letterMap button.letterchip .atlasglyph{font-size:16px;line-height:17px}
+body.cockpit #letterMap button.letterchip .atlasroman{font-size:8px;line-height:9px}
+body.cockpit #letterMap button.letterchip small{display:none}
+body.cockpit #letterMap .lettermapchips>.atlasblank{min-height:29px;height:29px}
+body.cockpit #letterMap .conjunctExamples{grid-template-columns:repeat(5,minmax(0,1fr));gap:3px}
+body.cockpit #letterMap .conjunctExamples button{height:35px;min-height:35px;padding:1px;gap:0}
+body.cockpit #letterMap .conjunctExamples button strong{font-size:17px;line-height:17px}
+body.cockpit #letterMap .conjunctExamples button span{font-size:8px;line-height:12px}
+body.cockpit #letterMap .mapClose{float:right;border:1px solid #77cdb6;background:#215146;color:#eff;border-radius:7px;padding:3px 10px;font-size:10px;min-height:22px}
+/* performance: keys and expression simultaneously at adequate heights */
+body.cockpit #workspaceDeck[data-active='perform']{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1px}
+body.cockpit #workspaceDeck[data-active='perform'] .stage-module,body.cockpit #workspaceDeck[data-active='perform'] .performance-module{display:flex;flex-direction:column;overflow:hidden;height:100%}
+body.cockpit .stage-module .hero{display:grid;grid-template-columns:auto 1fr;margin:0 0 5px;padding:5px;gap:6px;border-radius:8px;flex:0 0 auto}
+body.cockpit .stage-module .hero .bigglyph{font-size:32px;min-width:39px;line-height:1}
+body.cockpit .stage-module .hero .heroname{font-size:18px}
+body.cockpit .stage-module .hero .heroipa{font-size:12px}
+body.cockpit .stage-module .hero .heroabout,.stage-module .chipline{display:none}
+body.cockpit .stage-module .padgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;flex:1 1 auto;min-height:0}
+body.cockpit .stage-module .pad{height:auto;min-height:0;border-radius:8px;gap:0;transition:none}
+body.cockpit .stage-module .pad .dev{font-size:clamp(17px,2.7vw,29px);line-height:1}
+body.cockpit .stage-module .pad .iast{font-size:11px;line-height:1}
+body.cockpit .stage-module .pad .ipa,body.cockpit .stage-module .pad .mark{display:none}
+body.cockpit .stage-module .padfoot,body.cockpit .stage-module .vizbox,body.cockpit .stage-module .tone,body.cockpit .stage-module #midiText{display:none}
+body.cockpit .performance-module .performanceLayout{display:grid;grid-template-columns: minmax(92px,.3fr) minmax(0,.7fr);gap:9px;flex:1 1 auto;min-height:0}
+body.cockpit .performance-module .gatepad{height:auto;min-height:0;max-height:none;flex:1 1 auto;min-width:0;border-radius:10px}
+body.cockpit .performance-module .gatecolumn{gap:6px;min-height:0}
+body.cockpit .performance-module .gatecolumn .btn{padding:6px;font-size:10px}
+body.cockpit .performance-module .expressioncolumn{display:flex;flex-direction:column;min-height:0}
+body.cockpit .performance-module .expressionheader{flex:0 0 auto;font-size:9px}
+body.cockpit .performance-module .xypad{height:auto;min-height:0;flex:1 1 auto;border-radius:9px}
+body.cockpit .performance-module .finecontrols{flex:0 0 auto;margin:5px 0 0;gap:5px}
+body.cockpit .performance-module .finecontrols label{min-width:40%;font-size:10px}
+body.cockpit .performance-module .micro{display:none}
+/* voice sculpture — full nine knobs, and separate no-scroll Formant / Reference subviews */
+body.cockpit #workspaceDeck .sculpt-module{display:flex;flex-direction:column;gap:5px}
+body.cockpit .shapeSwitcher{display:flex;gap:4px;margin-bottom:3px}
+body.cockpit .shapeSwitcher button{min-height:28px;flex:1;border:1px solid #4a7280;border-radius:7px;background:#122c3e;color:#b4d8e3;font-size:10px}
+body.cockpit .shapeSwitcher button.active{background:#26615d;color:#e9fff4;border-color:var(--mint)}
+body.cockpit .sculpt-module #knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:5px;flex:1 1 auto;min-height:0}
+body.cockpit .sculpt-module .knobbox{min-height:0;padding:4px 2px;gap:2px;border-radius:9px;justify-content:center}
+body.cockpit .sculpt-module .knob{width:clamp(38px,8.3vh,59px);height:clamp(38px,8.3vh,59px);flex:0 0 auto}
+body.cockpit .sculpt-module .knobval{font-size:12px;line-height:1}
+body.cockpit .sculpt-module .knoblabel{font-size:9px;letter-spacing:0;line-height:1.1}
+body.cockpit .sculpt-module .knobhint{display:none}
+body.cockpit .sculpt-module .formantbox,body.cockpit .sculpt-module .vm-card{display:none}
+body.cockpit .sculpt-module[data-shape='formants'] #knobs,body.cockpit .sculpt-module[data-shape='reference'] #knobs{display:none}
+body.cockpit .sculpt-module[data-shape='formants'] .formantbox{display:block;flex:1;margin:0;border:0;padding:5px}
+body.cockpit .sculpt-module[data-shape='reference'] .vm-card{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+body.cockpit .sculpt-module[data-shape='reference'] .vm-card p{font-size:11px;line-height:1.25;margin:2px 0}
+body.cockpit .sculpt-module[data-shape='reference'] .vm-card .btn{padding:5px 8px;font-size:11px}
+/* export all accessible without scrolling */
+body.cockpit .export-module{display:flex;flex-direction:column;gap:6px}
+body.cockpit .export-module>.note{font-size:11px;line-height:1.3}
+body.cockpit .exportconfig{flex:1 1 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:0;align-content:start}
+body.cockpit .exportconfig .setting{font-size:10px;gap:2px}
+body.cockpit .exportconfig select,body.cockpit .exportconfig input{padding:5px 6px;font-size:12px;min-height:32px}
+body.cockpit .export-module .controls{flex:0 0 auto;gap:5px}
+body.cockpit .export-module .controls .btn{font-size:11px;padding:7px}
+body.cockpit .export-module .log{min-height:22px;max-height:38px;overflow:hidden;font-size:10px;margin:0}
+body.cockpit .export-module .meterwrap{margin:0}
+body.cockpit .export-module .qa{margin:0;padding:5px}
+body.cockpit .export-module .qa .results{max-height:125px;overflow:hidden}
+/* help summaries with per-topic detail paging */
+body.cockpit #helpPanel{display:flex;flex-direction:column;gap:8px}
+body.cockpit #helpPanel .helpgrid{display:none}
+body.cockpit .helpNav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+body.cockpit .helpNav button{border:1px solid #3b6576;background:#142b3d;border-radius:9px;color:#d8f6ec;font-size:11px;padding:6px 2px;min-height:38px}
+body.cockpit .helpNav button.active{border-color:var(--mint);background:#245b55}
+body.cockpit .helpFocus{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:clamp(9px,2vh,22px);border:1px solid #37566a;border-radius:12px;background:#102437;min-height:0;overflow:hidden}
+body.cockpit .helpFocus h3{font-size:clamp(15px,2.3vw,20px);color:var(--mint)}
+body.cockpit .helpFocus p{font-size:clamp(12px,1.9vw,17px);line-height:1.45;color:#c6e1e9}
+body.cockpit .helpFocus .helpNext{align-self:flex-start;padding:6px 12px;font-size:11px;min-height:30px}
+/* 'All' is now an accessible overview, not a 5-panel vertical wall */
+body.cockpit #workspaceDeck[data-active='all'] [data-module]{display:none!important}
+body.cockpit #overview{display:none}
+body.cockpit #workspaceDeck[data-active='all'] #overview{display:flex;flex-direction:column;gap:12px;align-items:stretch;justify-content:center;height:100%;padding:16px}
+body.cockpit .overviewgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+body.cockpit .overviewgrid button{min-height:68px;background:#163447;border:1px solid #3c6f78;border-radius:12px;color:#def8f2;font-size:clamp(12px,2vw,16px);padding:7px}
+body.cockpit .overviewgrid button small{display:block;color:#9fc4d1;font-size:10px}
+body.cockpit #overview h2{font-size:18px;color:var(--mint)}
+body.cockpit #overview p{font-size:12px;color:#9fbcc8}
+/* hand rail becomes part of fixed viewport; no layout shift while note sustained */
+body.cockpit .stickyrail{display:grid;position:fixed;bottom:0;left:0;width:100%;grid-template-columns:73px minmax(0,1fr) minmax(0,1fr) 43px;gap:6px;padding:5px max(9px,env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(9px,env(safe-area-inset-left));z-index:12;min-height:56px;background:#091b2df4;border-top:1px solid #3b6474;align-items:center}
+body.cockpit .stickyrail button{height:43px;min-height:43px;padding:3px;border:1px solid #3a6776;background:#1c3f4f;border-radius:8px;color:#e2fff7;font-size:15px}
+body.cockpit .stickyrail .railgate span{font-size:9px;display:block}
+body.cockpit .stickyrail label{font-size:9px;display:flex;flex-direction:column;gap:2px;text-align:center}
+body.cockpit .stickyrail input{width:100%}
+@media (max-width:850px){body.cockpit .shell{--rail-h:58px;padding:5px 6px 0;grid-template-rows:auto auto minmax(0,1fr);gap:4px}body.cockpit #workspaceDeck{margin-bottom:calc(var(--rail-h) + env(safe-area-inset-bottom))}body.cockpit .topright .capsule{display:none}body.cockpit .top .eyebrow{display:none}body.cockpit .top h1{font-size:19px}body.cockpit #workspaceDeck .panel{padding:6px}body.cockpit #workspaceDeck[data-active='perform']{grid-template-columns:1fr;grid-template-rows:38% minmax(0,62%)}body.cockpit .stage-module .padgrid{grid-template-columns:repeat(7,minmax(0,1fr))}body.cockpit .performance-module .performanceLayout{grid-template-columns:90px minmax(0,1fr)}body.cockpit #letterMap .lettermapcells{grid-template-columns:repeat(2,minmax(0,1fr))}body.cockpit #composePanel .textspeed{font-size:0}body.cockpit #composePanel .textspeed output{font-size:9px}body.cockpit #composePanel .textplayerbar .btn{font-size:10px}body.cockpit #composePanel .flickoptions .btn{font-size:10px}}
+@media(max-width:410px){body.cockpit .top h1{font-size:17px}body.cockpit .modebtn{font-size:9px;height:37px}body.cockpit #composePanel .flickmain{font-size:21px}body.cockpit #composePanel .flickfamily{display:none}body.cockpit #composePanel .thumbtitle span{font-size:8px}body.cockpit #composePanel .typekey{height:34px;min-height:34px}body.cockpit #composePanel .comptool{flex-basis:58px;max-width:58px}body.cockpit #composePanel .textplayerbar .btn{padding:5px 2px;font-size:9px}body.cockpit .performance-module .finecontrols .btn{padding:4px}}
+@media(max-height:700px){body.cockpit .shell{gap:3px}body.cockpit .modebtn{height:34px}body.cockpit .top{padding:0}body.cockpit #workspaceDeck .panelhead{margin-bottom:2px;min-height:16px}body.cockpit #composePanel{gap:2px}body.cockpit #composePanel .scriptdev{min-height:24px;font-size:19px}body.cockpit #composePanel .scriptiast{min-height:9px}body.cockpit #composePanel .textplayerhead{display:none}body.cockpit #composePanel .typekey{height:32px;min-height:32px}body.cockpit #composePanel .flickoptions{min-height:22px}body.cockpit #composePanel .flickoptions .btn{padding:3px 8px;min-height:22px}body.cockpit #composePanel .comptool .btn{min-height:16px}body.cockpit #letterMap .conjunctExamples button{height:27px;min-height:27px}body.cockpit #letterMap .conjunctExamples button strong{font-size:14px}body.cockpit #letterMap button.letterchip{min-height:23px;height:23px}body.cockpit #letterMap button.letterchip .atlasglyph{font-size:13px;line-height:14px}body.cockpit #letterMap button.letterchip .atlasroman{font-size:7px;line-height:8px}body.cockpit #letterMap .lettermapchips>.atlasblank{height:23px;min-height:23px}body.cockpit .sculpt-module .knobbox{padding:2px}body.cockpit .sculpt-module .knob{width:40px;height:40px}}
+@media(max-height:470px){body.cockpit .topright .capsule{display:none}body.cockpit .patchdrawer summary.btn{font-size:9px;padding:1px 5px}body.cockpit .top h1{font-size:16px}body.cockpit #composePanel .textplayer{display:none}body.cockpit #composePanel .composerbottom{display:none}body.cockpit #composePanel .scriptiast{display:none}body.cockpit #composePanel .thumbtitle{display:none}body.cockpit #composePanel .typekey{height:26px;min-height:26px}body.cockpit #composePanel .typekey small{display:none}body.cockpit #workspaceDeck[data-active='perform']{grid-template-columns:1fr 1fr;grid-template-rows:1fr}body.cockpit .stage-module .hero{display:none}body.cockpit .stage-module .padgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}body.cockpit .stage-module .pad{min-height:0}body.cockpit .performance-module .performanceLayout{grid-template-columns:70px minmax(0,1fr)}body.cockpit .performance-module .finecontrols{display:none}body.cockpit #letterMap .conjunctExamples{display:none}body.cockpit #letterMap .lettermapcells{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:851px){body.cockpit .shell{--rail-h:0px}body.cockpit #workspaceDeck{margin-bottom:0}body.cockpit .stickyrail{display:none}body.cockpit #composePanel .flickgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}body.cockpit #composePanel .flicklayout{max-width:1450px;width:100%;margin:0 auto}body.cockpit #composePanel .comptool{flex-direction:row;flex-basis:220px;max-width:220px;align-items:center}body.cockpit #composePanel .comptool .btn{flex:1;min-height:37px}body.cockpit #letterMap .lettermapcells{grid-template-columns:repeat(4,minmax(0,1fr))}body.cockpit #workspaceDeck[data-active='perform'] .stage-module{border-right:1px solid var(--line)!important}}
+@media(prefers-reduced-motion:reduce){body.cockpit *,body.cockpit *::after,body.cockpit *::before{transition:none!important;animation:none!important}}
+/* 1.6 export subviews: no hidden QA footer, no overflowing option grid */
+body.cockpit .exportSwitcher{display:flex;gap:5px;flex:0 0 auto}
+body.cockpit .exportSwitcher button{min-height:27px;flex:1;border:1px solid #4e7182;border-radius:8px;color:#bddde4;background:#122a3a;font-size:11px}
+body.cockpit .exportSwitcher button.active{border-color:var(--mint);background:#236259;color:#fff}
+body.cockpit .export-module .exportconfig{flex:0 0 auto;align-content:start}
+body.cockpit .export-module .exportconfig .switch.full{display:none}
+body.cockpit #exportExtra{position:absolute;right:7px;top:72px;z-index:19}
+body.cockpit #exportExtra .switch{display:flex!important}
+body.cockpit .exportExtraButton{flex:0 0 48px!important}
+body.cockpit .export-module>.note{display:none}
+body.cockpit .export-module .qa{display:none;min-height:0;flex:1 1 auto;overflow:hidden}
+body.cockpit .export-module[data-export='qa'] .qa{display:flex;flex-direction:column}
+body.cockpit .export-module[data-export='qa'] .exportconfig,body.cockpit .export-module[data-export='qa'] .controls,body.cockpit .export-module[data-export='qa'] .meterwrap,body.cockpit .export-module[data-export='qa'] #exportLog{display:none}
+body.cockpit .export-module .qa .results{max-height:none;flex:1 1 auto;overflow:hidden;min-height:0}
+body.cockpit .export-module .qa .checkrow{padding:2px 0}
+body.cockpit .export-module .qa .qahead{flex:0 0 auto}
+body.cockpit .qaPaging{display:flex;gap:5px;justify-content:flex-end;margin-top:5px;align-items:center}
+body.cockpit .qaPaging button{padding:4px 8px;font-size:10px;border:1px solid #4a7885;border-radius:7px;background:#19374a;color:#c3f8e9}
+body.cockpit #letterMap .mapClose{float:none;position:absolute;top:5px;right:8px;z-index:1}
+body.cockpit #letterMap>.atlaslead:first-of-type{padding-right:87px}
+@media(min-width:600px){body.cockpit .export-module .exportconfig{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-height:470px){body.cockpit .export-module .exportconfig{grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}body.cockpit .export-module .exportconfig .setting{font-size:8px}body.cockpit .export-module .exportconfig select{height:25px;min-height:25px;padding:2px;font-size:9px}body.cockpit .export-module .exportconfig .switch.full{font-size:9px}body.cockpit .export-module .controls .btn{font-size:9px;padding:4px}body.cockpit #composePanel .textplayer{display:block;padding:1px 3px}body.cockpit #composePanel .textplayerbar .btn{min-height:21px;padding:2px 3px}body.cockpit #composePanel .textspeed{min-width:35px}body.cockpit .export-module .qa .results{font-size:9px}body.cockpit .export-module #exportLog{display:none}body.cockpit .sculpt-module #knobs{grid-template-columns:repeat(9,minmax(0,1fr));grid-template-rows:1fr}body.cockpit .sculpt-module .knob{width:clamp(29px,6.5vw,46px);height:clamp(29px,6.5vw,46px)}body.cockpit .sculpt-module .knobbox{padding:0 1px}body.cockpit .sculpt-module .knoblabel{font-size:8px}body.cockpit .sculpt-module .knobval{font-size:10px}}
+
+</style>
+</head>
+<body>
+<div class="shell"><header class="top"><div><div class="eyebrow">GESTURE COMPOSER / LIVE FORMANT INSTRUMENT</div><h1>VĀṆĪ <span>/ SVARA LAB</span></h1><p class="sub">Type Sanskrit with two thumbs. Sustain a synthetic vowel with one finger while shaping pitch, intensity and resonance with the other. Offline WAV and MIDI-pad sample exports.</p></div><div class="topright"><span class="capsule"><i class="dot"></i> LOCAL AUDIO ENGINE</span><details class="patchdrawer"><summary class="btn">◈ Patch library</summary><div class="patchactions"><button class="btn" id="savePreset">Save patch JSON</button><button class="btn" id="loadPreset">Load patch</button><input id="loadFile" type="file" accept=".json,application/json" hidden></div></details></div></header>
+<nav class="modebar" id="viewTabs" aria-label="Studio workspace"><button class="modebtn active" data-view="compose">⌨ Type</button><button class="modebtn" data-view="perform">◉ Play</button><button class="modebtn" data-view="sculpt">◍ Shape</button><button class="modebtn" data-view="export">⬇ Export</button><button class="modebtn" data-view="help">? Help</button><button class="modebtn" data-view="all">▦ All</button></nav>
+<section class="panel composer-module" id="composePanel" data-module="compose"><div class="panelhead"><div><div class="eyebrow">00 / TWO-THUMB SVARA–VYAÑJANA COMPOSER</div><div class="sectionlabel">Flick a family · draw a word</div></div><div class="state">TAP / ↑ / ← / → / ↓</div></div>
+<div class="composerrow"><div class="scriptresult"><div class="littleheading">DEVANĀGARĪ <span id="charCount">0 characters</span></div><div id="compDisplay" class="scriptdev" role="textbox" aria-label="Editable Sanskrit text. Type or paste Devanagari or IAST, or use the two-thumb keyboard" aria-multiline="true" tabindex="0" contenteditable="true" lang="sa" spellcheck="false" autocapitalize="off" autocorrect="off"></div><div id="compIast" class="scriptiast">Tap keys, or paste/type Devanāgarī or IAST directly above.</div></div><div class="comptool"><button class="btn" id="copyDev">Copy देवनागरी</button><button class="btn" id="copyIast">Copy IAST</button><button class="btn" id="exportText">↓ Save .txt</button></div></div>
+<div class="textplayer" aria-label="Speak or export typed Sanskrit"><div class="textplayerhead"><strong>◉ SPEAK YOUR TEXT</strong><span id="textPlayStatus" role="status" aria-live="polite">READY • TEXT SPEECH</span></div><div class="textplayerbar"><button class="btn primary" id="playText">▶ Play text</button><button class="btn" id="stopText">■ Stop text</button><button class="btn" id="exportSpeech">↓ Text WAV</button><label class="textspeed">PACE <input id="textSpeed" type="range" min="0.6" max="1.6" value="1" step="0.05"><output id="textSpeedValue">1.00×</output></label></div><p class="speechhint">Offline experimental phoneme sequencing (including simplified consonant bursts and nasals). Pronunciation is not native-speaker validated. Pitch and intensity controls also work during text playback.</p></div>
+<div class="flickoptions"><label class="switch"><input type="checkbox" id="inscriptSides"> InScript-inspired hands: vowels left, consonants right</label><label class="switch practiceSwitch"><input type="checkbox" id="practiceOnly"> PRACTICE · hear letters without typing</label><button type="button" id="showKeyMap" class="btn" aria-expanded="true" aria-controls="letterMap">▦ Letter map</button><button type="button" id="auditLetters" class="btn">✓ Test every consonant</button><span id="letterAuditStatus" class="small" role="status" aria-live="polite">34 Sanskrit consonants · 5-direction vargas</span></div>
+<div id="letterMap" class="lettermap"><p class="small">Sanskrit phonetic rows inspired by InScript: one key per articulatory family, with consonant grades selected by flick. This is not the desktop InScript key-for-key layout. Tap a letter directly or flick in one direction to select each letter. Empty directions do not substitute another character.</p><div class="atlaslead"><strong>ALL 34 CONSONANTS · TAP A LETTER</strong><span>34 direct keys · directional gestures listed below</span></div><div id="letterMapCells" class="lettermapcells"></div><div class="atlaslead" style="margin-top:12px"><strong>CONJUNCT BUILDER · TWO CONSONANTS + VIRĀMA</strong><span>Tap a ready-made combination, or make one with JOIN (्)</span></div><div id="conjunctExamples" class="conjunctExamples" aria-label="Common Sanskrit conjunct examples"></div></div>
+<div class="flicklayout" id="flickLayout"><div class="thumbhalf"><div class="thumbtitle"><span id="conThumb">LEFT THUMB</span> <span>Consonant families</span></div><div class="flickgrid" id="consonantFlick" aria-label="Consonant flick keys"></div></div><div class="thumbhalf"><div class="thumbtitle"><span id="vowThumb">RIGHT THUMB</span> <span>Vowels and signs</span></div><div class="flickgrid" id="vowelFlick" aria-label="Vowel and sign flick keys"></div></div></div>
+<div id="flickBubble" class="flickbubble" hidden aria-hidden="true"></div>
+<div class="typebar"><button class="typekey join" data-special="join" title="Insert virāma to join the next consonant">् <small>JOIN</small></button><button class="typekey" data-special="space">␣ <small>SPACE</small></button><button class="typekey" data-special="backspace">⌫ <small>UNDO KEY</small></button><button class="typekey" data-special="danda">। <small>DAṆḌA</small></button><button class="typekey" data-special="doubleDanda">॥ <small>DOUBLE</small></button><button class="typekey" data-special="udatta">॑ <small>UDĀTTA</small></button><button class="typekey" data-special="anudatta">॒ <small>ANUDĀTTA</small></button><button class="typekey" data-special="om">ॐ <small>OM</small></button></div>
+<div class="composerbottom"><span id="composeHint">Tap = center · ← aspirated · ↑ voiced · → voiced aspirated · ↓ nasal. Hold/flick to see the compass; release to enter. JOIN makes conjuncts. A gesture plays once on release. For sound-only testing, enable Practice.</span><label class="switch"><input type="checkbox" id="typeSound" checked> Audition letters (consonants + vowels)</label><button class="btn danger" id="clearText">Clear</button></div>
+</section>
+<section class="panel performance-module" id="performancePanel" data-module="perform"><div class="panelhead"><div><div class="eyebrow">01 / LIVE EXPRESSION</div><div class="sectionlabel">Two-finger voice performance</div></div><div class="state" id="performanceStatus">READY • MULTITOUCH</div></div>
+<div class="performanceLayout"><div class="gatecolumn"><button class="gatepad" id="gatePad" aria-label="Touch and hold to sustain selected vowel"><span class="gatering">◉</span><strong id="gateLabel">HOLD VOICE</strong><small id="gateSub">Press & hold</small></button><label class="switch"><input type="checkbox" id="gateLatch"> Lock sustain</label><button class="btn danger" id="performPanic">■ All voices off</button></div><div class="expressioncolumn"><div class="expressionheader"><span>PITCH BEND <strong id="bendReadout">+0.0 st</strong></span><span>INTENSITY <strong id="volumeReadout">75%</strong></span></div><div class="xypad" id="xyPad" role="group" aria-label="XY performance control: horizontal pitch bend and vertical volume intensity"><div class="xyaxis xaxis">PITCH −12 ← 0 → +12</div><div class="xyaxis yaxis">VOLUME ↑</div><div class="xycross xyvertical"></div><div class="xycross xyhorizontal"></div><div class="xypuck" id="xyPuck"></div><div class="xyinstructions">Drag to continuously change pitch and loudness</div></div><div class="finecontrols"><label>Pitch <input id="bendSlider" type="range" min="-12" max="12" step="0.1" value="0"></label><label>Intensity <input id="levelSlider" type="range" min="0" max="100" step="1" value="75"></label><button class="btn" id="centerBend">Center</button></div></div></div><div class="micro">The XY pad bends pitch and loudness continuously without retriggering. Pitch bending also shifts formants (sampler-style). Spectral knobs crossfade a regenerated voice during sustain. XY gestures are performance-only; the DAW pack uses the root pitch and voice knobs.</div></section>
+<section class="panel help-module" data-module="help" id="helpPanel"><div class="panelhead"><div><div class="eyebrow">05 / FIELD MANUAL</div><div class="sectionlabel">How to play Svara Lab</div></div><span class="state">OFFLINE GUIDE</span></div>
+<div class="helpgrid"><article class="helpcard"><h3>01. Compose Sanskrit</h3><p>Tap a large key for the center letter. Touch, then flick <strong>← ↑ → ↓</strong> to choose its alternate. Audio starts once after lifting; you can also tap the visible consonant atlas to enter any letter. Switch on <strong>Practice</strong> to hear without typing. By default, left thumb: consonants; right thumb: vowels. Check InScript-inspired hands to swap these sides to resemble the standard vowel-left / consonant-right arrangement. Each traditional five-consonant varga uses tap = first, left = aspirated, up = voiced, right = voiced aspirated, down = nasal. The other consonants use remaining directions. This is a touch adaptation, not an exact InScript mapping. Holding reveals a directional compass instead of cramming symbols onto the key.</p><p>To make <strong>रा</strong>, flick the YA family to <strong>र</strong>, then select <strong>आ</strong>. To join consonants, press <strong>JOIN (्)</strong> before the next consonant.</p></article>
+<article class="helpcard"><h3>02. Type or paste text</h3><p>The text area above the keyboard is editable. Use a physical keyboard, phone input method or paste Devanāgarī or IAST. Thumb-key strokes append to the text. The composition is saved locally in your browser.</p><p><strong>Try:</strong> राम, कृष्ण, ॐ नमः, or rāma. Use Undo Key to undo a gesture and backspace to edit directly in the text area.</p></article>
+<article class="helpcard"><h3>03. Play the full phrase</h3><p>Press <strong>▶ Play text</strong> to hear the whole composition in order. Adjust <strong>PACE</strong> to change syllable timing, <strong>■ Stop text</strong> to stop, or <strong>↓ Text WAV</strong> to export the rendered phrase as a mono WAV for your DAW.</p><p>This version models vowels with the existing formant engine and consonants with simplified noise, voicing and nasal cues. It is an <strong>experimental synthesizer, not an accurate Sanskrit pronunciation teacher.</strong></p></article>
+<article class="helpcard"><h3>04. Hold and express</h3><p>In <strong>Perform</strong>, touch and hold the large voice pad with one finger. Drag the XY field with another: horizontal = <strong>±12 semitone pitch</strong>; vertical = <strong>intensity</strong>. Enable Lock Sustain to release your first finger. On phones, the bottom rail keeps pitch and intensity accessible across tabs.</p><p>The big voice button keeps its dimensions and text steady while active. Press All voices off to silence everything.</p></article>
+<article class="helpcard"><h3>05. Sculpt, export and MIDI</h3><p><strong>Sculpt</strong> adjusts pitch, brightness, breath, vibrato, tract shape, glottal opening, attack and release. <strong>Export</strong> renders 14 vowel WAVs with loops, note metadata and manifest. <strong>Patch library</strong> stores your synthesis settings as JSON. MIDI input works in compatible browsers.</p></article>
+<article class="helpcard"><h3>06. Boundaries & privacy</h3><p>One HTML file, runs offline after you save it. Audio is generated on your device; the text isn't sent to a server. Best-supported inputs are Devanāgarī and conventional IAST. Vedic accent marks, sandhi, consonant timing, and rare vocalic liquids remain approximations. Exported text WAV is monophonic and not a phonetic reference recording.</p><p>Suggested test: type <strong>रामः</strong>, play, vary pitch and volume, export WAV, then listen in your DAW.</p></article></div></section>
+<main class="layout"><div class="leftcol"><section class="panel stage-module" data-module="perform"><div class="panelhead"><div class="sectionlabel">02 / PHONETIC KEYBOARD</div><div class="state" id="voiceStatus">READY • TAP A VOWEL</div></div><div class="hero"><div class="bigglyph" id="heroDev">अ</div><div><div><span class="heroname" id="heroIast">a</span><span class="heroipa" id="heroIpa">/ɐ/</span></div><p class="heroabout" id="heroNote">Short, central/open vowel • hrasva.</p><div class="chipline"><span class="chip" id="heroLength">SHORT • 1 MĀTRĀ</span><span class="chip" id="heroFormants">F1 730 · F2 1350 · F3 2620</span><span class="chip" id="heroRare" style="display:none">EXPERIMENTAL LIQUID</span></div></div></div><div class="padgrid" id="pads" aria-label="Fourteen Sanskrit vowel pads"></div><div class="padfoot"><span>Hold to sustain · release to stop · tap to audition · rare symbols use dashed borders</span><div class="controls"><label class="switch"><input type="checkbox" id="latch"> Latch pads</label><button class="btn danger" id="panic">Stop all <span aria-hidden="true">■</span></button></div></div><div class="vizbox"><span class="vizinfo">VOICE OSCILLOSCOPE / RESONANCE FIELD</span><canvas id="scope" aria-label="Live waveform and formant positions"></canvas><div class="vizbottom"><span>TIME →</span><span id="scopeNote">F₀ 196 Hz • F₁ / F₂ / F₃</span></div></div><div class="tone" style="margin-top:14px"><label>VOICE PRESET<select id="preset"><option value="daisy">DAISY · vintage robot</option><option value="warm">SOMA · warm voice</option><option value="bell">GANDHARVA · clear choir</option><option value="air">VĀYU · breathy air</option><option value="deep">MĀNDRA · low chant</option></select></label><label>ROOT NOTE<select id="root"></select></label><label>PLAY MODE<select id="playMode"><option value="hold">Hold / sustain</option><option value="one">One-shot on press</option></select></label><button class="btn primary" id="audition">▶ Audition selected</button><button class="btn" id="midiBtn">Connect MIDI</button></div><p class="micro" id="midiText">QWERTY: 1–7 / Q–U pads • Space: play selected • MIDI note on/off: pitch controls active vowel.</p></section>
+<section class="panel sculpt-module" data-module="sculpt"><div class="panelhead"><div class="sectionlabel">03 / VOICE DESIGN KNOBS</div><div class="small">DRAG KNOBS ↑↓ · ARROW KEYS · DOUBLE CLICK RESET</div></div><div class="knobgrid" id="knobs"></div><div class="formantbox"><div class="panelhead" style="margin-bottom:4px"><div class="sectionlabel">VOCAL TRACT / FORMANTS</div><button class="btn" id="resetFormants">Reset vowel</button></div><div class="small">Adjust the selected vowel's F1–F3 independently. Changes are included in the batch export for this vowel.</div><div id="formantSliders"></div><div class="resethint">F1 ≈ openness · F2 ≈ tongue front/back · F3 ≈ resonance / rhoticity. These are synthesis approximations, not calibrated Sanskrit speakers.</div></div></section></div>
+<div class="rightcol"><section class="panel export-module" data-module="export"><div class="panelhead"><div class="sectionlabel">04 / DAW SAMPLE FORGE</div><div class="state">RIFF/WAV • PCM16 • ZIP</div></div><div class="note" style="margin-bottom:14px">Export all 14 vowels in one batch. <strong>Loop WAV</strong> files include standard RIFF <code>smpl</code> loop markers; <strong>one-shots</strong> include natural endings. A manifest gives MIDI root notes and sample settings.</div><div class="exportconfig"><label class="setting">EXPORT TYPE<select id="exportType"><option value="both">Both · sustain + one-shot</option><option value="loop">Sustain loops only</option><option value="one">One-shots only</option></select></label><label class="setting">SAMPLE RATE<select id="sampleRate"><option value="44100">44,100 Hz</option><option value="48000" selected>48,000 Hz</option></select></label><label class="setting">NOTE SET<select id="noteSet"><option value="root">1 root note / vowel</option><option value="octaves">3 notes · −12, 0, +12</option><option value="chromatic">13 notes · ±6 semitones</option></select></label><label class="setting">SUSTAIN LENGTH<select id="loopSeconds"><option value="1.8">1.8 seconds</option><option value="2.4" selected>2.4 seconds</option><option value="3.2">3.2 seconds</option></select></label><label class="setting">SHORT VOWEL<select id="shortSeconds"><option value="0.40">0.40 seconds</option><option value="0.55" selected>0.55 seconds</option><option value="0.75">0.75 seconds</option></select></label><label class="setting">LONG VOWEL<select id="longSeconds"><option value="0.85">0.85 seconds</option><option value="1.1" selected>1.10 seconds</option><option value="1.4">1.40 seconds</option></select></label><label class="switch full"><input id="includeRare" type="checkbox" checked> Include rare vocalic ṝ, ḷ, ḹ</label><label class="switch full"><input id="normalize" type="checkbox" checked> Peak normalize each sample (−1.3 dBFS)</label></div><div class="controls"><button class="btn primary" id="batch">⬇ EXPORT FULL VOWEL PACK</button><button class="btn" id="single">Export selected WAV</button></div><div class="meterwrap"><div class="meter" id="meter"></div></div><div class="log" id="exportLog" aria-live="polite">Idle · export runs entirely on this device. Nothing is uploaded.</div><div class="qa"><div class="qahead"><div><div class="sectionlabel">05 / ADVERSARIAL QA</div><div class="small">Stress-test DSP, pitch, WAV loops, ZIP integrity</div></div><button class="btn" id="qaBtn">Run tests</button></div><div id="qaScore" class="small" style="margin-top:7px">Tests not yet run</div><div id="qaResults" class="results"></div></div></section>
+<section class="panel notes-module" data-module="export" style="margin-top:16px"><div class="panelhead"><div class="sectionlabel">VOICE DESIGN NOTES</div><span class="chip">VERSION 1.5 · INPUT + AUDIO</span></div><div class="inlineborder"><div class="eyebrow">THE SOURCE / FILTER MODEL</div><p class="note" style="margin-top:6px">A phase-driven, band-limited glottal-like source passes through three time-varying band-pass resonators. Air noise, spectral tilt, vibrato, and slowly morphing diphthongs add character. It is deliberately reminiscent of early singing computers—not a recording or a neural speech model.</p></div><p class="note" style="margin-top:12px"><strong>Phonetic caution:</strong> ṛ, ṝ, ḷ and ḹ are syllabic liquids; their exact traditional realizations vary. Three resonances alone cannot fully reproduce liquid articulation or nasal/retroflex transitions. Treat these as auditionable timbre sketches until validated against real Sanskrit-speaking voices.</p><p class="note" style="margin-top:12px"><strong>DAW tips:</strong> Load a <code>_LOOP.wav</code> onto your sampler, set its root note according to <code>manifest.json</code>, enable sustain looping if necessary, and set your sampler's release envelope to taste. Some DAWs ignore RIFF <code>smpl</code> markers; loop regions are also in the manifest. Use <code>_SHOT.wav</code> for non-looping pads.</p></section></div>
+<section class="panel footpanel"><div class="bottomgrid"><div><div class="sectionlabel">PERFORM WITH YOUR FINGERTIPS</div><p class="note" style="margin-top:9px">Press and hold a pad to sustain it. Flip on <strong>Latch pads</strong> for hands-free knob sculpting. A connected MIDI keyboard controls pitch while using the selected vowel. Move a knob during a held note to crossfade into the updated synthesis. Standard browser audio requires an initial tap before playback.</p></div><div><div class="sectionlabel">OPEN, INSPECTABLE, AND OFFLINE</div><p class="note" style="margin-top:9px">All synthesis, ZIP creation, WAV encoding, and audio checks run in this single HTML file using standard browser APIs. Your presets are exportable JSON. Validation checks technical integrity—not human-rated pronunciation. Reference concepts: <a href="https://www.phon.ox.ac.uk/files/IPOX_lectures/arch/synth.htm" target="_blank" rel="noreferrer">Klatt synthesis</a>, <a href="https://sanskritguide.com/01_Chapter_1_Overview.html" target="_blank" rel="noreferrer">Sanskrit vowel matrix</a>.</p></div></div></section></main><footer class="footer">VĀṆĪ / SVARA LAB 1.4 • EXPERIMENTAL PHONETIC INSTRUMENT • LOCAL-FIRST • NO DEPENDENCIES</footer></div><div class="stickyrail"><button id="railGate" aria-label="Toggle sustained voice" class="railgate">◉ <span>Sustain</span></button><label>Pitch <input id="railPitch" type="range" min="-12" max="12" step="0.1" value="0" aria-label="Live pitch bend semitones"></label><label>Intensity <input id="railLevel" type="range" min="0" max="100" value="75" aria-label="Live volume intensity"></label><button id="railStop" title="Stop all voices" aria-label="Stop all voices">■</button></div><div role="status" id="toast"></div>
+<script>
+'use strict';
+const VOWELS=[
+{id:'a',dev:'अ',iast:'a',ipa:'ɐ',length:1,f:[730,1350,2620],tip:'Short central/open vowel · hrasva.'},
+{id:'aa',dev:'आ',iast:'ā',ipa:'aː',length:2,f:[790,1280,2650],tip:'Long open vowel · dīrgha.'},
+{id:'i',dev:'इ',iast:'i',ipa:'i',length:1,f:[300,2350,3150],tip:'Short high front vowel.'},
+{id:'ii',dev:'ई',iast:'ī',ipa:'iː',length:2,f:[285,2520,3250],tip:'Long high front vowel.'},
+{id:'u',dev:'उ',iast:'u',ipa:'u',length:1,f:[340,930,2270],tip:'Short rounded high back vowel.'},
+{id:'uu',dev:'ऊ',iast:'ū',ipa:'uː',length:2,f:[305,880,2210],tip:'Long rounded high back vowel.'},
+{id:'r',dev:'ऋ',iast:'ṛ',ipa:'r̩',length:1,f:[485,1480,1860],tip:'Syllabic r; modeled with lowered F3. Experimental liquid.' ,liquid:true},
+{id:'rr',dev:'ॠ',iast:'ṝ',ipa:'r̩ː',length:2,f:[460,1460,1800],tip:'Rare long syllabic r; provisional approximation.',rare:true,liquid:true},
+{id:'l',dev:'ऌ',iast:'ḷ',ipa:'l̩',length:1,f:[420,1620,2720],tip:'Rare syllabic l; provisional approximation.',rare:true,liquid:true},
+{id:'ll',dev:'ॡ',iast:'ḹ',ipa:'l̩ː',length:2,f:[410,1650,2750],tip:'Very rare long syllabic l; provisional approximation.',rare:true,liquid:true},
+{id:'e',dev:'ए',iast:'e',ipa:'eː',length:2,f:[430,2060,2850],tip:'Long mid-front vowel; conventionally written e.'},
+{id:'ai',dev:'ऐ',iast:'ai',ipa:'ai̯',length:2,f:[730,1370,2650],end:[350,2210,3060],tip:'Diphthong with an open-to-front spectral glide.'},
+{id:'o',dev:'ओ',iast:'o',ipa:'oː',length:2,f:[460,930,2550],tip:'Long mid-back rounded vowel.'},
+{id:'au',dev:'औ',iast:'au',ipa:'au̯',length:2,f:[750,1330,2670],end:[350,920,2240],tip:'Diphthong with an open-to-rounded spectral glide.'}
+];
+const PRESETS={daisy:{pitch:196,brightness:64,breath:10,vibrato:8,depth:8,tract:0,openness:60},warm:{pitch:172,brightness:43,breath:16,vibrato:13,depth:20,tract:-6,openness:55},bell:{pitch:247,brightness:78,breath:3,vibrato:12,depth:15,tract:4,openness:65},air:{pitch:196,brightness:36,breath:43,vibrato:20,depth:15,tract:8,openness:70},deep:{pitch:118,brightness:38,breath:10,vibrato:10,depth:9,tract:-13,openness:54}};
+const KNOBS=[{id:'pitch',name:'BASE PITCH',min:80,max:420,step:1,unit:'Hz',hint:'Glottal fundamental'},{id:'brightness',name:'BRIGHTNESS',min:0,max:100,step:1,unit:'%',hint:'Harmonic / spectral tilt'},{id:'breath',name:'BREATH',min:0,max:75,step:1,unit:'%',hint:'Aspiration noise'},{id:'vibrato',name:'VIBRATO RATE',min:0,max:90,step:1,unit:'',hint:'0–9 Hz (× 0.1)'},{id:'depth',name:'VIBRATO DEPTH',min:0,max:80,step:1,unit:'ct',hint:'Pitch modulation'},{id:'tract',name:'TRACT SHIFT',min:-25,max:25,step:1,unit:'%',hint:'Rescale formants'},{id:'openness',name:'GLOTTAL OPEN',min:30,max:85,step:1,unit:'%',hint:'Open quotient'},{id:'attack',name:'ATTACK',min:5,max:250,step:1,unit:'ms',hint:'Onset fade'},{id:'release',name:'RELEASE',min:40,max:800,step:1,unit:'ms',hint:'Key-up tail'}];
+const defaultState=()=>({preset:'daisy',selected:'a',params:{...PRESETS.daisy,attack:32,release:280},overrides:{},root:55,exportType:'both',sampleRate:48000,noteSet:'root',loopSeconds:2.4,shortSeconds:.55,longSeconds:1.1,includeRare:true,normalize:true,latch:false,playMode:'hold'});
+let state=defaultState(),audioCtx=null,live=new Map(),cache=new Map(),revision=0,exporting=false,frame=0,analyser=null,scopeData=null;
+const $=id=>document.getElementById(id), clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t, smooth=t=>{t=clamp(t,0,1);return t*t*(3-2*t)},selected=()=>VOWELS.find(v=>v.id===state.selected)||VOWELS[0];
+const mtof=n=>440*Math.pow(2,(n-69)/12), noteName=n=>['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'][((n%12)+12)%12]+(Math.floor(n/12)-1);
+const effectiveFormants=v=>{const f=state.overrides[v.id];return f?f.slice():v.f.slice()};
+function presetApply(name){state.preset=name;state.params={...PRESETS[name],attack:state.params.attack,release:state.params.release};state.root=clamp(Math.round(69+12*Math.log2(state.params.pitch/440)),36,84);$('root').value=state.root;$('preset').value=name;paintKnobs();invalidate();refresh();}
+function renderPads(){const box=$('pads');box.innerHTML='';VOWELS.forEach((v,idx)=>{const el=document.createElement('button');el.type='button';el.className='pad'+(v.rare?' rare':'');el.dataset.id=v.id;el.dataset.idx=idx;el.setAttribute('aria-label',v.iast+' '+v.dev+' vowel pad');el.innerHTML=`<span class="mark">${idx<7?idx+1:'QWERTYU'[idx-7]}</span><span class="dev">${v.dev}</span><span class="iast">${v.iast}</span><span class="ipa">/${v.ipa}/</span>`;el.addEventListener('pointerdown',e=>{if(e.button!==0&&e.pointerType==='mouse')return;e.preventDefault();state.selected=v.id;refresh();if(state.latch){const key='latched';if(live.has(key)&&live.get(key).vowel===v.id){releaseVoice(key)}else{releaseVoice(key);startVoice(key,v.id,state.root,true)}}else{el.setPointerCapture(e.pointerId);const key='pointer-'+e.pointerId;startVoice(key,v.id,state.root,state.playMode==='hold');el.dataset.started=String(performance.now())}});el.addEventListener('pointerup',e=>{if(state.latch)return;const key='pointer-'+e.pointerId;if(state.playMode==='one')return;const ms=performance.now()-Number(el.dataset.started||0);setTimeout(()=>releaseVoice(key),Math.max(0,180-ms))});el.addEventListener('pointercancel',e=>releaseVoice('pointer-'+e.pointerId));box.append(el)})}
+function refresh(){document.querySelectorAll('.pad').forEach(el=>{const v=el.dataset.id;el.classList.toggle('selected',v===state.selected);el.classList.toggle('pressed',Array.from(live.values()).some(voice=>voice.vowel===v))});const v=selected();$('heroDev').textContent=v.dev;$('heroIast').textContent=v.iast;$('heroIpa').textContent='/'+v.ipa+'/';$('heroNote').textContent=v.tip;$('heroLength').textContent=v.length===1?'SHORT • 1 MĀTRĀ':'LONG • 2 MĀTRĀ';$('heroFormants').textContent=effectiveFormants(v).map((x,i)=>`F${i+1} ${x}`).join(' · ');$('heroRare').style.display=v.liquid?'':'none';$('scopeNote').textContent='F₀ '+Math.round(state.params.pitch)+' Hz • '+effectiveFormants(v).join(' / ');renderFormants();}
+function paintKnobs(){const root=$('knobs');root.innerHTML='';for(const k of KNOBS){const box=document.createElement('div');box.className='knobbox';box.innerHTML=`<div class="knoblabel">${k.name}</div><div class="knob" role="slider" tabindex="0" aria-label="${k.name}" aria-valuemin="${k.min}" aria-valuemax="${k.max}" data-id="${k.id}"></div><div class="knobval" id="v-${k.id}"></div><div class="knobhint">${k.hint}</div>`;root.append(box);const knob=box.querySelector('.knob');let start=null;knob.addEventListener('pointerdown',e=>{e.preventDefault();start={y:e.clientY,v:state.params[k.id]};knob.setPointerCapture(e.pointerId)});knob.addEventListener('pointermove',e=>{if(!start)return;const change=(start.y-e.clientY)*(k.max-k.min)/190;setParam(k,Math.round((start.v+change)/k.step)*k.step)});const end=()=>start=null;knob.addEventListener('pointerup',end);knob.addEventListener('pointercancel',end);knob.addEventListener('keydown',e=>{if(['ArrowUp','ArrowRight','ArrowDown','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();const sign=(e.key==='ArrowUp'||e.key==='ArrowRight')?1:-1;setParam(k,e.key==='Home'?k.min:e.key==='End'?k.max:state.params[k.id]+k.step*sign*(e.shiftKey?10:1))}});knob.addEventListener('dblclick',()=>setParam(k,(PRESETS[state.preset]||PRESETS.daisy)[k.id]??(k.id==='attack'?32:280)))}updateKnobs()}
+function updateKnobs(){for(const k of KNOBS){const v=state.params[k.id];const knob=document.querySelector(`.knob[data-id="${k.id}"]`);if(!knob)continue;knob.style.setProperty('--angle',((-130+260*((v-k.min)/(k.max-k.min)))+'deg'));knob.setAttribute('aria-valuenow',String(v));$('v-'+k.id).textContent=(k.id==='vibrato'?(v/10).toFixed(1):v)+(k.unit?' '+k.unit:' Hz'.slice(0,0))}}
+function setParam(k,v){state.params[k.id]=clamp(v,k.min,k.max);if(k.id==='pitch'){state.root=clamp(Math.round(69+12*Math.log2(state.params.pitch/440)),36,84);$('root').value=state.root}state.preset='custom';$('preset').value='custom';updateKnobs();invalidate()}
+function renderFormants(){const b=$('formantSliders');b.innerHTML='';const v=selected(),f=effectiveFormants(v),maxes=[[220,1100],[650,3200],[1250,4500]];f.forEach((freq,i)=>{const [min,max]=maxes[i];const row=document.createElement('div');row.className='formantrow';row.innerHTML=`<label for="form${i}">F${i+1} ${['OPEN','FRONT','COLOR'][i]}</label><input id="form${i}" type="range" min="${min}" max="${max}" step="10" value="${freq}"><output id="formout${i}">${freq} Hz</output>`;b.append(row);row.querySelector('input').addEventListener('input',e=>{const next=effectiveFormants(selected());next[i]=Number(e.target.value);state.overrides[selected().id]=next;$('formout'+i).textContent=next[i]+' Hz';$('heroFormants').textContent=next.map((x,j)=>`F${j+1} ${x}`).join(' · ');invalidate()})})}
+let invalidationTimer=0;function invalidate(){revision++;cache.clear();clearTimeout(invalidationTimer);invalidationTimer=setTimeout(()=>{for(const [id,voice] of [...live]){if(voice.sequence||(id==='audition'&&state.playMode==='one'))continue;const {vowel,midi,hold}=voice;startVoice(id,vowel,midi,hold)}refreshCanvasOnce()},65)}
+// Deterministic band-limited glottal-like excitation and three parallel resonators.
+// All preview and export audio comes from this exact deterministic renderer.
+function polyBlep(t,dt){if(t<dt){t/=dt;return t+t-t*t-1}if(t>1-dt){t=(t-1)/dt;return t*t+t+t+1}return 0}
+function biquad(f,bw,sr){const w=2*Math.PI*clamp(f,50,sr*.43)/sr,q=clamp(f/bw,.35,55),alpha=Math.sin(w)/(2*q),a0=1+alpha;return {b:alpha/a0,a1:-2*Math.cos(w)/a0,a2:(1-alpha)/a0,x1:0,x2:0,y1:0,y2:0}}
+function filterStep(z,x){const y=z.b*(x-z.x2)-z.a1*z.y1-z.a2*z.y2;z.x2=z.x1;z.x1=x;z.y2=z.y1;z.y1=y;return y}
+function makePCM(v,opts={}){
+ const sr=opts.sr||state.sampleRate,params=opts.params||state.params,form=opts.formants||effectiveFormants(v),kind=opts.kind||'one',base=opts.baseFreq||params.pitch,normalize=opts.normalize??state.normalize;
+ const isLoop=kind==='loop',nSec=isLoop?(opts.seconds||state.loopSeconds):(opts.seconds||(v.length===1?state.shortSeconds:state.longSeconds));
+ const release=Math.max(.025,params.release/1000),total=isLoop?nSec+release+.10:nSec;const n=Math.ceil(total*sr),pcm=new Float32Array(n);
+ const formShift=Math.pow(2,params.tract/100),isDiphthong=Boolean(v.end),end=v.end||form;
+ const vibRate=params.vibrato/10,vibAmt=params.depth,op=params.openness/100;
+ const br=params.brightness/100,breath=params.breath/100;let phase=0,noiseState=0,seed=0x918afed1,lp=0;
+ const banks=[biquad(form[0]*formShift,75,sr),biquad(form[1]*formShift,120,sr),biquad(form[2]*formShift,190,sr)];
+ let loopStart=0,loopEnd=0;const att=params.attack/1000,shorter=Math.max(.012,Math.min(att,total*.22));let maxAbs=0;
+ for(let i=0;i<n;i++){
+ const t=i/sr,within=Math.min(t,nSec),morph=isDiphthong?smooth((t-.10)/Math.max(.15,isLoop?.36:nSec*.63)):0;
+ if((i&127)===0){for(let j=0;j<3;j++){const f=lerp(form[j],end[j],morph)*formShift;const old=banks[j],nw=biquad(f,[75,120,190][j]*(1+.3*(1-br)),sr);nw.x1=old.x1;nw.x2=old.x2;nw.y1=old.y1;nw.y2=old.y2;banks[j]=nw}}
+ const pitch=base*Math.pow(2,(vibAmt*Math.sin(2*Math.PI*vibRate*t)/1200));const d=clamp(pitch/sr,.001,.035);phase+=d;if(phase>=1)phase-=1;
+ // PolyBLEP saw with open-quotient body / periodic burst excitation.
+ const saw=2*phase-1-polyBlep(phase,d);const glottal=Math.sin(Math.PI*Math.min(phase/op,1))**2*(phase<op?1:0);
+ const osc=(.32+.65*br)*saw+(.67-.37*br)*(glottal-.32);
+ seed=(Math.imul(seed,1664525)+1013904223)>>>0;const white=(seed/4294967296-.5)*2;noiseState=.85*noiseState+.15*white;
+ const exc=osc + breath*(.22*white+.38*noiseState);
+ // Gentle preemphasis: adds upper harmonics without external plugin / network.
+ lp=lp*.65+exc*.35;const source=exc*(.6+.4*br)+(.25*br)*(exc-lp);
+ const f1=filterStep(banks[0],source),f2=filterStep(banks[1],source),f3=filterStep(banks[2],source);
+ let y=f1*.95+f2*.7+f3*.52+source*.025;
+ // Short/long natural envelope; sustained files have stable midsection and a release tail.
+ const envIn=smooth(t/shorter);const envOut=isLoop?(t>nSec?smooth((total-t)/release):1):smooth((total-t)/Math.min(release,total*.26));
+ y*=envIn*envOut;
+ pcm[i]=y;maxAbs=Math.max(maxAbs,Math.abs(y));
+ }
+ // Search for a low-discontinuity seam after diphthong has completed.
+ if(isLoop){const A=Math.floor(Math.min(nSec*.43,Math.max(.49,nSec*.27))*sr),target=Math.floor((nSec-.10)*sr),search=Math.floor(sr/Math.max(65,base));let best=Infinity,bestEnd=target;
+ for(let e=Math.max(A+Math.floor(sr*.30),target-search);e<Math.min(n-4,target+search);e++){
+ const dy=pcm[e]-pcm[A],ds=(pcm[e]-pcm[e-1])-(pcm[A]-pcm[A-1]);const score=dy*dy+2*ds*ds;if(score<best){best=score;bestEnd=e}}
+ loopStart=A;loopEnd=bestEnd;
+ // Smooth mismatch in amplitude and first difference across final 256 samples.
+ const endVal=pcm[loopEnd-1],startVal=pcm[loopStart],lastSlope=pcm[loopEnd-1]-pcm[loopEnd-2],firstSlope=pcm[loopStart+1]-pcm[loopStart];const N=Math.min(256,Math.floor((loopEnd-loopStart)/8));
+ const delta=startVal-endVal,deltaSlope=firstSlope-lastSlope;
+ for(let k=0;k<N;k++){const x=k/(N-1),h=x*x*(3-2*x),hs=x*x*(x-1);pcm[loopEnd-N+k]+=delta*h+deltaSlope*hs*N*.25}
+ }
+ maxAbs=0;for(const x of pcm)maxAbs=Math.max(maxAbs,Math.abs(x));const peakTarget=.86,gain=normalize?peakTarget/Math.max(.00001,maxAbs):Math.min(1.0,peakTarget/Math.max(.4,maxAbs));for(let i=0;i<n;i++)pcm[i]=clamp(pcm[i]*gain,-.98,.98);
+ return {data:pcm,sr,loopStart,loopEnd,midi:opts.midi??state.root,f0:base,duration:n/sr,vowel:v.id,kind};
+}
+function bufferKey(v,midi,kind){return [revision,v.id,midi,kind,audioCtx?.sampleRate||state.sampleRate].join(':')}
+function audioBufferFor(v,midi,kind){const key=bufferKey(v,midi,kind);let pcm=cache.get(key);if(!pcm){pcm=makePCM(v,{sr:audioCtx.sampleRate,baseFreq:state.params.pitch*Math.pow(2,(midi-state.root)/12),midi,kind});cache.set(key,pcm);if(cache.size>60)cache.delete(cache.keys().next().value)}const b=audioCtx.createBuffer(1,pcm.data.length,pcm.sr);b.copyToChannel(pcm.data,0);return {buffer:b,pcm}}
+async function context(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();analyser=audioCtx.createAnalyser();analyser.fftSize=2048;analyser.connect(audioCtx.destination)}if(audioCtx.state==='suspended')await audioCtx.resume();return audioCtx}
+function createVoice(id,v,midi,hold){const obj=audioBufferFor(v,midi,hold?'loop':'one');const src=audioCtx.createBufferSource(),gain=audioCtx.createGain(),expression=audioCtx.createGain();src.buffer=obj.buffer;if(hold){src.loop=true;src.loopStart=obj.pcm.loopStart/obj.pcm.sr;src.loopEnd=obj.pcm.loopEnd/obj.pcm.sr}src.connect(gain).connect(expression).connect(analyser);const now=audioCtx.currentTime;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.9,now+.025);expression.gain.value=Math.pow(performanceState.level/100,1.6);src.playbackRate.value=Math.pow(2,performanceState.bend/12);src.start(now);if(!hold){src.addEventListener('ended',()=>{if(live.get(id)?.source===src){live.delete(id);refreshPadStates();syncGateButtons()}}, {once:true})}return {source:src,gain,expression,vowel:v.id,midi,hold,started:performance.now()}}
+async function startVoice(id,vowel=state.selected,midi=state.root,hold=true){const epoch=(voiceEpochs.get(id)||0)+1;voiceEpochs.set(id,epoch);try{await context();if(voiceEpochs.get(id)!==epoch)return null;const v=VOWELS.find(v=>v.id===vowel)||selected();const old=live.get(id);const voice=createVoice(id,v,midi,hold);live.set(id,voice);if(old)fadeOut(old,.085);refreshPadStates();syncGateButtons();$('voiceStatus').textContent='SYNTHESIS LIVE • '+v.iast+' / '+noteName(midi);return voice}catch(err){$('voiceStatus').textContent='AUDIO BLOCKED';notify('Audio unavailable: '+err.message);return null}}
+function fadeOut(voice,seconds){if(!audioCtx||!voice)return;const now=audioCtx.currentTime,g=voice.gain.gain;g.cancelScheduledValues(now);g.setValueAtTime(g.value,now);g.linearRampToValueAtTime(0,now+seconds);try{voice.source.stop(now+seconds+.03)}catch(e){}}
+function releaseVoice(id){voiceEpochs.set(id,(voiceEpochs.get(id)||0)+1);const v=live.get(id);if(!v)return;live.delete(id);fadeOut(v,state.params.release/1000);refreshPadStates();if(!live.size)$('voiceStatus').textContent='READY • TAP A VOWEL';syncGateButtons()}
+function stopAll(){for(const id of [...live.keys()])releaseVoice(id);if($('textPlayStatus'))$('textPlayStatus').textContent='STOPPED'}
+function refreshPadStates(){document.querySelectorAll('.pad').forEach(el=>el.classList.toggle('pressed',[...live.values()].some(x=>x.vowel===el.dataset.id)))}
+function rootOptions(){const el=$('root');for(let i=36;i<=84;i++){const o=document.createElement('option');o.value=i;o.textContent=noteName(i)+' · MIDI '+i;el.append(o)}el.value=state.root}
+function notify(msg){const t=$('toast');t.textContent=msg;t.classList.add('visible');clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.classList.remove('visible'),2500)}
+function download(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),20000)}
+function wavEncode(pcm){const {data,sr,midi,kind,loopStart,loopEnd}=pcm,hasLoop=kind==='loop',n=data.length,extra=hasLoop?68:0,b=new ArrayBuffer(44+extra+n*2),v=new DataView(b);let o=0;function s(x){for(const c of x)v.setUint8(o++,c.charCodeAt(0))}function u32(x){v.setUint32(o,x>>>0,true);o+=4}function u16(x){v.setUint16(o,x,true);o+=2}
+ s('RIFF');u32(b.byteLength-8);s('WAVE');s('fmt ');u32(16);u16(1);u16(1);u32(sr);u32(sr*2);u16(2);u16(16);
+ if(hasLoop){s('smpl');u32(60);u32(0);u32(0);u32(Math.round(1e9/sr));u32(midi);u32(0);u32(0);u32(0);u32(1);u32(0);u32(0);u32(0);u32(loopStart);u32(loopEnd-1);u32(0);u32(0)}
+ s('data');u32(n*2);for(let i=0;i<n;i++){const x=clamp(data[i],-1,1);v.setInt16(o,Math.round(x<0?x*32768:x*32767),true);o+=2}return new Uint8Array(b)}
+const crcTable=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?(0xedb88320^(c>>>1)):c>>>1;crcTable[n]=c>>>0}
+function crc32(bytes){let c=0xffffffff;for(const x of bytes)c=crcTable[(c^x)&255]^(c>>>8);return (c^0xffffffff)>>>0}
+function zipFiles(entries){const encoder=new TextEncoder(),parts=[],central=[];let offset=0;const push=(a)=>{parts.push(a);offset+=a.length};const hdr=(size)=>new Uint8Array(size);const w16=(d,i,n)=>d.setUint16(i,n,true),w32=(d,i,n)=>d.setUint32(i,n>>>0,true);
+ for(const {name,bytes} of entries){const nameBytes=encoder.encode(name),crc=crc32(bytes),at=offset,h=hdr(30+nameBytes.length),d=new DataView(h.buffer);w32(d,0,0x04034b50);w16(d,4,20);w16(d,6,0x0800);w16(d,8,0);w16(d,10,0);w16(d,12,0);w32(d,14,crc);w32(d,18,bytes.length);w32(d,22,bytes.length);w16(d,26,nameBytes.length);w16(d,28,0);h.set(nameBytes,30);push(h);push(bytes);
+ const c=hdr(46+nameBytes.length),cd=new DataView(c.buffer);w32(cd,0,0x02014b50);w16(cd,4,20);w16(cd,6,20);w16(cd,8,0x0800);w16(cd,10,0);w16(cd,12,0);w16(cd,14,0);w32(cd,16,crc);w32(cd,20,bytes.length);w32(cd,24,bytes.length);w16(cd,28,nameBytes.length);w16(cd,30,0);w16(cd,32,0);w16(cd,34,0);w16(cd,36,0);w32(cd,38,0);w32(cd,42,at);c.set(nameBytes,46);central.push(c)}
+ const centralAt=offset;for(const c of central)push(c);const end=hdr(22),ed=new DataView(end.buffer);w32(ed,0,0x06054b50);w16(ed,4,0);w16(ed,6,0);w16(ed,8,entries.length);w16(ed,10,entries.length);w32(ed,12,offset-centralAt);w32(ed,16,centralAt);w16(ed,20,0);push(end);return new Blob(parts,{type:'application/zip'})}
+function voiceSnapshot(){return {params:{...state.params},formants:Object.fromEntries(VOWELS.map(v=>[v.id,effectiveFormants(v)])),preset:state.preset,root:state.root,shortSeconds:state.shortSeconds,longSeconds:state.longSeconds,loopSeconds:state.loopSeconds,normalize:state.normalize,sampleRate:state.sampleRate,noteSet:state.noteSet,exportType:state.exportType,includeRare:state.includeRare}}
+function snapshotForSave(){return {format:'svara-lab-patch',version:1,created:new Date().toISOString(),...voiceSnapshot()}}
+function applyPatch(p){if(!p||p.format!=='svara-lab-patch'||p.version!==1)throw Error('Not a valid Svara Lab v1 patch');for(const k of KNOBS){const val=Number(p.params?.[k.id]);if(!Number.isFinite(val)||val<k.min||val>k.max)throw Error('Out-of-range parameter: '+k.id)}state.params={...state.params,...p.params};state.preset='custom';state.root=clamp(Math.round(Number(p.root)||60),36,84);state.overrides={};for(const v of VOWELS){const f=p.formants?.[v.id];if(Array.isArray(f)&&f.length===3&&f.every((x,i)=>Number.isFinite(x)&&x>150&&x<5000))state.overrides[v.id]=f.slice()}for(const k of ['shortSeconds','longSeconds','loopSeconds','sampleRate'])if(Number.isFinite(Number(p[k])))state[k]=Number(p[k]);for(const k of ['normalize','includeRare'])if(typeof p[k]==='boolean')state[k]=p[k];for(const k of ['noteSet','exportType'])if(typeof p[k]==='string')state[k]=p[k];$('preset').value='custom';$('root').value=state.root;for(const id of ['shortSeconds','longSeconds','loopSeconds','sampleRate','noteSet','exportType']){const e=$(id);if([...e.options].some(o=>o.value===String(state[id])))e.value=state[id]}$('normalize').checked=state.normalize;$('includeRare').checked=state.includeRare;paintKnobs();revision++;cache.clear();refresh();notify('Patch loaded')}
+function midiNotes(){if(state.noteSet==='octaves')return [state.root-12,state.root,state.root+12].filter(n=>n>=24&&n<=108);if(state.noteSet==='chromatic')return Array.from({length:13},(_,i)=>state.root+i-6);return [state.root]}
+async function exportPack(){if(exporting)return;exporting=true;const btn=$('batch');btn.disabled=true;const entries=[],manifest={format:'svara-lab-sample-pack',version:1,created:new Date().toISOString(),engine:'deterministic parallel-formant v1',unit:'Hz',settings:voiceSnapshot(),samples:[],caveats:['Experimental synthesized phoneme targets, not native-speaker validated.','Vocalic liquid vowels are timbral approximations.','Loop start/end in manifest are sample frames. smpl end is inclusive; Web Audio end is exclusive.']};const symbols=VOWELS.filter(v=>state.includeRare||!v.rare),notes=midiNotes(),kinds=state.exportType==='both'?['one','loop']:[state.exportType],count=symbols.length*notes.length*kinds.length;let done=0;try{for(const v of symbols){for(const midi of notes){for(const kind of kinds){const freq=state.params.pitch*Math.pow(2,(midi-state.root)/12);const pcm=makePCM(v,{sr:state.sampleRate,baseFreq:freq,midi,kind});const wav=wavEncode(pcm);const file=`samples/${v.id}_${noteName(midi).replace('♯','#').replace(/[^a-zA-Z0-9#-]/g,'')}_${kind==='loop'?'LOOP':'SHOT'}.wav`;entries.push({name:file,bytes:wav});manifest.samples.push({file,vowel:v.iast,devanagari:v.dev,ipa:v.ipa,rare:!!v.rare,midiNote:midi,rootKey:noteName(midi),f0:freq,centsFromEqualTemperament:Math.round(1200*Math.log2(freq/mtof(midi))*10)/10,kind,sampleRate:pcm.sr,frames:pcm.data.length,loop:kind==='loop'?{startFrame:pcm.loopStart,endFrameExclusive:pcm.loopEnd}:null,formants:effectiveFormants(v),endFormants:v.end||null});done++;$('meter').style.width=100*done/count+'%';$('exportLog').textContent=`Rendering ${done}/${count}: ${v.iast} · ${noteName(midi)} · ${kind}`;if(done%2===0)await new Promise(resolve=>setTimeout(resolve,0))}}}entries.push({name:'manifest.json',bytes:new TextEncoder().encode(JSON.stringify(manifest,null,2))});entries.push({name:'README.txt',bytes:new TextEncoder().encode('SVARA LAB - Sanskrit vowel sample set\r\n\r\nLoad _LOOP.wav with sampler sustain looping enabled. Loop metadata stored in RIFF smpl and manifest.json.\r\nLoad _SHOT.wav for one-shot playback. Root key and exact sample ranges are in manifest.json.\r\nAudio synthetic; validate pronunciation with a qualified speaker.\r\nNo external dependencies.\r\n')});const zip=zipFiles(entries);download(zip,'SVARA_LAB_VOWEL_PACK_'+new Date().toISOString().slice(0,10)+'.zip');$('exportLog').textContent=`✓ ${count} audio WAVs + manifest + README · ${(zip.size/1048576).toFixed(2)} MiB ZIP · ready`;notify('Vowel pack created · '+count+' WAVs')}catch(e){$('exportLog').textContent='Export error: '+e.message;notify('Export failed: '+e.message);throw e}finally{exporting=false;btn.disabled=false}}
+function exportSingle(){try{const v=selected(),kind=state.exportType==='loop'?'loop':'one',pcm=makePCM(v,{sr:state.sampleRate,midi:state.root,baseFreq:state.params.pitch,kind});download(new Blob([wavEncode(pcm)],{type:'audio/wav'}),`SVARA_${v.iast}_${noteName(state.root).replace('♯','#')}_${kind.toUpperCase()}.wav`);notify('Exported '+v.iast+' '+kind+' WAV')}catch(e){notify('Export failed: '+e.message)}}
+function readWav(buf){const d=new DataView(buf.buffer,buf.byteOffset,buf.byteLength),s=(i,n)=>String.fromCharCode(...buf.subarray(i,i+n));if(s(0,4)!=='RIFF'||s(8,4)!=='WAVE'||d.getUint32(4,true)+8!==buf.length)throw Error('Invalid RIFF length');let offset=12,fmt=null,dat=null,loop=null;while(offset+8<=buf.length){const type=s(offset,4),len=d.getUint32(offset+4,true),off=offset+8;if(off+len>buf.length)throw Error('Invalid chunk bounds');if(type==='fmt ')fmt={codec:d.getUint16(off,true),channels:d.getUint16(off+2,true),sampleRate:d.getUint32(off+4,true),bits:d.getUint16(off+14,true)};if(type==='data')dat={offset:off,bytes:len};if(type==='smpl'){loop={root:d.getUint32(off+12,true),start:d.getUint32(off+44,true),end:d.getUint32(off+48,true),nloops:d.getUint32(off+28,true)}}offset=off+len+(len%2)}return {fmt,dat,loop}}
+function parseZip(bytes){const d=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);let off=0,out=[];const decoder=new TextDecoder();while(off+4<bytes.length){const sig=d.getUint32(off,true);if(sig===0x06054b50||sig===0x02014b50)break;if(sig!==0x04034b50)throw Error('Invalid ZIP local header at '+off);const flags=d.getUint16(off+6,true),method=d.getUint16(off+8,true),crc=d.getUint32(off+14,true),size=d.getUint32(off+18,true),n=d.getUint16(off+26,true),e=d.getUint16(off+28,true);if(method!==0||(flags&8))throw Error('Unsupported ZIP method');const name=decoder.decode(bytes.subarray(off+30,off+30+n)),data=bytes.subarray(off+30+n+e,off+30+n+e+size);if(data.length!==size||crc32(data)!==crc)throw Error('CRC mismatch '+name);out.push({name,bytes:data});off+=30+n+e+size}if(d.getUint32(off,true)!==0x02014b50&&d.getUint32(off,true)!==0x06054b50)throw Error('ZIP central directory missing');return out}
+function sampleDiagnostics(x){let peak=0,sum=0,nan=0;for(let i=0;i<x.length;i++){const v=x[i];if(!Number.isFinite(v))nan++;peak=Math.max(peak,Math.abs(v));sum+=v*v}return {peak,rms:Math.sqrt(sum/x.length),nan}}
+function estimatePitch(data,sr,target){const stride=4,start=Math.floor(sr*.3),samples=Math.min(5000,Math.floor((data.length-start)/stride));if(samples<800)return NaN;const x=new Float32Array(samples);let mean=0;for(let i=0;i<samples;i++){x[i]=data[start+i*stride];mean+=x[i]}mean/=samples;for(let i=0;i<samples;i++)x[i]-=mean;const mid=sr/stride;const lo=Math.floor(mid/(target*1.08)),hi=Math.ceil(mid/(target*.92));let best=Infinity,bestLag=lo;for(let lag=lo;lag<=hi;lag++){let s=0;for(let i=0;i<samples-lag;i++){const d=x[i]-x[i+lag];s+=d*d}if(s<best){best=s;bestLag=lag}}return mid/bestLag}
+async function runQA(){const q=$('qaResults');q.innerHTML='';$('qaScore').textContent='Testing ...';$('qaBtn').disabled=true;const checks=[];function check(name,ok,detail){checks.push({name,ok,detail});const line=document.createElement('div');line.className='checkrow';line.innerHTML=`<span>${name} <span class="muted">${detail||''}</span></span><strong class="${ok?'pass':'fail'}">${ok?'PASS':'FAIL'}</strong>`;q.append(line)}
+ try{const v=VOWELS[0],sr=22050,p={...state.params,vibrato:0,depth:0};const pcm=makePCM(v,{sr,params:p,kind:'one',seconds:.5,normalize:true});const dia=sampleDiagnostics(pcm.data);check('Finite, audible signal',!dia.nan&&dia.rms>.035,`RMS ${dia.rms.toFixed(3)}`);check('Headroom + no hard clipping',dia.peak<=.9&&dia.peak>.55,`Peak ${dia.peak.toFixed(3)}`);check('Fade boundaries',Math.abs(pcm.data[0])<1e-5&&Math.abs(pcm.data.at(-1))<.002,'click-safe outer edges');
+ const target=state.params.pitch,found=estimatePitch(pcm.data,sr,target);check('Pitch fundamental tracking',Number.isFinite(found)&&Math.abs(found-target)/target<.06,`${found.toFixed(1)} vs ${target} Hz`);
+ const a=makePCM(VOWELS[0],{sr,params:p,kind:'one',seconds:.5}),i=makePCM(VOWELS[2],{sr,params:p,kind:'one',seconds:.5});let diff=0;for(let k=1000;k<8000;k++)diff+=Math.abs(a.data[k]-i.data[k]);check('a / i voice differentiation',diff/7000>.02,'nonidentical PCM spectra');
+ const end=makePCM(VOWELS[11],{sr,params:p,kind:'loop',seconds:1.8});check('Diphthong glide configured',VOWELS[11].end[1]>VOWELS[11].f[1]+500,'ai opens toward i');
+ let shortest=makePCM(VOWELS[0],{sr,params:p,kind:'one',seconds:.42}),longest=makePCM(VOWELS[1],{sr,params:p,kind:'one',seconds:.92});check('Long / short duration',longest.data.length>shortest.data.length*1.9,'distinct mātrā lengths');
+ const wav=wavEncode(end),parsed=readWav(wav);check('WAV RIFF PCM16 header',parsed.fmt.codec===1&&parsed.fmt.channels===1&&parsed.fmt.bits===16&&parsed.fmt.sampleRate===sr,'byte count & chunks');
+ check('RIFF smpl loop metadata',parsed.loop&&parsed.loop.start===end.loopStart&&parsed.loop.end===end.loopEnd-1&&parsed.loop.root===state.root,'correct inclusive end');
+ const seam=Math.abs(end.data[end.loopEnd-1]-end.data[end.loopStart]);check('Sustain loop seam',seam<.014,`seam |Δ| ${seam.toFixed(5)}`);
+ const shot=readWav(wavEncode(pcm));check('One-shot has no loop tag',!shot.loop,'one-shot WAV isolated');
+ const entries=[{name:'vowels/a.wav',bytes:wav},{name:'manifest.json',bytes:new TextEncoder().encode('{"ok":true}')}],z=zipFiles(entries),parsedZip=parseZip(new Uint8Array(await z.arrayBuffer()));check('ZIP CRC + entry round-trip',parsedZip.length===2&&parsedZip[0].bytes.length===wav.length,'archive self-consistency');
+ const hard=VOWELS.every(v=>{const f=effectiveFormants(v);return f.every((n,i)=>n>=150&&n<=5000)&&(!v.end||v.end.length===3)});check('14-vowel parameter coverage',VOWELS.length===14&&hard,'all glyphs + formant targets');
+ // Determinism: same input must produce identical PCM, vital for repeatable samples.
+ const testB=makePCM(v,{sr,params:p,kind:'one',seconds:.5,normalize:true});check('Deterministic re-render',pcm.data.every((x,i)=>x===testB.data[i]),'bitwise stable in same browser');
+ // Canary: deliberately corrupt a byte; integrity checker MUST refuse the archive.
+ const bad=new Uint8Array(await z.arrayBuffer());bad[90]^=1;let caught=false;try{parseZip(bad)}catch(e){caught=true}check('Adversarial CRC mutation caught',caught,'tampering rejected');
+ const count=checks.filter(c=>c.ok).length;const pct=Math.round(count/checks.length*100);$('qaScore').textContent=`${pct}% ENGINE INTEGRITY · ${count}/${checks.length} checks passed${count===checks.length?' · ready for technical live testing':' · investigate failing checks'}`;notify('QA '+count+'/'+checks.length+' checks passed');return {passed:count,total:checks.length,checks}
+ }catch(e){check('Unexpected test exception',false,e.message);$('qaScore').textContent='QA aborted · '+e.message;return {passed:0,total:checks.length,checks,error:e.message}}finally{$('qaBtn').disabled=false}}
+function setupCanvas(){const canvas=$('scope'),ctx=canvas.getContext('2d');if(!ctx)return;function draw(){frame=requestAnimationFrame(draw);const rect=canvas.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1),w=Math.floor(rect.width*dpr),h=Math.floor(rect.height*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}ctx.clearRect(0,0,w,h);ctx.strokeStyle='#234555';ctx.lineWidth=1;for(let i=1;i<8;i++){const x=i*w/8;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let j=1;j<5;j++){const y=j*h/5;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+ let arr;if(analyser&&live.size){arr=new Float32Array(analyser.fftSize);analyser.getFloatTimeDomainData(arr)}else{const v=selected(),sr=8000,preview=makePCM(v,{sr,kind:'one',seconds:Math.max(.45,v.length===1?.5:.8)});const hop=Math.max(1,Math.floor(preview.data.length/360));arr=new Float32Array(360);for(let i=0;i<360;i++)arr[i]=preview.data[Math.min(preview.data.length-1,450+i*hop)]}
+ ctx.save();ctx.shadowBlur=9*dpr;ctx.shadowColor='#6cfbd481';ctx.strokeStyle='#69f6d6';ctx.lineWidth=2*dpr;ctx.beginPath();for(let i=0;i<arr.length;i++){const x=i/(arr.length-1)*w,y=h*.53-arr[i]*h*.32;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.stroke();ctx.restore();const fs=effectiveFormants(selected());for(let i=0;i<3;i++){const frac=Math.log(Math.max(200,fs[i])/200)/Math.log(4500/200),x=clamp(frac,.03,.98)*w;ctx.strokeStyle=['#68c6fb90','#ffc97e90','#f39cbc90'][i];ctx.setLineDash([2*dpr,8*dpr]);ctx.beginPath();ctx.moveTo(x,h*.09);ctx.lineTo(x,h*.92);ctx.stroke();ctx.fillStyle=['#68c6fb','#ffc97e','#f39cbc'][i];ctx.font=11*dpr+'px system-ui';ctx.fillText('F'+(i+1),x+4*dpr,32*dpr)}ctx.setLineDash([])}draw()}
+function refreshCanvasOnce(){} // Continuous scope responds to current selected voice.
+let midiAccess=null;async function connectMIDI(){if(!navigator.requestMIDIAccess){notify('Web MIDI unsupported here · use Chrome/Edge or onscreen pads');return}try{midiAccess=await navigator.requestMIDIAccess();function bind(){for(const input of midiAccess.inputs.values())input.onmidimessage=e=>{const [s,n,v]=e.data,cmd=s&0xf0,key='midi-'+n;if(cmd===0x90&&v>0)startVoice(key,state.selected,n,true);else if(cmd===0x80||(cmd===0x90&&v===0))releaseVoice(key)}}bind();midiAccess.onstatechange=bind;$('midiText').textContent='MIDI CONNECTED: Play keys to sound selected Sanskrit vowel at actual MIDI pitch.';notify('MIDI connected')}catch(e){notify('MIDI could not connect: '+e.message)}}
+
+// Sanskrit gesture keyboard. Consonants are Unicode letters; vowel signs are
+// dependent graphemes. A virama is inserted only when explicitly requested.
+const DIRECTION=['center','left','up','right','down'];
+const C_GROUPS=[
+ {name:'KA',parts:[['क','k'],['ख','kh'],['ग','g'],['घ','gh'],['ङ','ṅ']]},
+ {name:'CA',parts:[['च','c'],['छ','ch'],['ज','j'],['झ','jh'],['ञ','ñ']]},
+ {name:'ṬA',parts:[['ट','ṭ'],['ठ','ṭh'],['ड','ḍ'],['ढ','ḍh'],['ण','ṇ']]},
+ {name:'TA',parts:[['त','t'],['थ','th'],['द','d'],['ध','dh'],['न','n']]},
+ {name:'PA',parts:[['प','p'],['फ','ph'],['ब','b'],['भ','bh'],['म','m']]},
+ {name:'YA',parts:[['य','y'],['र','r'],['ल','l'],['व','v'],null]},
+ {name:'ŚA',parts:[['श','ś'],['ष','ṣ'],['स','s'],['ह','h'],null]},
+ {name:'ḶA',parts:[['ळ','ḻ'],null,null,null,null]},
+];
+const V_GROUPS=[
+ {name:'A',parts:[['अ','a','a'],null,['आ','ā','aa'],null,null]},
+ {name:'I',parts:[['इ','i','i'],null,['ई','ī','ii'],null,null]},
+ {name:'U',parts:[['उ','u','u'],null,['ऊ','ū','uu'],null,null]},
+ {name:'Ṛ',parts:[['ऋ','ṛ','r'],['ऌ','ḷ','l'],['ॠ','ṝ','rr'],['ॡ','ḹ','ll'],null]},
+ {name:'E',parts:[['ए','e','e'],null,['ऐ','ai','ai'],null,null]},
+ {name:'O',parts:[['ओ','o','o'],null,['औ','au','au'],null,null]},
+ {name:'SIGN',parts:[['ं','ṃ','anusvara'],['ँ','m̐','candrabindu'],['ः','ḥ','visarga'],['ऽ','ʼ','avagraha'],['्','virāma','join']]},
+ {name:'OM',parts:[['ॐ','oṃ','om'],null,null,null,null]},
+];
+const MATRAS={a:'',aa:'ा',i:'ि',ii:'ी',u:'ु',uu:'ू',r:'ृ',rr:'ॄ',l:'ॢ',ll:'ॣ',e:'े',ai:'ै',o:'ो',au:'ौ'};
+const SIGNS={anusvara:['ं','ṃ'],candrabindu:['ँ','m̐'],visarga:['ः','ḥ'],avagraha:['ऽ','ʼ'],danda:['।',' | '],doubleDanda:['॥',' || '],udatta:['॑','́'],anudatta:['॒','̀'],om:['ॐ','oṃ']};
+const composer={events:[],text:'',iast:'',pending:false};let editingComposition=false;
+function composeEvents(events){let dev='',iast='',pending=false;for(const e of events){if(e.kind==='c'){dev+=e.dev;iast+=e.iast+'a';pending=true}
+ else if(e.kind==='v'){const v=VOWELS.find(x=>x.id===e.id);if(!v)continue;if(pending){dev+=(MATRAS[e.id]||'');iast=iast.slice(0,-1)+v.iast;pending=false}else{dev+=v.dev;iast+=v.iast}}
+ else if(e.kind==='join'){if(pending){dev+='्';iast=iast.slice(0,-1);pending=false}}
+ else if(e.kind==='space'){dev+=' ';iast+=' ';pending=false}
+ else if(e.kind==='raw'){dev+=e.dev||'';iast+=transliterateSanskrit(e.dev||'');pending=/[कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहळ]$/.test(dev)}
+ else if(e.kind==='sign'){let z=SIGNS[e.id];if(z){dev+=z[0];iast+=z[1];pending=false}}
+ }return {dev,iast,pending}}
+function renderComposer(updateField=true){try{localStorage.setItem('svara_v11_composition',JSON.stringify(composer.events))}catch(_){}const built=composeEvents(composer.events);composer.text=built.dev;composer.iast=built.iast;composer.pending=built.pending;if(!editingComposition && updateField)$('compDisplay').textContent=built.dev;$('compIast').textContent=built.iast||'Paste Devanāgarī or IAST above, or enter letters with two thumbs';$('charCount').textContent=[...built.dev].length+' codepoints';}
+let composerPlayToken=0;
+// A committed gesture is the unit of audio output: no sound starts at pointerdown or while searching for a direction.
+// This prevents a center preview plus directional preview from sounding as two syllables.
+const activeKeyPreviews=new Map();let pendingConsonant=null;
+function stopAudition(slot='gesture'){
+ const old=activeKeyPreviews.get(slot);if(!old)return;
+ if(old.gain&&old.ctx){try{old.gain.gain.cancelScheduledValues(old.ctx.currentTime);old.gain.gain.setTargetAtTime(0,old.ctx.currentTime,.009)}catch(_){}}
+ if(old.source){try{old.source.stop(old.ctx.currentTime+.045)}catch(_){}}
+ activeKeyPreviews.delete(slot);
+}
+function cancelPendingConsonant(){if(pendingConsonant){clearTimeout(pendingConsonant.timer);pendingConsonant=null}}
+async function auditionText(text,slot='gesture'){
+ if(!$('typeSound').checked||!text)return false;
+ stopAudition(slot);const record={source:null,gain:null,ctx:null};activeKeyPreviews.set(slot,record);
+ try{
+  const ctx=await context();if(activeKeyPreviews.get(slot)!==record)return false;
+  const pcm=renderTextPCM(text,{sr:Math.min(24000,ctx.sampleRate),pace:1.22});
+  const buffer=ctx.createBuffer(1,pcm.data.length,pcm.sr);buffer.copyToChannel(pcm.data,0);
+  const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;source.connect(gain).connect(analyser);
+  const now=ctx.currentTime,level=.42*Math.pow(performanceState.level/100,1.6);
+  gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(level,now+.009);
+  gain.gain.setValueAtTime(level,Math.max(now+.012,now+pcm.duration-.018));gain.gain.linearRampToValueAtTime(0,now+pcm.duration);
+  source.playbackRate.value=Math.pow(2,performanceState.bend/12);
+  record.ctx=ctx;record.source=source;record.gain=gain;
+  source.onended=()=>{if(activeKeyPreviews.get(slot)===record)activeKeyPreviews.delete(slot);try{gain.disconnect()}catch(_){}};
+  source.start(now);return true
+ }catch(e){notify('Letter audition unavailable: '+e.message);return false}
+}
+// Public compatibility for the dedicated Letter Map and QA console.
+function auditionLetter(kind,part,slot='gesture'){return auditionText(part?.[0]||'',slot)}
+function previewForFlick(kind,group,d,pointer){return false} // Compass only: silent directional search.
+function composerEvent(e){if(e.kind==='undo'){
+ // Undo a single orthographic grapheme in pasted/typed text instead of deleting the entire phrase.
+ const last=composer.events.at(-1);
+ if(last?.kind==='raw'){
+  const text=String(last.dev||'');const parts=typeof Intl!=='undefined'&&Intl.Segmenter?[...new Intl.Segmenter('sa',{granularity:'grapheme'}).segment(text)].map(x=>x.segment):Array.from(text);
+  const unitSigns=/[ँंः़ािीुूृॄॢॣेैोौ्॒॑]$/u;
+  last.dev=unitSigns.test(text)?Array.from(text).slice(0,-1).join(''):(parts.pop(),parts.join(''));if(!last.dev)composer.events.pop();
+ }else composer.events.pop();
+ }else if(e.kind==='clear')composer.events=[];else{if(e.kind==='join'&&!composer.pending)return;composer.events.push(e)}renderComposer()}
+function commitFlick(group,kind,direction,options={}){const n=group.parts[direction];if(!n)return false;
+ if(options.forceType||!$('practiceOnly').checked){if(kind==='c'){composerEvent({kind:'c',dev:n[0],iast:n[1]})}else{const id=n[2];if(id==='join'){composerEvent({kind:'join'})}else if(SIGNS[id])composerEvent({kind:'sign',id});else composerEvent({kind:'v',id})}}
+ if(!options.silent)performCommittedSound(kind,n);return true}
+function performCommittedSound(kind,part){if(!part||!$('typeSound').checked)return;
+ const isVowel=kind==='v'&&!!VOWELS.find(v=>v.id===part[2]);
+ if(kind==='c'){
+  cancelPendingConsonant();
+  // A second thumb may supply a dependent vowel immediately. Wait briefly so its syllable is auditioned only once.
+  const stamp={part,timer:null};pendingConsonant=stamp;
+  stamp.timer=setTimeout(()=>{if(pendingConsonant===stamp){pendingConsonant=null;auditionText(part[0])}},95);
+ }else if(isVowel){
+  const prev=pendingConsonant?.part;cancelPendingConsonant();
+  const suffix=prev ? prev[0]+(MATRAS[part[2]]||'') : part[0];
+  state.selected=part[2];refresh();auditionText(suffix);
+ }else{
+  cancelPendingConsonant();if(part[2]==='join')return;
+  auditionText(part[0]);
+ }
+}
+let touchSequence=0;const inputQueue=[];function reserveStroke(){const ticket={n:++touchSequence,ready:false,commit:false};inputQueue.push(ticket);return ticket}
+function flushStrokes(){while(inputQueue.length&&inputQueue[0].ready){const t=inputQueue.shift();if(t.commit)commitFlick(t.group,t.kind,t.direction)}}
+function directionOf(dx,dy){if(Math.max(Math.abs(dx),Math.abs(dy))<21)return 0;return Math.abs(dx)>Math.abs(dy)?(dx<0?1:3):(dy<0?2:4)}
+function compassHTML(group,d){const labels=[['up',2],['left',1],['center',0],['right',3],['down',4]];return '<div class="compassgrid"><div></div>'+compassCell(group,2,d,'↑')+'<div></div>'+compassCell(group,1,d,'←')+compassCell(group,0,d,'●')+compassCell(group,3,d,'→')+'<div></div>'+compassCell(group,4,d,'↓')+'<div></div></div>'}
+function compassCell(group,n,active,arrow){const x=group.parts[n];return '<div class="compasscell '+(n===active?'chosen':'')+'"><span>'+arrow+'</span><b>'+(x?x[0]:'·')+'</b><small>'+(x?x[1]:'')+'</small></div>'}
+function addFlickBoard(id,groups,kind){const board=$(id);board.innerHTML='';groups.forEach((group,index)=>{
+ const key=document.createElement('button');key.type='button';key.className='flickkey';key.dataset.group=group.name;
+ key.setAttribute('aria-label',group.name+' family: tap center, flick left, up, right, or down');
+ const p=group.parts[0];key.innerHTML='<span class="flickmain">'+p[0]+'</span><span class="flicklatin">'+p[1]+'</span><span class="flickfamily">'+group.name+'</span>';
+ const active=new Map();
+ function preview(d,e){const bubble=$('flickBubble');bubble.hidden=false;bubble.innerHTML=compassHTML(group,d);
+  const left=clamp(e.clientX||innerWidth*.5,96,innerWidth-96),top=(e.clientY||210)-20;
+  bubble.style.left=left+'px';bubble.style.top=Math.max(112,top)+'px';key.classList.add('flicking');}
+ function progress(e){const a=active.get(e.pointerId);if(!a)return;
+  if(Number.isFinite(e.clientX)&&Number.isFinite(e.clientY)){
+   const dx=e.clientX-a.x,dy=e.clientY-a.y;
+   const d=directionOf(dx,dy);a.lastX=e.clientX;a.lastY=e.clientY;
+   if(d!==a.direction){a.direction=d}
+   preview(d,e);
+  }
+ }
+ function stop(e,commit){const a=active.get(e.pointerId);if(!a)return;
+  // Touch browsers sometimes omit release coordinates. Use the last known move.
+  if(commit&&Number.isFinite(e.clientX)&&Number.isFinite(e.clientY)&&!(e.clientX===0&&e.clientY===0))progress(e);
+  active.delete(e.pointerId);a.ticket.ready=true;a.ticket.commit=commit;a.ticket.group=group;a.ticket.kind=kind;a.ticket.direction=a.direction;
+  flushStrokes();if(active.size===0){key.classList.remove('flicking');$('flickBubble').hidden=true}
+  try{if(key.hasPointerCapture(e.pointerId))key.releasePointerCapture(e.pointerId)}catch(_){}
+ }
+ key.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();
+  const a={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,direction:0,ticket:reserveStroke()};active.set(e.pointerId,a);
+  try{key.setPointerCapture(e.pointerId)}catch(_){/* still tracks pointer globally below */}
+  preview(0,e);
+ });
+ key.addEventListener('pointermove',progress);
+ // Window listeners are a fallback when a browser drops pointer capture during a swipe.
+ window.addEventListener('pointermove',e=>{if(active.has(e.pointerId)&&e.target!==key&&!key.contains(e.target))progress(e)});
+ window.addEventListener('pointerup',e=>{if(active.has(e.pointerId))stop(e,true)});
+ window.addEventListener('pointercancel',e=>{if(active.has(e.pointerId))stop(e,false)});
+ key.addEventListener('pointerup',e=>stop(e,true));key.addEventListener('pointercancel',e=>stop(e,false));
+ key.addEventListener('keydown',e=>{
+  const direction=e.key==='Enter'||e.key===' '?0:({ArrowLeft:1,ArrowUp:2,ArrowRight:3,ArrowDown:4})[e.key];
+  if(direction!==undefined){e.preventDefault();const item=group.parts[direction];if(item)commitFlick(group,kind,direction)}
+ });
+ board.append(key)
+})}
+async function copyText(t){try{await navigator.clipboard.writeText(t);notify('Copied to clipboard')}catch(e){const el=document.createElement('textarea');el.value=t;document.body.append(el);el.select();const ok=document.execCommand?.('copy');el.remove();notify(ok?'Copied':'Clipboard unavailable. Select text manually.')}}
+function buildLetterMap(){const root=$('letterMapCells');root.replaceChildren();const dirs=['● tap','← left','↑ up','→ right','↓ down'];for(const g of C_GROUPS){
+ const row=document.createElement('div');row.className='lettermaprow';const title=document.createElement('strong');title.textContent=g.name;row.append(title);
+ const chips=document.createElement('div');chips.className='lettermapchips';g.parts.forEach((part,d)=>{
+  if(!part){const blank=document.createElement('span');blank.className='atlasblank';chips.append(blank);return}
+  const item=document.createElement('button');item.type='button';item.className='letterchip';
+  item.setAttribute('aria-label',part[0]+' '+part[1]+' · '+dirs[d]+', tap to '+($('practiceOnly')?.checked?'hear':'type and hear'));
+  item.innerHTML='<span class="atlasglyph">'+part[0]+'</span><span class="atlasroman">'+part[1]+'</span><small>'+dirs[d]+'</small>';
+  item.addEventListener('click',()=>commitFlick(g,'c',d));chips.append(item)
+ });row.append(chips);root.append(row)}}
+function buildConjunctExamples(){
+ const items=[['क्ष','क् + ष'],['ज्ञ','ज् + ञ'],['त्र','त् + र'],['श्र','श् + र'],['स्त्र','स् + त् + र'],['कृष्ण','कृ + ष् + ण'],['राम','र + ा + म'],['शान्ति','शा + न् + ति']];
+ const root=$('conjunctExamples');root.replaceChildren();for(const [text,parts] of items){const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',text+' from '+parts+'; tap to '+($('practiceOnly').checked?'hear':'insert and hear'));b.innerHTML='<strong>'+text+'</strong><span>'+parts+'</span>';
+ b.addEventListener('click',()=>{cancelPendingConsonant();if(!$('practiceOnly').checked){composer.events.push({kind:'raw',dev:text});renderComposer()}if($('typeSound').checked)auditionText(text)});root.append(b)}
+}
+function runLetterAudit(){const failures=[],covered=new Set();const save=composer.events.slice();try{for(const group of C_GROUPS){for(let d=0;d<5;d++){const part=group.parts[d];if(!part)continue;composer.events=[];renderComposer();commitFlick(group,'c',d,{silent:true,forceType:true});if(composer.text!==part[0]||transliterateSanskrit(composer.text)!==part[1]+'a')failures.push(group.name+'/'+d+': '+composer.text);covered.add(part[0]);const r=renderTextPCM(part[0],{sr:12000});if(r.nonzero<50||r.unsupported)failures.push(part[0]+': audio failed')}}}finally{composer.events=save;renderComposer()}
+ const good=failures.length===0 && covered.size===34;const label=good?'PASS · 34/34 consonants map, render and sound':'FAIL · '+failures.slice(0,3).join(', ');$('letterAuditStatus').textContent=label;notify(label);return {passed:good,covered:covered.size,failed:failures}}
+function setupComposer(){addFlickBoard('consonantFlick',C_GROUPS,'c');addFlickBoard('vowelFlick',V_GROUPS,'v');buildLetterMap();buildConjunctExamples();$('showKeyMap').addEventListener('click',()=>{const hidden=!$('letterMap').hidden;$('letterMap').hidden=hidden;$('showKeyMap').setAttribute('aria-expanded',String(!hidden))});$('auditLetters').addEventListener('click',runLetterAudit);$('inscriptSides').addEventListener('change',e=>{const enabled=e.target.checked;$('flickLayout').classList.toggle('inscript',enabled);$('conThumb').textContent=enabled?'RIGHT THUMB':'LEFT THUMB';$('vowThumb').textContent=enabled?'LEFT THUMB':'RIGHT THUMB';try{localStorage.setItem('svara_v14_inscript',enabled?'1':'0')}catch(_){}});$('practiceOnly').addEventListener('change',()=>{document.querySelectorAll('.letterchip').forEach(button=>{const text=button.getAttribute('aria-label');if(text)button.setAttribute('aria-label',text.replace(/, tap to (?:hear|type and hear)$/,', tap to '+($('practiceOnly').checked?'hear':'type and hear')))});document.querySelectorAll('#conjunctExamples button').forEach(btn=>{const label=btn.getAttribute('aria-label');if(label)btn.setAttribute('aria-label',label.replace(/tap to (?:hear|insert and hear)$/,'tap to '+($('practiceOnly').checked?'hear':'insert and hear')))});cancelPendingConsonant()});try{if(localStorage.getItem('svara_v14_inscript')==='1'){$('inscriptSides').checked=true;$('inscriptSides').dispatchEvent(new Event('change'))}}catch(_){};document.querySelectorAll('[data-special]').forEach(el=>el.addEventListener('click',()=>{const id=el.dataset.special;composerEvent(id==='backspace'?{kind:'undo'}:id==='space'?{kind:'space'}:id==='join'?{kind:'join'}:{kind:'sign',id})}));$('clearText').addEventListener('click',()=>composerEvent({kind:'clear'}));$('copyDev').addEventListener('click',()=>copyText(composer.text));$('copyIast').addEventListener('click',()=>copyText(composer.iast));$('exportText').addEventListener('click',()=>download(new Blob([composer.text+'\n'+composer.iast+'\n'],{type:'text/plain;charset=utf-8'}),'SVARA_COMPOSITION.txt'));$('compDisplay').addEventListener('compositionstart',()=>{editingComposition=true});$('compDisplay').addEventListener('compositionend',()=>{editingComposition=false;acceptTypedText()});$('compDisplay').addEventListener('input',()=>{if(!editingComposition)acceptTypedText()});try{const saved=JSON.parse(localStorage.getItem('svara_v11_composition')||'[]');if(Array.isArray(saved)&&saved.length<8000&&saved.every(e=>e&&['c','v','join','space','sign','raw'].includes(e.kind)))composer.events=saved}catch(_){}renderComposer()}
+
+// The shared voice remains alive while its playback rate and intensity are
+// updated through AudioParams; no note-on is needed for expressive changes.
+const performanceState={bend:0,level:75};
+const voiceEpochs=new Map();
+function updateExpression(){const bend=performanceState.bend,level=performanceState.level;$('bendReadout').textContent=(bend>=0?'+':'')+bend.toFixed(1)+' st';$('volumeReadout').textContent=Math.round(level)+'%';$('bendSlider').value=String(bend);$('levelSlider').value=String(Math.round(level));$('railPitch').value=String(bend);$('railLevel').value=String(Math.round(level));const x=(bend+12)/24*100,y=(1-level/100)*100;$('xyPuck').style.left=x+'%';$('xyPuck').style.top=y+'%';if(audioCtx){const t=audioCtx.currentTime;for(const voice of live.values()){if(voice.expression){voice.expression.gain.setTargetAtTime(Math.pow(level/100,1.6),t,.018)}voice.source.playbackRate.setTargetAtTime(Math.pow(2,bend/12),t,.018)}}}
+function setExpression(bend,level){performanceState.bend=clamp(Number(bend),-12,12);performanceState.level=clamp(Number(level),0,100);updateExpression()}
+let gateDown=false;
+function syncGateButtons(){const active=live.has('finger-gate')||live.has('rail-gate');$('gatePad').classList.toggle('active',active);$('railGate').classList.toggle('active',active);$('gatePad').setAttribute('aria-pressed',String(active));$('gateLabel').textContent='HOLD VOICE';$('gateSub').textContent='Press & hold';$('performanceStatus').textContent=active?'SUSTAINING':'READY • MULTITOUCH'}
+function gateStart(key){return startVoice(key,state.selected,state.root,true).then(syncGateButtons)}
+function gateStop(key){releaseVoice(key);syncGateButtons()}
+function setupExpression(){const xy=$('xyPad');const active=new Set();function move(e){const r=xy.getBoundingClientRect(),px=clamp((e.clientX-r.left)/r.width,0,1),py=clamp((e.clientY-r.top)/r.height,0,1);setExpression(Math.round(((px*24)-12)*10)/10,Math.round((1-py)*100))}
+ xy.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();active.add(e.pointerId);xy.setPointerCapture(e.pointerId);move(e)});xy.addEventListener('pointermove',e=>{if(active.has(e.pointerId))move(e)});for(const ev of ['pointerup','pointercancel'])xy.addEventListener(ev,e=>{active.delete(e.pointerId)});
+ for(const [id,fn] of [['bendSlider',v=>setExpression(v,performanceState.level)],['railPitch',v=>setExpression(v,performanceState.level)],['levelSlider',v=>setExpression(performanceState.bend,v)],['railLevel',v=>setExpression(performanceState.bend,v)]])$(id).addEventListener('input',e=>fn(Number(e.target.value)));$('centerBend').addEventListener('click',()=>setExpression(0,performanceState.level));
+ const gate=$('gatePad');let pointers=new Set();gate.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();try{gate.setPointerCapture(e.pointerId)}catch(_){/* Fake pointer and unsupported capture: still accept gesture. */}pointers.add(e.pointerId);if($('gateLatch').checked){if(pointers.size===1){if(live.has('finger-gate'))gateStop('finger-gate');else gateStart('finger-gate')}}else{gateDown=true;if(pointers.size===1)gateStart('finger-gate')}});function finish(e){if(!pointers.delete(e.pointerId))return;if(!$('gateLatch').checked&&pointers.size===0){gateDown=false;gateStop('finger-gate')}}gate.addEventListener('pointerup',finish);gate.addEventListener('pointercancel',finish);gate.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();if(!live.has('finger-gate'))gateStart('finger-gate')}});gate.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();if(!$('gateLatch').checked)gateStop('finger-gate')}});
+ $('gateLatch').addEventListener('change',e=>{if(!e.target.checked&&!gateDown)gateStop('finger-gate')});$('performPanic').addEventListener('click',()=>{stopAll();syncGateButtons()});$('railStop').addEventListener('click',()=>{stopAll();syncGateButtons()});$('railGate').addEventListener('click',()=>{if(live.has('rail-gate'))gateStop('rail-gate');else gateStart('rail-gate')});setExpression(0,75);syncGateButtons();}
+function setupWorkspace(){const tabs=[...document.querySelectorAll('[data-view]')];function switchView(view){tabs.forEach(x=>{const active=x.dataset.view===view;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});document.querySelectorAll('[data-module]').forEach(el=>el.classList.toggle('modulehidden',view!=='all'&&el.dataset.module!==view))}
+ tabs.forEach(x=>x.addEventListener('click',()=>{switchView(x.dataset.view);if(x.dataset.view!=='all'){const el=document.querySelector('[data-module="'+x.dataset.view+'"]');el?.scrollIntoView({behavior:'instant',block:'start'})}}));const media=matchMedia('(max-width:720px)');media.addEventListener?.('change',()=>switchView(media.matches?'compose':'all'));switchView(media.matches?'compose':'all')}
+
+function init(){setupComposer();setupTextPlayback();setupExpression();setupWorkspace();renderPads();rootOptions();$('preset').append(new Option('CUSTOM · manual patch','custom'));$('preset').value='daisy';paintKnobs();refresh();setupCanvas();$('preset').addEventListener('change',e=>{if(e.target.value!=='custom')presetApply(e.target.value)});$('root').addEventListener('change',e=>{state.root=Number(e.target.value);state.params.pitch=Math.round(mtof(state.root));state.preset='custom';$('preset').value='custom';updateKnobs();invalidate()});$('playMode').addEventListener('change',e=>state.playMode=e.target.value);$('latch').addEventListener('change',e=>{state.latch=e.target.checked;stopAll()});$('panic').addEventListener('click',stopAll);$('resetFormants').addEventListener('click',()=>{delete state.overrides[state.selected];renderFormants();invalidate();refresh()});$('audition').addEventListener('click',async()=>{if(live.has('audition'))releaseVoice('audition');else{await startVoice('audition',state.selected,state.root,state.playMode==='hold');if(state.playMode==='hold')setTimeout(()=>releaseVoice('audition'),1300)}});$('midiBtn').addEventListener('click',connectMIDI);$('savePreset').addEventListener('click',()=>download(new Blob([JSON.stringify(snapshotForSave(),null,2)],{type:'application/json'}),'SVARA_LAB_PATCH.json'));$('loadPreset').addEventListener('click',()=>$('loadFile').click());$('loadFile').addEventListener('change',async e=>{try{const f=e.target.files[0];if(f)applyPatch(JSON.parse(await f.text()))}catch(e){notify('Invalid patch: '+e.message)}e.target.value='' });for(const id of ['exportType','noteSet'])$(id).addEventListener('change',e=>state[id]=e.target.value);for(const id of ['sampleRate','loopSeconds','shortSeconds','longSeconds'])$(id).addEventListener('change',e=>{state[id]=Number(e.target.value);invalidate()});for(const id of ['includeRare','normalize'])$(id).addEventListener('change',e=>{state[id]=e.target.checked;invalidate()});$('batch').addEventListener('click',exportPack);$('single').addEventListener('click',exportSingle);$('qaBtn').addEventListener('click',runQA);
+ const keymap='1234567qwertyu';const held=new Set();document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.altKey||e.metaKey)return;if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(document.activeElement.tagName)||document.activeElement.getAttribute('role')==='slider'||document.activeElement.getAttribute('role')==='textbox')return;const key=e.key.toLowerCase();if(key==='escape'){stopAll();return}if(key===' '||keymap.includes(key)){e.preventDefault();if(held.has(key))return;held.add(key);if(key===' '){startVoice('key-space',state.selected,state.root,state.playMode==='hold')}else{const v=VOWELS[keymap.indexOf(key)];state.selected=v.id;refresh();startVoice('key-'+key,v.id,state.root,state.playMode==='hold')}}});document.addEventListener('keyup',e=>{const key=e.key.toLowerCase();if(held.has(key)){held.delete(key);if(state.playMode==='hold')releaseVoice(key===' '?'key-space':'key-'+key)}});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAll()});window.addEventListener('blur',()=>{held.clear();stopAll()});}
+// SVARA 1.2: fully-local experimental consonant/vowel speech sequencer.
+// Deliberately does not use speechSynthesis voices or external APIs.
+const DEVA_C=new Map(C_GROUPS.flatMap(g=>g.parts.filter(Boolean).map(p=>[p[0],p[1]])));
+const DEVA_V=new Map(VOWELS.map(v=>[v.dev,v.id]));
+const DEVA_M=new Map(Object.entries(MATRAS).filter(([,m])=>m).map(([id,m])=>[m,id]));
+const VOWEL_ROMAN=new Map(VOWELS.map(v=>[v.iast,v.id]));
+function transliterateSanskrit(str){let output='',pending=false;for(const ch of str.normalize('NFC')){
+ if(DEVA_C.has(ch)){output+=DEVA_C.get(ch)+'a';pending=true;continue}
+ if(DEVA_V.has(ch)){output+=VOWELS.find(v=>v.id===DEVA_V.get(ch)).iast;pending=false;continue}
+ if(DEVA_M.has(ch)){if(pending&&output.endsWith('a'))output=output.slice(0,-1);output+=VOWELS.find(v=>v.id===DEVA_M.get(ch)).iast;pending=false;continue}
+ if(ch==='्'){if(pending&&output.endsWith('a'))output=output.slice(0,-1);pending=false;continue}
+ let sign=Object.values(SIGNS).find(pair=>pair[0]===ch);if(sign){output+=sign[1];pending=false;continue}
+ output+=ch;pending=false;
+}return output}
+function acceptTypedText(){const text=$('compDisplay').textContent.replace(/\u00a0/g,' ').replace(/\r/g,'');composer.events=[{kind:'raw',dev:text}];renderComposer(false);}
+function parseSanskritText(str){const text=String(str||'').normalize('NFC'),segments=[];let implicit=false;let unsupported=0;
+ const vowel=id=>segments.push({type:'v',id});const cons=name=>segments.push({type:'c',name});const pause=(sec=.10)=>{if(segments.at(-1)?.type==='p')segments.at(-1).sec=Math.max(sec,segments.at(-1).sec);else segments.push({type:'p',sec})};
+ const flush=()=>{if(implicit){vowel('a');implicit=false}};
+ const romanCons=[...new Set([...DEVA_C.values(),'ṃ','ḥ'])].sort((a,b)=>b.length-a.length),romanVow=[...VOWEL_ROMAN.keys()].sort((a,b)=>b.length-a.length);
+ const toRoman=(t)=>t.toLowerCase().replace(/r̥/g,'ṛ').replace(/l̥/g,'ḷ').replace(/ṁ/g,'ṃ');
+ let i=0;while(i<text.length){const c=text[i];
+ if(DEVA_C.has(c)){flush();cons(DEVA_C.get(c));implicit=true;i++;continue}
+ if(DEVA_V.has(c)){flush();vowel(DEVA_V.get(c));i++;continue}
+ if(DEVA_M.has(c)){if(implicit)implicit=false;vowel(DEVA_M.get(c));i++;continue}
+ if(c==='्'){implicit=false;i++;continue}
+ if(c==='ं'||c==='ँ'){flush();cons('ṃ');i++;continue}
+ if(c==='ः'){flush();cons('ḥ');i++;continue}
+ if(c==='ॐ'){flush();vowel('o');cons('ṃ');i++;continue}
+ if(c==='ऽ'||c==='॑'||c==='॒'){i++;continue}
+ if(/\s/.test(c)||c==='।'||c==='॥'||/[.,;:!?\-–—]/.test(c)){flush();pause(/[।॥.!?]/.test(c)?.28:.10);i++;continue}
+ const rest=toRoman(text.slice(i)),vc=romanVow.find(v=>rest.startsWith(v)),cc=romanCons.find(k=>rest.startsWith(k));
+ if(vc&&(cc===undefined||vc.length>=cc.length)){flush();vowel(VOWEL_ROMAN.get(vc));i+=vc.length;continue}
+ if(cc){flush();cons(cc);i+=cc.length;continue}
+ if(/[a-zA-Zāīūṛṝḷḹṅñṭḍṇśṣṃḥ]/i.test(c)){unsupported++;i++;continue}
+ unsupported++;i++;
+ }
+ flush();while(segments.at(-1)?.type==='p')segments.pop();return {segments,unsupported,characters:[...text].length}}
+const PLOSIVES=new Set('k kh g gh c ch j jh ṭ ṭh ḍ ḍh t th d dh p ph b bh'.split(' '));
+const NASALS=new Set(['ṅ','ñ','ṇ','n','m','ṃ']);
+const SONORANTS=new Set(['y','r','l','v','ḻ']);
+const SIBILANTS=new Set(['ś','ṣ','s','h','ḥ']);
+const VOICED_STOPS=new Set(['g','gh','j','jh','ḍ','ḍh','d','dh','b','bh']);
+function makeConsonantPCM(name,sr,params,pace){
+ const isNasal=NASALS.has(name),isSon=SONORANTS.has(name),isStop=PLOSIVES.has(name),isVoiced=VOICED_STOPS.has(name),isBreath=name.endsWith('h')||name==='h'||name==='ḥ';
+ const duration=Math.max(.04,(isStop?.091:isNasal?.14:isSon?.09:.115)*(isBreath&&isStop?1.24:1)/pace);
+ const n=Math.max(32,Math.round(duration*sr)),a=new Float32Array(n);
+ if(isNasal||isSon){
+  const f=isNasal?[270,1030,2050]:name==='r'?[520,1380,2060]:name==='y'?[310,2190,2950]:name==='v'?[350,1040,2390]:[400,1460,2580];
+  const made=makePCM(VOWELS[0],{sr,params:{...params,attack:6,release:35,depth:0},formants:f,kind:'one',seconds:duration,normalize:true});
+  for(let j=0;j<n;j++){const t=j/(n-1),fade=Math.min(1,t*18,(1-t)*20);a[j]=(made.data[j]||0)*fade*(isNasal?.32:.38)}return a;
+ }
+ // Differentiated location-of-articulation spectra, voiced closures and aspiration.
+ // Approximation for creative sampling, not a validated phonetics model.
+ const root=name[0],labial=/^[pb]/.test(name),velar=/^[kg]/.test(name),palatal=/^[cj]/.test(name),retro=/^[ṭḍ]/u.test(name),dental=/^[td]/.test(name);
+ const center=Math.min(sr*.40,labial?990:velar?2260:palatal?3050:retro?1640:dental?3450:name==='ṣ'?1900:name==='ś'?2850:3900);
+ const q=isStop?.72:1.30,omega=2*Math.PI*center/sr,alpha=Math.sin(omega)/(2*q),den=1+alpha;
+ const b0=alpha/den,b2=-alpha/den,a1=-2*Math.cos(omega)/den,a2=(1-alpha)/den;
+ let z1=0,z2=0,y1=0,y2=0,seed=0xA327C91;const freq=params.pitch||196;
+ for(let j=0;j<n;j++){
+  seed=(Math.imul(1664525,seed)+1013904223)>>>0;const noise=(seed/4294967296)*2-1;
+  const filtered=b0*noise+b2*z2-a1*y1-a2*y2;z2=z1;z1=noise;y2=y1;y1=filtered;
+  const t=j/(n-1),releaseAt=isStop?.43:0;
+  const onset=isStop?Math.exp(-Math.pow((t-releaseAt)*29,2)):(.35+.5*Math.sin(Math.PI*t));
+  const aspiration=isBreath? (isStop?Math.exp(-Math.max(0,t-releaseAt)*4)*(t>releaseAt?1:0):.55):.09;
+  const closureVoice=isVoiced&&isStop?Math.sin(2*Math.PI*freq*j/sr)*.055*(t<.50?1:0):0;
+  const env=Math.min(1,t*18,(1-t)*22);
+  a[j]=Math.max(-.5,Math.min(.5,(filtered*(.18*onset+.11*aspiration)+closureVoice)*env));
+ }
+ return a
+}
+function renderTextPCM(text,{sr=24000,pace=1,params=state.params,maxSegments=420}={}){
+ const parsed=parseSanskritText(text);if(!parsed.segments.length)throw Error('Enter Sanskrit text first');if(parsed.segments.length>maxSegments)throw Error('Phrase is too long. Use 420 phonemes or fewer per render.');
+ const clips=[];let estDuration=0;for(const seg of parsed.segments){let audio;if(seg.type==='v'){const v=VOWELS.find(x=>x.id===seg.id)||VOWELS[0],sec=(v.length===1?.19:.30)/pace;const pcm=makePCM(v,{sr,params:{...params,attack:8,release:85},kind:'one',seconds:sec,normalize:true});audio=pcm.data}
+ else if(seg.type==='c')audio=makeConsonantPCM(seg.name,sr,params,pace);
+ else audio=new Float32Array(Math.ceil(sr*seg.sec/pace));clips.push(audio);estDuration+=audio.length/sr;
+ if(estDuration>95)throw Error('Phrase exceeds 95 seconds. Reduce the text or increase pace.')}
+ const overlap=Math.round(sr*.004),lens=clips.map(c=>c.length),combinedLen=lens.reduce((acc,len,j)=>acc+len-(j?Math.min(overlap,len,clips[j-1].length):0),0);
+ const result=new Float32Array(combinedLen),timestamps=[];let offset=0;
+ for(let j=0;j<clips.length;j++){const clip=clips[j],ov=j?Math.min(overlap,clip.length,clips[j-1].length):0;offset-=ov;timestamps.push(offset/sr);
+ for(let k=0;k<clip.length;k++){let fade=k<ov?(k/(ov||1)):1;if(j<clips.length-1&&k>=clip.length-overlap)fade=Math.min(fade,(clip.length-k)/overlap);result[offset+k]+=clip[k]*fade*.85}offset+=clip.length;}
+ const edge=Math.min(Math.floor(sr*.008),Math.floor(result.length/2));for(let k=0;k<edge;k++){const w=k/edge;result[k]*=w;result[result.length-1-k]*=w}let peak=0,nonzero=0;for(const x of result){peak=Math.max(peak,Math.abs(x));if(Math.abs(x)>.001)nonzero++}if(peak>.96){const g=.96/peak;for(let i=0;i<result.length;i++)result[i]*=g}
+ return {data:result,sr,kind:'one',midi:state.root,loopStart:0,loopEnd:0,segments:parsed.segments,unsupported:parsed.unsupported,duration:result.length/sr,nonzero}}
+const TEXT_TRACK='speech-track';let speechEpoch=0;
+function stopComposedText(){speechEpoch++;releaseVoice(TEXT_TRACK);$('textPlayStatus').textContent='STOPPED';}
+async function playComposedText(){const text=composer.text.trim();if(!text){notify('Type a Sanskrit word first');return false}stopComposedText();const mine=++speechEpoch;const status=$('textPlayStatus');status.textContent='RENDERING…';try{
+ await context();const rendered=renderTextPCM(text,{sr:Math.min(32000,audioCtx.sampleRate),pace:Number($('textSpeed').value)});if(mine!==speechEpoch)return false;
+ const b=audioCtx.createBuffer(1,rendered.data.length,rendered.sr);b.copyToChannel(rendered.data,0);const source=audioCtx.createBufferSource(),gain=audioCtx.createGain(),expression=audioCtx.createGain();source.buffer=b;source.connect(gain).connect(expression).connect(analyser);gain.gain.value=.88;expression.gain.value=Math.pow(performanceState.level/100,1.6);source.playbackRate.value=Math.pow(2,performanceState.bend/12);
+ const voice={source,gain,expression,vowel:null,midi:state.root,hold:false,sequence:true};live.set(TEXT_TRACK,voice);source.onended=()=>{if(live.get(TEXT_TRACK)===voice){live.delete(TEXT_TRACK);status.textContent='FINISHED';refreshPadStates()}};
+ source.start();status.textContent='PLAYING'+(rendered.unsupported?' • '+rendered.unsupported+' skipped':'');refreshPadStates();return true
+ }catch(e){if(mine===speechEpoch){status.textContent='UNAVAILABLE';notify('Text playback: '+e.message)}return false}}
+function setupTextPlayback(){const status=$('textPlayStatus');$('playText').addEventListener('click',playComposedText);$('stopText').addEventListener('click',stopComposedText);$('textSpeed').addEventListener('input',()=>{$('textSpeedValue').textContent=Number($('textSpeed').value).toFixed(2)+'×'});
+ $('exportSpeech').addEventListener('click',()=>{try{const text=composer.text.trim();if(!text)throw Error('Type a Sanskrit phrase first');status.textContent='RENDERING WAV…';const pcm=renderTextPCM(text,{sr:32000,pace:Number($('textSpeed').value)});const blob=new Blob([wavEncode(pcm)],{type:'audio/wav'});download(blob,'SVARA_LAB_TEXT_'+new Date().toISOString().slice(0,10)+'.wav');status.textContent='WAV EXPORTED';}catch(e){status.textContent='EXPORT FAILED';notify(e.message)}});
+}
+
+window.SvaraTest={auditionLetter,runLetterAudit,previewForFlick,transliterateSanskrit,parseSanskritText,renderTextPCM,acceptTypedText,playComposedText,stopComposedText,composeEvents,composerEvent,commitFlick,C_GROUPS,V_GROUPS,MATRAS,SIGNS,getComposer:()=>({...composer,events:[...composer.events]}),setExpression,getExpression:()=>({...performanceState}),getActiveVoices:()=>[...live].map(([id,v])=>({id,source:v.source,expression:v.expression,gain:v.gain,hold:v.hold,vowel:v.vowel})),directionOf,makePCM,wavEncode,readWav,zipFiles,parseZip,crc32,runQA,estimatePitch,sampleDiagnostics,VOWELS,PRESETS,getState:()=>state,select:id=>{state.selected=id;refresh()},renderPads,exportPack,voiceSnapshot,applyPatch};init();
+</script>
+
+
+
+
+
+<script>
+/* Cockpit layout uses original synthesis/composer functions. No network or dependency. */
+(function(){
+ const $=(id)=>document.getElementById(id);
+ const shell=document.querySelector('.shell'),nav=$('viewTabs');
+ document.body.classList.add('cockpit');
+ const deck=document.createElement('div');deck.id='workspaceDeck';deck.setAttribute('role','region');deck.setAttribute('aria-label','Active Svara Lab workspace');
+ nav.insertAdjacentElement('afterend',deck);
+ const modules=[...document.querySelectorAll('[data-module]')];
+ modules.forEach(el=>{
+   if(el.classList.contains('notes-module')){el.style.display='none';return;}
+   deck.appendChild(el);
+ });
+ const composer=$('composePanel'),sculpt=deck.querySelector('.sculpt-module');
+ const origHint=$('composeHint');
+ // An atlas is a keyboard reference view, not a permanent panel that steals vertical space.
+ const map=$('letterMap');map.hidden=true;$('showKeyMap').setAttribute('aria-expanded','false');
+ const mapClose=document.createElement('button');mapClose.type='button';mapClose.className='mapClose';mapClose.textContent='✕ Close map';map.insertBefore(mapClose,map.firstChild);mapClose.addEventListener('click',()=>{$('showKeyMap').click()});
+ const pop=document.createElement('div');pop.className='cockpit-pop';pop.id='keyboardOptions';pop.setAttribute('role','group');pop.setAttribute('aria-label','Keyboard and sound options');
+ ['inscriptSides','practiceOnly','auditLetters','letterAuditStatus'].forEach(id=>{let el=$(id),target=el.closest('label')||el;pop.appendChild(target);});
+ composer.appendChild(pop);
+ const opts=document.createElement('button');opts.className='cockpit-more';opts.type='button';opts.textContent='⚙ Keyboard';opts.setAttribute('aria-controls','keyboardOptions');opts.setAttribute('aria-expanded','false');
+ composer.querySelector('.flickoptions').insertBefore(opts,$('showKeyMap'));
+ function togglePop(open){pop.toggleAttribute('open',open);opts.setAttribute('aria-expanded',String(open));if(open){const r=opts.getBoundingClientRect(),pr=composer.getBoundingClientRect();pop.style.top=Math.min(Math.max(4,r.bottom-pr.top+3),Math.max(0,pr.height-200))+'px';pop.style.right='8px'}}
+ opts.addEventListener('click',()=>togglePop(!pop.hasAttribute('open')));
+ // Keep rarely-used punctuation without crowding the primary composer.
+ const extras=document.createElement('div');extras.id='extraSymbols';extras.className='cockpit-pop';extras.setAttribute('aria-label','More Sanskrit punctuation');extras.setAttribute('role','group');
+ const typebar=composer.querySelector('.typebar');['doubleDanda','udatta','anudatta','om'].forEach(id=>{const e=typebar.querySelector('[data-special="'+id+'"]');if(e){e.classList.add('extra-symbol');extras.appendChild(e);e.style.display='flex';e.style.height='42px';e.style.minHeight='42px';}});
+ composer.appendChild(extras);
+ const more=document.createElement('button');more.className='cockpit-more';more.type='button';more.textContent='⋯';more.title='More punctuation';more.setAttribute('aria-label','More Sanskrit symbols');typebar.appendChild(more);
+ more.addEventListener('click',()=>{let isOpen=!extras.hasAttribute('open');extras.toggleAttribute('open',isOpen);if(isOpen){extras.style.bottom='47px';extras.style.right='7px';extras.style.flexDirection='row';extras.style.flexWrap='wrap'}});
+ // Shape: one complete, compact control surface per sub-workspace.
+ const switcher=document.createElement('div');switcher.className='shapeSwitcher';switcher.setAttribute('role','group');switcher.setAttribute('aria-label','Voice design panels');
+ for(const [key,label] of [['knobs','◉ All knobs'],['formants','≈ Formants']]){
+  const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.shape=key;
+  b.addEventListener('click',()=>{sculpt.dataset.shape=key;switcher.querySelectorAll('button').forEach(v=>v.classList.toggle('active',v===b))});
+  switcher.appendChild(b);
+ }
+ sculpt.insertBefore(switcher,sculpt.querySelector('#knobs'));
+ switcher.querySelector('button').click();
+ const explain=document.createElement('div');explain.id='overview';explain.innerHTML='<h2>VĀṆĪ — compact studio</h2><p>Every workspace fits the screen. Open one for its essential controls; the map, calibration and reference guide have their own on-screen panels.</p><div class="overviewgrid"></div>';
+ const names=[['compose','⌨ Compose','Sanskrit typing + phrase voice'],['perform','◉ Perform','Vowels, sustain and expression'],['sculpt','◍ Sculpt','Knobs and formants'],['export','⬇ Export','DAW samples and integrity checks'],['help','? Help','Step-by-step instructions']];
+ for(const [key,label,sub] of names){const btn=document.createElement('button');btn.innerHTML=label+'<small>'+sub+'</small>';btn.addEventListener('click',()=>activate(key));explain.querySelector('.overviewgrid').appendChild(btn);}
+ deck.appendChild(explain);
+ nav.querySelector('[data-view=all]').textContent='▦ Home';
+ // Help topics: short per-topic pages, preserve the full original HTML source for reference.
+ const help=$('helpPanel');const original=[...help.querySelectorAll('.helpcard')];
+ const mini=[
+  ['Type Sanskrit','Choose a consonant family; tap for its center letter or flick left/up/right/down. Your two thumbs can select consonants and vowels together. InScript-inspired hands swap left and right.'],
+  ['Editable words','Type or paste Devanāgarī/IAST into the text field. JOIN (्) connects consonants. The keyboard stores your composition locally. The Letter map shows all 34 consonants.'],
+  ['Play phrases','Press Play text to hear your Sanskrit line. Stop text ends playback; Text WAV exports a phrase. Speech synthesis is experimental, not a Sanskrit teacher.'],
+  ['Perform','Hold the voice pad with one finger. With another, drag the XY surface: sideways bends pitch, up/down changes intensity. Lock Sustain continues playback.'],
+  ['Shape & DAW','The Shape tab offers live knobs and vowel F1–F3 formants. Your private voice calibration is available only in your personal offline copy. Export generates loopable WAV samples and a ZIP for your DAW.'],
+  ['Privacy & limits','The HTML runs locally after saving. Custom voice calibration requires a separately loaded local voice patch. Vedic accents and consonant articulation remain experimental.']
+ ];
+ const helpNav=document.createElement('div');helpNav.className='helpNav';
+ const helpFocus=document.createElement('div');helpFocus.className='helpFocus';helpFocus.setAttribute('role','region');helpFocus.setAttribute('aria-live','polite');
+ help.insertBefore(helpNav,help.querySelector('.helpgrid'));help.insertBefore(helpFocus,help.querySelector('.helpgrid'));
+ mini.forEach(([head,desc],i)=>{const b=document.createElement('button');b.type='button';b.textContent=(i+1)+'. '+head;b.addEventListener('click',()=>{helpNav.querySelectorAll('button').forEach(v=>v.classList.toggle('active',v===b));helpFocus.innerHTML='';const h=document.createElement('h3');h.textContent=head;const p=document.createElement('p');p.textContent=desc;helpFocus.append(h,p);const next=document.createElement('button');next.className='btn helpNext';next.textContent=i===5?'↺ Start again':'Next topic →';next.addEventListener('click',()=>helpNav.children[(i+1)%6].click());helpFocus.append(next);});helpNav.append(b)});helpNav.firstElementChild.click();
+ // preserve original manual text accessible via a downloadable plain-text guide from Help
+ const manualBtn=document.createElement('button');manualBtn.type='button';manualBtn.className='cockpit-more';manualBtn.textContent='↓ Full manual';manualBtn.addEventListener('click',()=>{const text=original.map(x=>x.innerText.trim()).join('\n\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download='SVARA_LAB_Full_Help.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),600)});help.querySelector('.panelhead').append(manualBtn);
+ const stage=deck.querySelector('.stage-module'),performance=$('performancePanel');
+ // ensure view sections are assembled in the correct order after moving DOM nodes
+ deck.insertBefore(stage,performance);
+ let current='compose';
+ function activate(view){current=view;deck.dataset.active=view;for(const tab of nav.querySelectorAll('[data-view]')){const active=tab.dataset.view===view;tab.classList.toggle('active',active);tab.setAttribute('aria-pressed',String(active))}for(const item of deck.querySelectorAll('[data-module]'))item.classList.toggle('modulehidden',view!==item.dataset.module);map.hidden=true;$('showKeyMap').setAttribute('aria-expanded','false');togglePop(false);extras.removeAttribute('open');document.activeElement?.blur?.();}
+ // Capture click before original switching/scrollIntoView handlers to prevent document scrolling.
+ for(const tab of nav.querySelectorAll('[data-view]'))tab.addEventListener('click',e=>{e.stopImmediatePropagation();e.preventDefault();activate(tab.dataset.view)},true);
+ const mql=matchMedia('(max-width:720px)');mql.addEventListener?.('change',()=>activate(current));
+ activate('compose');
+ // Keep browser navigation sane when virtual keyboard changes usable visual viewport.
+ if(window.visualViewport){let lastH=0;window.visualViewport.addEventListener('resize',()=>{const h=window.visualViewport.height;if(Math.abs(h-lastH)>10){document.documentElement.style.setProperty('--keyboardViewport',h+'px');lastH=h}})}
+ // Full export controls and test results are separate viewport-fitting pages.
+ const exp=deck.querySelector('.export-module');const sw=document.createElement('div');sw.className='exportSwitcher';
+ for(const [key,label] of [['samples','⬇ Samples & options'],['qa','✓ QC tests']]){
+  const b=document.createElement('button');b.type='button';b.dataset.export=key;b.textContent=label;
+  b.addEventListener('click',()=>{exp.dataset.export=key;sw.querySelectorAll('button').forEach(k=>k.classList.toggle('active',k===b))});sw.appendChild(b);
+ }
+ exp.insertBefore(sw,exp.querySelector('.note'));sw.firstChild.click();
+ const extraExport=document.createElement('div');extraExport.id='exportExtra';extraExport.className='cockpit-pop';extraExport.setAttribute('role','group');extraExport.setAttribute('aria-label','Extended export options');
+ for(const id of ['includeRare','normalize']){const el=$(id);extraExport.appendChild(el.closest('label'));}
+ exp.appendChild(extraExport);
+ const exButton=document.createElement('button');exButton.type='button';exButton.className='exportExtraButton';exButton.textContent='⚙';exButton.title='Rare vowels and normalization';exButton.setAttribute('aria-label','Export additional options');sw.appendChild(exButton);
+ exButton.addEventListener('click',()=>extraExport.toggleAttribute('open'));
+
+ const paging=document.createElement('div');paging.className='qaPaging';const prev=document.createElement('button'),next=document.createElement('button'),count=document.createElement('span');
+ prev.type=next.type='button';prev.textContent='← Earlier';next.textContent='Later →';count.style.fontSize='10px';paging.append(prev,count,next);exp.querySelector('.qa').appendChild(paging);
+ let qaPage=0;function paginate(){const rows=[...$('qaResults').querySelectorAll('.checkrow')];const per=window.innerHeight<450?4:window.innerHeight<720?7:10;const total=Math.max(1,Math.ceil(rows.length/per));qaPage=Math.min(qaPage,total-1);rows.forEach((r,i)=>{r.hidden=i<qaPage*per||i>=(qaPage+1)*per});count.textContent=rows.length?`${qaPage+1}/${total}`:'No tests';prev.disabled=qaPage<=0;next.disabled=qaPage>=total-1;}
+ prev.addEventListener('click',()=>{qaPage--;paginate()});next.addEventListener('click',()=>{qaPage++;paginate()});
+ new MutationObserver(()=>{qaPage=0;paginate()}).observe($('qaResults'),{childList:true,subtree:false});paginate();
+ window.addEventListener('resize',paginate);
+ window.SvaraCockpit={activate,version:'1.6',active:()=>current,checkFit:()=>({scrollX:document.documentElement.scrollWidth-innerWidth,scrollY:document.documentElement.scrollHeight-innerHeight,deck:deck.getBoundingClientRect().toJSON()})};
+})();
+</script>
+
+</body></html>
