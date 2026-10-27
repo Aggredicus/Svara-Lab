@@ -38,3 +38,9 @@ Browser regression checks passed **48/48** across 390px mobile and 1440px deskto
 ## License
 
 GNU General Public License v3.0. See [LICENSE](./LICENSE) for terms.
+
+## Consonant recovery (v1.4)
+
+The interactive consonant keyboard now auditions consonants through the local phrase PCM renderer (a short consonant + inherent-a sample), and swipes reliably select a directional alternative. The touch handler records movement, handles pointer release outside its key, and uses last-known coordinates when release locations are unavailable. A direction with no assigned consonant produces **no letter** rather than accidentally selecting the key center. A **Letter map** reveals all available gestures, and the **Test every consonant** button checks all 34 traditional/extended Sanskrit consonants for proper glyphs, transliteration, and nonzero synthetic audio. Original left-consonants/right-vowels is preserved; switch on *InScript-inspired hands* for the standard-like vowel-left/consonant-right arrangement. This is NOT identical to the 101-key desktop InScript layout.
+
+**QA:** 12 synthetic persona/viewport sessions × 45 automated assertions each = 540/540 checks. Browser-generated real multi-touch sequence produced `का`, rightward KA swipe produced `घ`, and in-browser DSP/WAV/ZIP integrity remained 15/15. Synthetic audio accuracy and real-device touch ergonomics are not validated by people. See [v1.4 QA review](./qa/2026-10-26/CONSONANT_AUDIT_v1.4.md) and [C-DAC InScript reference](https://cdac.gov.in/index.aspx?id=print_page&print=mc_s_inscript).
