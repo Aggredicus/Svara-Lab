@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080e19"><title>VĀṆĪ // Sanskrit Svara Lab — Personal Voice Study</title>
+<meta name="theme-color" content="#080e19"><title>VĀṆĪ // Svara Lab 1.7 — Adaptive Keyboard</title>
 <style>
 :root{color-scheme:dark;--bg:#070d18;--panel:#111b2c;--panel2:#16243a;--line:#273c54;--muted:#9ab0c6;--text:#eaf6ff;--mint:#6cfbd4;--rose:#ffadbc;--gold:#ffcd7e;--blue:#6cbcff;--warn:#f7bd71}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 40% at 55% -10%,#153249 0,transparent 75%),var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,select,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,select:focus-visible,input:focus-visible,.knob:focus-visible{outline:2px solid var(--mint);outline-offset:3px}a{color:var(--mint)}.shell{max-width:1520px;padding:22px 26px 75px;margin:auto}.top{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:4px 0 20px;border-bottom:1px solid #26394c}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.27em;font-weight:800;color:var(--mint)}h1,h2,h3,p{margin:0}h1{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.035em;font-weight:760}h1 span{color:var(--mint)}.sub{color:var(--muted);font-size:13px;max-width:640px;margin-top:6px}.topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.dot{width:7px;height:7px;display:inline-block;background:var(--mint);border-radius:50%;box-shadow:0 0 12px var(--mint)}.capsule{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:11px;letter-spacing:.08em}.layout{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(340px,.95fr);gap:16px;margin-top:20px}.panel{background:linear-gradient(155deg,rgba(22,36,57,.93),rgba(12,22,37,.97));border:1px solid var(--line);border-radius:20px;padding:19px;min-width:0;box-shadow:0 16px 45px #00000020}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.sectionlabel{text-transform:uppercase;letter-spacing:.20em;font-size:11px;font-weight:800;color:#c4d7e7}.small{color:var(--muted);font-size:11px}.state{font-size:10px;color:var(--mint);font-weight:700;letter-spacing:.14em}.hero{background:linear-gradient(110deg,#122b3c,#1a2237 75%);border:1px solid #375368;border-radius:17px;padding:21px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:17px;overflow:hidden;position:relative}.hero:after{content:'ॐ';position:absolute;right:-5px;top:-57px;font-size:200px;color:#d9ffe905;pointer-events:none}.bigglyph{font-size:82px;line-height:1.15;color:var(--mint);text-shadow:0 0 50px #6cfbd422;min-width:90px;text-align:center}.heroname{font-size:30px;font-weight:760}.heroipa{color:var(--gold);margin-left:9px;font-size:18px}.heroabout{color:var(--muted);margin-top:4px;max-width:550px}.chipline{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}.chip{font-size:10px;letter-spacing:.09em;border-radius:6px;border:1px solid #35526a;padding:3px 7px;color:#b8d7e6}.chip.warn{border-color:#6b5436;color:var(--gold)}.padgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.pad{touch-action:none;min-height:108px;border-radius:14px;border:1px solid #344759;background:linear-gradient(160deg,#1a2b42,#142136);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;user-select:none;transition:border-color .13s,background .13s,transform .13s;position:relative}.pad .dev{font-size:36px;font-weight:450;line-height:1.25}.pad .iast{font-size:13px;font-weight:700}.pad .ipa{font-size:10px;color:#819ab1}.pad .mark{position:absolute;top:7px;right:7px;color:#7898a7;font-size:10px}.pad.selected{border-color:var(--mint);box-shadow:inset 0 0 0 1px #6cfbd433,0 0 20px #6cfbd411;background:linear-gradient(155deg,#1c3946,#182e42)}.pad.pressed{transform:scale(.975);background:#285c61;border-color:#a0ffe8}.pad.rare{border-style:dashed}.pad.rare .dev{color:#e4d6fb}.muted{color:var(--muted)}.padfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;color:var(--muted);font-size:11px;flex-wrap:wrap}.controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.btn{border:1px solid #416075;background:#1d3548;padding:9px 13px;border-radius:10px;color:#e8f5ff;font-size:12px;font-weight:650;transition:background .15s;white-space:nowrap}.btn:hover{background:#2c4c5d}.btn.primary{color:#061519;border-color:#72f5d6;background:var(--mint)}.btn.primary:hover{background:#b5ffeb}.btn.danger{border-color:#5d4452;color:var(--rose)}.btn:disabled{opacity:.45;cursor:not-allowed}select,.select,input[type=number]{background:#111d2f;border:1px solid #35516a;border-radius:9px;color:#eaf6ff;padding:8px 9px;max-width:100%}option{background:#15253a}.tone{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.tone label{font-size:11px;color:var(--muted)}.tone label select{display:block;margin-top:5px;min-width:105px}.switch{display:inline-flex;gap:6px;align-items:center;color:var(--muted);font-size:11px}.switch input{accent-color:var(--mint);width:17px;height:17px}.vizbox{border:1px solid #28465a;background:radial-gradient(ellipse at 50% 20%,#12344470,transparent),#071321;border-radius:14px;margin:17px 0 0;position:relative;overflow:hidden}.vizbox canvas{width:100%;height:220px;display:block}.vizinfo{position:absolute;left:12px;top:10px;pointer-events:none;color:#82a4b9;font-size:10px;letter-spacing:.1em}.vizbottom{position:absolute;bottom:10px;left:12px;right:12px;display:flex;justify-content:space-between;color:#7f9dae;font-size:10px;pointer-events:none}.knobgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.knobbox{border:1px solid #2b455a;border-radius:14px;padding:14px 8px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:#0e1a2b}.knob{position:relative;width:66px;height:66px;border-radius:50%;border:1px solid #567587;background:radial-gradient(circle at 37% 33%,#30485a 0%,#132331 57%,#0a1521 73%);touch-action:none;cursor:ns-resize;box-shadow:0 5px 12px #0007,inset 0 0 0 4px #152a37}.knob::after{content:'';position:absolute;left:calc(50% - 2px);top:9px;width:4px;height:18px;border-radius:4px;background:var(--mint);transform-origin:2px 24px;transform:rotate(var(--angle));box-shadow:0 0 8px #6cfbd470}.knob:before{content:'';position:absolute;inset:-6px;border-radius:50%;border:3px solid transparent;border-top-color:var(--mint);transform:rotate(calc(var(--angle) + 180deg));opacity:.8}.knobval{font-variant-numeric:tabular-nums;font-size:17px;font-weight:700;color:#e3fff8}.knoblabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:750}.knobhint{font-size:10px;color:#819fb3;line-height:1.2;min-height:24px}.micro{color:#8ca7ba;font-size:11px;margin-top:10px}.formantbox{margin-top:15px;border-top:1px solid var(--line);padding-top:15px}.formantrow{display:grid;grid-template-columns:80px minmax(0,1fr) 55px;align-items:center;gap:10px;margin-top:11px}.formantrow label{font-size:12px;color:#b7d2e1}.formantrow input{width:100%;accent-color:var(--mint)}.formantrow output{text-align:right;color:var(--gold);font-variant-numeric:tabular-nums;font-size:12px}.resethint{margin-top:13px;color:#859dad;font-size:11px}.exportconfig{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-bottom:14px}.setting{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:5px}.setting select,.setting input{width:100%}.full{grid-column:1/-1}.meterwrap{height:8px;border-radius:9px;background:#071727;border:1px solid #345061;overflow:hidden;margin-top:10px}.meter{height:100%;background:linear-gradient(90deg,#66d6d2,#b8ffcb);width:0%;transition:width .1s}.log{font:11px/1.5 ui-monospace,monospace;color:#90abbf;min-height:43px;white-space:pre-wrap;word-break:break-word;margin-top:9px}.qa{margin-top:14px;padding:11px;background:#0c1928;border-radius:10px;border:1px solid #294459}.qahead{display:flex;gap:8px;align-items:center;justify-content:space-between}.results{font-size:11px;color:#bdd0e0;margin-top:9px;max-height:245px;overflow:auto}.checkrow{display:flex;gap:8px;justify-content:space-between;border-top:1px solid #1d3446;padding:4px 0}.pass{color:var(--mint)}.fail{color:var(--rose)}.footpanel{grid-column:1/-1}.bottomgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.note{color:#a1bacb;font-size:12px;line-height:1.65}.note strong{color:#e4f5ff}.noteslist{margin:10px 0;padding-left:19px}.noteslist li{margin:5px 0}.kbd{font:10px ui-monospace,monospace;background:#21394b;border:1px solid #4c6978;border-radius:4px;padding:2px 5px}.inlineborder{border:1px solid #334f63;border-radius:11px;padding:12px}.footer{font-size:10px;color:#829fb3;text-align:center;padding-top:30px;letter-spacing:.10em}.statusline{color:var(--muted);font-size:11px}#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#214b4f;border:1px solid var(--mint);color:white;padding:12px 18px;border-radius:11px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20;max-width:90vw;text-align:center}#toast.visible{opacity:1}@media(min-width:1180px){.leftcol{display:flex;flex-direction:column;gap:16px}.leftcol .panel:nth-child(1){flex:1}}@media(max-width:1100px){.padgrid{grid-template-columns:repeat(7,minmax(0,1fr))}.pad{min-height:85px}.pad .dev{font-size:28px}}@media(max-width:850px){.shell{padding:15px 12px 70px}.layout{grid-template-columns:1fr}.pad{min-height:95px}.pad .dev{font-size:34px}.bottomgrid{grid-template-columns:1fr}.top{gap:8px}.topright{width:100%}}@media(max-width:510px){.panel{padding:14px;border-radius:15px}.padgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.pad{min-height:87px}.pad .dev{font-size:31px}.hero{padding:11px;gap:10px}.bigglyph{font-size:60px;min-width:66px}.heroname{font-size:23px}.heroipa{font-size:14px}.pad .ipa{font-size:9px}.knobgrid{gap:6px}.knobbox{padding:10px 2px}.knob{width:56px;height:56px}.knob::after{top:5px;transform-origin:2px 22px}.knobval{font-size:14px}.knoblabel{font-size:9px}.vizbox canvas{height:180px}.controls .btn{padding:7px 10px}.exportconfig{gap:8px}.topright .capsule{font-size:9px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
@@ -269,6 +269,69 @@ body.cockpit #letterMap>.atlaslead:first-of-type{padding-right:87px}
 @media(min-width:600px){body.cockpit .export-module .exportconfig{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-height:470px){body.cockpit .export-module .exportconfig{grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}body.cockpit .export-module .exportconfig .setting{font-size:8px}body.cockpit .export-module .exportconfig select{height:25px;min-height:25px;padding:2px;font-size:9px}body.cockpit .export-module .exportconfig .switch.full{font-size:9px}body.cockpit .export-module .controls .btn{font-size:9px;padding:4px}body.cockpit #composePanel .textplayer{display:block;padding:1px 3px}body.cockpit #composePanel .textplayerbar .btn{min-height:21px;padding:2px 3px}body.cockpit #composePanel .textspeed{min-width:35px}body.cockpit .export-module .qa .results{font-size:9px}body.cockpit .export-module #exportLog{display:none}body.cockpit .sculpt-module #knobs{grid-template-columns:repeat(9,minmax(0,1fr));grid-template-rows:1fr}body.cockpit .sculpt-module .knob{width:clamp(29px,6.5vw,46px);height:clamp(29px,6.5vw,46px)}body.cockpit .sculpt-module .knobbox{padding:0 1px}body.cockpit .sculpt-module .knoblabel{font-size:8px}body.cockpit .sculpt-module .knobval{font-size:10px}}
 
+</style>
+
+<style id="svara-osk-style">
+/* SVARA v1.7: user-controlled native keyboard; keep the custom board in-place. */
+body.cockpit #composePanel .scriptresult .littleheading{display:flex;gap:5px;align-items:center;justify-content:space-between;flex-wrap:nowrap;min-width:0}
+body.cockpit #composePanel .scriptresult #charCount{margin-right:auto;white-space:nowrap}
+body.cockpit .osk-toggle{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:2px 5px;border:1px solid #3e7078;border-radius:8px;background:#172f40;color:#d7f5eb;white-space:nowrap;font-size:10px;font-weight:700;cursor:pointer;touch-action:manipulation;flex-shrink:0;user-select:none}
+body.cockpit .osk-toggle:focus-within{outline:2px solid #6cfbd4;outline-offset:1px}
+body.cockpit .osk-toggle input{appearance:none;-webkit-appearance:none;width:26px;height:15px;border:1px solid #6a8a94;border-radius:10px;margin:0;background:#3b4a5b;position:relative;flex-shrink:0;cursor:pointer}
+body.cockpit .osk-toggle input:before{content:'';width:9px;height:9px;position:absolute;left:2px;top:2px;background:#fff;border-radius:50%;transition:transform .12s}
+body.cockpit .osk-toggle input:checked{background:#266a63;border-color:#6cfbd4}
+body.cockpit .osk-toggle input:checked:before{transform:translateX(11px)}
+body.cockpit .osk-word{font-size:10px;letter-spacing:0}
+body.cockpit .osk-off #compDisplay{cursor:default;caret-color:transparent;user-select:text;-webkit-user-select:text}
+body.cockpit .osk-on #compDisplay{cursor:text;caret-color:var(--mint)}
+body.cockpit #compDisplay:focus-visible{outline:2px solid #6cfbd4;outline-offset:1px}
+@media(max-width:550px){body.cockpit #composePanel .scriptresult #charCount{display:none}body.cockpit .osk-toggle{padding:2px 4px;gap:3px}body.cockpit .osk-word{font-size:9px}}
+/* Visible native OSK means less height. Do not hide the custom vowel/consonant keys. */
+body.cockpit.osk-visible .shell{height:var(--osk-height,100dvh);max-height:var(--osk-height,100dvh);grid-template-rows:auto minmax(0,1fr);padding-top:2px;padding-bottom:2px}
+body.cockpit.osk-visible .top{display:none!important}
+body.cockpit.osk-visible #viewTabs{grid-column:1;min-height:28px}
+body.cockpit.osk-visible .modebtn{height:28px;min-height:28px;font-size:10px}
+body.cockpit.osk-visible #workspaceDeck{margin-bottom:0!important;min-height:0}
+body.cockpit.osk-visible .stickyrail{display:none!important}
+body.cockpit.osk-visible #composePanel .panelhead,
+body.cockpit.osk-visible #composePanel .comptool,
+body.cockpit.osk-visible #composePanel .textplayer,
+body.cockpit.osk-visible #composePanel .flickoptions,
+body.cockpit.osk-visible #composePanel .composerbottom{display:none!important}
+body.cockpit.osk-visible #composePanel{gap:3px!important}
+body.cockpit.osk-visible #composePanel .composerrow{flex:0 0 auto}
+body.cockpit.osk-visible #composePanel .scriptresult{padding:2px 5px}
+body.cockpit.osk-visible #composePanel .scriptdev{min-height:26px;max-height:37px;font-size:19px;line-height:1.1}
+body.cockpit.osk-visible #composePanel .scriptiast{min-height:10px;font-size:9px}
+body.cockpit.osk-visible #composePanel .typebar{flex:0 0 auto;gap:3px}
+body.cockpit.osk-visible #composePanel .typekey{height:27px;min-height:27px;font-size:15px}
+body.cockpit.osk-visible #composePanel .typekey small{font-size:7px}
+body.cockpit.osk-visible #composePanel .thumbhalf{padding:2px}
+body.cockpit.osk-visible #composePanel .thumbtitle{font-size:8px;margin-bottom:1px}
+body.cockpit.osk-visible #composePanel .thumbtitle span:last-child{display:none}
+body.cockpit.osk-visible #composePanel .flicklayout{gap:3px}
+body.cockpit.osk-visible #composePanel .flickgrid{gap:2px}
+body.cockpit.osk-visible #composePanel .flickmain{font-size:clamp(15px,3.8vw,23px)}
+body.cockpit.osk-visible #composePanel .flicklatin{font-size:8px}
+body.cockpit.osk-visible #composePanel .flickfamily{display:none}
+/* Landscape phones cannot show full text player, settings and 2-thumb pads together.
+   Preserve the instrument first; the other controls return on rotation. */
+@media(max-height:400px){
+ body.cockpit .top{display:none!important}
+ body.cockpit .shell{grid-template-rows:auto minmax(0,1fr)!important}
+ body.cockpit .stickyrail{display:none!important}
+ body.cockpit #workspaceDeck{margin-bottom:0!important}
+ body.cockpit #composePanel .panelhead,body.cockpit #composePanel .comptool,
+ body.cockpit #composePanel .textplayer,body.cockpit #composePanel .flickoptions,
+ body.cockpit #composePanel .composerbottom{display:none!important}
+ body.cockpit #composePanel .scriptresult{padding:2px 5px}
+ body.cockpit #composePanel .scriptdev{max-height:32px;min-height:24px}
+ body.cockpit #composePanel .flicklayout{min-height:80px}
+ body.cockpit #composePanel .thumbtitle{display:none!important}
+ body.cockpit #composePanel .flickfamily{display:none}
+}
+/* Last resort for unusually short usable viewports: preserve functional buttons over decorative labels. */
+@media(max-height:430px){body.cockpit.osk-visible #viewTabs .modebtn{font-size:9px}body.cockpit.osk-visible #composePanel .scriptiast{display:none}body.cockpit.osk-visible #composePanel .thumbtitle{display:none}body.cockpit.osk-visible #composePanel .typebar{display:none}}
 </style>
 </head>
 <body>
@@ -806,4 +869,73 @@ window.SvaraTest={auditionLetter,runLetterAudit,previewForFlick,transliterateSan
 })();
 </script>
 
+
+<script id="svara-osk-controller">
+(()=>{
+'use strict';
+const field=document.getElementById('compDisplay');
+const heading=document.querySelector('#composePanel .scriptresult .littleheading');
+if(!field||!heading)return;
+// Main text editing is intentionally off on a touch-first device, so its own
+// two-thumb pad never gets covered just by tapping the composition field.
+const touchDevice=matchMedia('(pointer:coarse)').matches||('ontouchstart' in window);
+const storageKey='svara_allow_device_keyboard_v17';
+let stored=null;
+try{stored=localStorage.getItem(storageKey)}catch(_){}
+let allow=stored==='1'||(stored===null&&!touchDevice);
+const toggle=document.createElement('div');toggle.className='osk-toggle';toggle.title='Turn ON to edit or paste with the phone keyboard; OFF keeps the two-thumb Sanskrit pad visible.';
+const input=document.createElement('input');input.type='checkbox';input.id='allowDeviceKeys';input.setAttribute('aria-label','Allow the device on-screen keyboard while editing Sanskrit text');
+const text=document.createElement('span');text.className='osk-word';toggle.append(input,text);heading.appendChild(toggle);
+let normalHeight=window.visualViewport?window.visualViewport.height:innerHeight;
+let keyboardVisible=false;
+function visualHeight(){return window.visualViewport?window.visualViewport.height:innerHeight}
+function isEditing(){return document.activeElement===field}
+function updateViewport(){
+  const vh=visualHeight();
+  // When not editing, changes reflect rotation, browser UI or window resizing,
+  // and should not be misclassified as an Android soft keyboard.
+  if(!isEditing()||!allow){normalHeight=vh;keyboardVisible=false}
+  else {keyboardVisible=normalHeight-vh>115 || (innerHeight-vh>115)}
+  document.documentElement.style.setProperty('--osk-height',Math.max(160,vh)+'px');
+  document.body.classList.toggle('osk-visible',Boolean(keyboardVisible&&allow&&touchDevice));
+}
+function applyDeviceKeyboard(enabled,{persist=true}={}){
+  allow=Boolean(enabled);
+  input.checked=allow;
+  text.textContent=allow?'Phone keys ON':'Phone keys OFF';
+  document.body.classList.toggle('osk-off',!allow);
+  document.body.classList.toggle('osk-on',allow);
+  field.setAttribute('contenteditable',allow?'true':'false');
+  field.setAttribute('inputmode',allow?'text':'none');
+  field.setAttribute('virtualkeyboardpolicy',allow?'auto':'manual');
+  field.setAttribute('aria-readonly',String(!allow));
+  field.title=allow?'Tap to edit, paste, and use the device keyboard':'Use the Sanskrit thumb pads; enable Phone keys to edit or paste.';
+  if(!allow){
+    if(isEditing())field.blur();
+    try{navigator.virtualKeyboard?.hide?.()}catch(_){}
+    keyboardVisible=false;
+  }
+  if(persist)try{localStorage.setItem(storageKey,allow?'1':'0')}catch(_){}
+  updateViewport();
+}
+input.addEventListener('change',()=>applyDeviceKeyboard(input.checked));
+// The wrapper is not a <label>: a responsive reflow during the checkbox click
+// must never synthesize a second label-activation and silently turn it back on.
+toggle.addEventListener('click',event=>{if(event.target!==input)input.click()});
+field.addEventListener('focus',()=>{normalHeight=Math.max(normalHeight,visualHeight());updateViewport()});
+field.addEventListener('blur',()=>{
+  // Let a tap on the keyboard switch finish before collapsing the OSK layout.
+  // Otherwise the control jumps away between pointerdown and pointerup.
+  setTimeout(()=>{if(!isEditing()){keyboardVisible=false;updateViewport()}},350);
+});
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',updateViewport,{passive:true});
+  window.visualViewport.addEventListener('scroll',updateViewport,{passive:true});
+}
+window.addEventListener('resize',updateViewport,{passive:true});
+window.addEventListener('orientationchange',()=>{normalHeight=visualHeight();updateViewport()},{passive:true});
+applyDeviceKeyboard(allow,{persist:false});
+window.SvaraDeviceKeyboard={get enabled(){return allow},setEnabled:applyDeviceKeyboard,refresh:updateViewport,get visible(){return keyboardVisible},get visualHeight(){return visualHeight()}};
+})();
+</script>
 </body></html>

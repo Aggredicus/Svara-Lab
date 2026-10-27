@@ -60,3 +60,9 @@ The online-ready `index.html` now provides a **no-page-scroll active studio**: T
 **Validation:** 122/122 automated functional tests passed in five viewport profiles, plus 15/15 built-in audio integrity tests. Nine viewport sizes checked for page overflow. See [responsive QA](./qa/2026-10-26/RESPONSIVE_COCKPIT_v1.6.md). Chromium only; physical device, Safari/WebKit and Firefox checks remain outstanding.
 
 **Privacy:** The public repository contains only the generic synthesizer. Any personalized voice calibration remains in a separate **private local HTML** provided directly to its owner, not in `index.html` or GitHub history.
+
+## Mobile keyboard control (v1.7)
+
+In **Type**, the **Phone keys ON/OFF** switch lets touch devices keep the custom Sanskrit flick keyboard visible. OFF (touchscreen default) temporarily prevents editing the text field so the OS keyboard does not appear; ON restores typing and paste. On desktop, ON is the default. When the system keyboard reduces the visible viewport, the layout compacts without hiding the two Sanskrit thumb pads where space permits. The toggle has been regression-tested even while the composer retains focus and the simulated OSK is open.
+
+See [Phone keyboard guide](./docs/KEYBOARD_GUIDE_v1.7.md), [v1.7 QA report](./qa/2026-10-27/QA_REPORT.md), and [reproducible Playwright keyboard test](./qa/2026-10-27/test_keyboard_public.py). Browser simulation is not a substitute for testing a real phone's installed keyboard. Speaker-reference data and personalized voice parameters remain outside the public repository.
