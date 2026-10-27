@@ -883,7 +883,7 @@ const storageKey='svara_allow_device_keyboard_v17';
 let stored=null;
 try{stored=localStorage.getItem(storageKey)}catch(_){}
 let allow=stored==='1'||(stored===null&&!touchDevice);
-const toggle=document.createElement('label');toggle.className='osk-toggle';toggle.title='Turn ON to edit or paste with the phone keyboard; OFF keeps the two-thumb Sanskrit pad visible.';
+const toggle=document.createElement('div');toggle.className='osk-toggle';toggle.title='Turn ON to edit or paste with the phone keyboard; OFF keeps the two-thumb Sanskrit pad visible.';
 const input=document.createElement('input');input.type='checkbox';input.id='allowDeviceKeys';input.setAttribute('aria-label','Allow the device on-screen keyboard while editing Sanskrit text');
 const text=document.createElement('span');text.className='osk-word';toggle.append(input,text);heading.appendChild(toggle);
 let normalHeight=window.visualViewport?window.visualViewport.height:innerHeight;
@@ -919,8 +919,15 @@ function applyDeviceKeyboard(enabled,{persist=true}={}){
   updateViewport();
 }
 input.addEventListener('change',()=>applyDeviceKeyboard(input.checked));
+// The wrapper is not a <label>: a responsive reflow during the checkbox click
+// must never synthesize a second label-activation and silently turn it back on.
+toggle.addEventListener('click',event=>{if(event.target!==input)input.click()});
 field.addEventListener('focus',()=>{normalHeight=Math.max(normalHeight,visualHeight());updateViewport()});
-field.addEventListener('blur',()=>{keyboardVisible=false;updateViewport()});
+field.addEventListener('blur',()=>{
+  // Let a tap on the keyboard switch finish before collapsing the OSK layout.
+  // Otherwise the control jumps away between pointerdown and pointerup.
+  setTimeout(()=>{if(!isEditing()){keyboardVisible=false;updateViewport()}},350);
+});
 if(window.visualViewport){
   window.visualViewport.addEventListener('resize',updateViewport,{passive:true});
   window.visualViewport.addEventListener('scroll',updateViewport,{passive:true});
