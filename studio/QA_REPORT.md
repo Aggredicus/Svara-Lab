@@ -1,38 +1,33 @@
-# Svara Studio v1.2 — release QA report
+# Svara Play v1.3 — QA and release decision
 
-**Target:** `feature/seven-sounds-studio-v1.2` / `studio/index.html`.
+**Scope:** Major interface reorganization without removing the v1.2 musical engines. The user can change keys, rāgas and rhythms without switching views, on desktop and mobile. New v1.3 changes are isolated in a new branch.
 
-## Scope
+## Verified in current development environment
 
-Retains Svara Studio v1.1 (rāgas, melakarta, piano, tāla, symbolism, playback fixes) while introducing a seven-event composer, Sanskrit flick typing, offline vowel timbre, A/B tonic compare, synchronous rhythm accompaniment, save/load, MIDI and JSON.
+- **192/192** automated browser checks passed using Chromium and Playwright at **1440×900**, **390×844**, and **360×750**; additionally ran exploratory 768×1024 layout checks.
+- New adapter's JavaScript passed `node --check`; no uncaught browser JavaScript exceptions in regression scenarios.
+- No unintended horizontal page overflow on tested widths, including when all 14 advanced expandable sections are open. Piano and preset/key rails scroll *within their own containers*.
+- Twelve Sa controls update tonic, pianist key highlights, composer pitches, and persistent mobile dock. Direct select, quick scale chips, next/previous and family selection update musical state and all editor selectors, including melakarta #65.
+- All 72 parent-scale options, the catalog of rāgas/thāṭs, and 54 tāla options remain accessible; 14 expandable tools expose the existing education, Sanskrit keyboard, rhythm, and settings components.
+- The shared speed slider changes phrase, scale and rhythm tempo inputs. Preview-on-select can be disabled or enabled without leaving the workspace.
+- Playing the phrase with tāla starts the rhythm; **Stop** stops the current melody and percussion; loop and stop work; rhythm can be independently started/stopped.
+- Local save works. Downloaded MIDI was verified to contain `MThd` and `MTrk`; exported JSON parsed correctly with schema `svara-seven-sounds`.
+- Screenshots were visually reviewed in the phone and desktop viewports. Resolved initial mobile overflow and piano-header clipping when horizontally scrolling the keybed.
 
-## Checks completed
+## Security and regressions
 
-- **90 / 90** automated Chromium/Playwright assertions passed at **1440×900**, **390×844**, and **360×750** viewport sizes in the development runner.
-- JavaScript extracted from the final HTML passed `node --check`.
-- No uncaught browser JavaScript errors observed under tested interactions, no horizontal overflow at tested sizes.
-- Each viewport exercised: all 72 melakarta data entries still present; seven composer slots; edits and pitch display; global Sa change; Bhūpālī allowed-note path; omitted-degree rests; tempo control; start, stop and loop; composer/tāla paired start and cross-stop cancelling percussion; MIDI and JSON downloads; saved-phrase reload; Devanāgarī mātrā attachment and conjunct grapheme handling; sargam literal token mode; rejection of unknown tokens; and invalid virāma placement prevention.
-- Sample MIDI export inspected structurally as Standard MIDI header (`MThd`) plus track (`MTrk`). Tempo, notes, rests and single-track format are generated without a third-party MIDI library.
-- Browser tests loaded the app with `page.set_content(...)` because runner policy blocked navigation to file URLs and localhost. **Direct `file://` launch was not independently browser-tested in this runner.**
+- Content security policy remains restrictive: no external network connections, libraries, scripts, or images.
+- The new layout moves the original existing nodes and preserves single unique IDs and event handlers rather than rendering a second independent state machine.
+- Existing saved composition schema is retained. Import, export and downloadable files remain user-initiated actions.
+- No changes are made to the root app at `index.html` or to the original v1.2 branch or default branch.
+- Reproducible test script included at `studio/tests/test_studio.py`.
 
-## QA limitations
+## Not yet verified
 
-1. Audio synthesis was exercised through Chromium Web Audio calls, **not judged by native Sanskrit speakers or Indian classical musicians**. Musical timbres, microtonal intonation and ornamentation need listening review.
-2. Testing used emulated mobile viewport sizes, not physical Android or iOS devices or real two-thumb input. Hardware touch and audio latency remain device-specific.
-3. `localStorage` availability varies by browser/URL origin. Always export JSON for archival backup.
-4. Device speech (`speechSynthesis`) cannot be guaranteed on offline phones and does not provide accurate pitched classical Sanskrit vocals.
-5. On a long-running loop, the MIDI export writes the **single seven-event phrase** rather than looped repeats. This is intentional for interoperability.
-6. Current rāga paths are pitch-safe educational sketches, **not authenticated compositions**. The 24 curated rāgas and the 72 melakarta parent scales are not comprehensive recordings of living traditions.
-7. Repository GitHub Pages hosting, physical phone testing, third-party security testing and formal public performance review are **not claimed**.
+1. **Physical Android / iOS** touch gestures, device sound latency, Web Audio unlock behavior, and OS text keyboard interaction.
+2. **Perceptual fidelity** of Sanskrit pronunciation, synthetic vowel sound and Indian musical ornaments; professional music/speaker review recommended.
+3. **Direct `file://` launch in automated browser:** testing policy blocks navigation with `net::ERR_BLOCKED_BY_ADMINISTRATOR`. The application was loaded in memory; direct file opening should be checked on a real device.
+4. CI workflow and GitHub Pages deployment were not enabled or changed.
+5. A full adversarial security audit has not been performed. No security guarantee is implied by passing browser checks.
 
-## Security / preservation
-
-- New files added **under `studio/` only** on a new branch based on `main`.
-- No changes to root `index.html` or existing VĀṆĪ source.
-- No external JS/CSS/assets, network requests or microphone permissions.
-- User-entered text is placed into DOM by `textContent`; imported JSON is validated and constrained; file export requires explicit click.
-- This is a reversible feature-branch publication. Main branch and its deployed website are unchanged unless separately approved.
-
-## Release decision
-
-**Feature-branch v1.2 candidate: browser-regression PASS; public-musician and physical-device review outstanding.**
+**Decision:** Functional feature-branch candidate PASS (browser automation). Hardware and cultural/musical review outstanding before a polished public launch claim.
