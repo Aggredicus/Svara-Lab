@@ -20,7 +20,7 @@ THE SOFTWARE. -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a1021"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="description" content="Svara Studio: an offline Indian classical music laboratory for piano, rāgas, tālas, the 72 mēḷakartā, and symbolic arts.">
-<title>Svara Studio v1.2 · Seven Sounds Composer · Rāga, Tāla & Piano</title>
+<title>Svara Play v1.3 · One musical workspace · Rāga, tāla, piano & seven sounds</title>
 <style>
 :root{color-scheme:dark;--bg:#090e1c;--deep:#0d152a;--panel:#111c32;--panel2:#18253d;--line:#34445f;--text:#f4f0e4;--sub:#b1bfd0;--muted:#8395b0;--gold:#f4cb76;--aqua:#79d7cf;--pink:#ed9fbd;--orange:#e5a377;--green:#a2d8a0;--focus:#a2f2e9;--shadow:0 18px 48px rgba(0,0,0,.25);--r:20px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 80% 45% at 50% -10%,#1d3552 0%,transparent 80%),var(--bg);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);min-width:320px}button,input,select{font:inherit}button,select,input{accent-color:var(--aqua)}button{cursor:pointer}a{color:var(--aqua)}a:hover{color:#d4fffa}button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}button:disabled{opacity:.45;cursor:not-allowed}button:not(:disabled):active{transform:translateY(1px)}h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.2}h1{font-family:Georgia,serif;font-size:clamp(2.4rem,5.5vw,4.3rem);letter-spacing:-.035em;margin:0}h2{font:normal 1.55rem Georgia,serif;margin:0}h3{font-size:1.06rem;margin:0 0 10px}small,.small{color:var(--sub);font-size:.82rem}strong{color:#fff5d9}.skip{position:absolute;left:-9999px;top:4px;background:white;color:#000;padding:10px;z-index:99}.skip:focus{left:10px}.shell{width:min(1460px,calc(100% - 36px));margin:auto}.topbar{display:flex;align-items:center;gap:18px;justify-content:space-between;min-height:80px;padding:15px 0}.brand{display:flex;gap:11px;align-items:center;white-space:nowrap;color:var(--text);text-decoration:none;font-weight:750;letter-spacing:.1em}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.6rem}.nav{display:flex;flex-wrap:wrap;gap:5px}.nav button{background:none;border:1px solid transparent;color:var(--sub);border-radius:999px;padding:7px 13px;font-size:.9rem}.nav button:hover,.nav button[aria-current="page"]{background:#263751;border-color:#4a607a;color:#fff}.tag,.eyebrow{letter-spacing:.13em;text-transform:uppercase;font-weight:750;font-size:.71rem;color:var(--gold)}.tag{border:1px solid #675942;border-radius:999px;padding:6px 11px;white-space:nowrap}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,390px);gap:18px;align-items:center;min-height:255px;margin:15px 0 22px;padding:28px clamp(22px,4vw,48px);border:1px solid #45506c;border-radius:27px;background:radial-gradient(ellipse at 78% 65%,#25496a 0%,transparent 49%),linear-gradient(115deg,#192339 0%,#10182f 60%,#152a44 100%);box-shadow:var(--shadow);overflow:hidden}.hero p{max-width:670px;color:var(--sub);margin:17px 0 0;font-size:1rem}.deva{display:block;color:var(--gold);font-size:clamp(1.2rem,3vw,1.6rem);font-weight:400;margin:6px 0}.hero-art{max-width:360px;width:100%;justify-self:center;filter:drop-shadow(0 0 28px rgba(247,207,132,.11))}.hero-art .orbit{animation:rotate 78s linear infinite;transform-origin:center}@keyframes rotate{to{transform:rotate(360deg)}}.globalbar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin-bottom:22px}.control{display:flex;flex-direction:column;gap:6px;min-width:0}.control label{font-size:.77rem;color:var(--sub);font-weight:650}.field,select,input[type=search],input[type=number]{border:1px solid #4a5b78;background:#0b172a;border-radius:10px;color:var(--text);min-height:40px;padding:7px 10px;min-width:0;width:100%}.field:hover,select:hover{border-color:#87a4bf}input[type=range]{width:100%}.chip{display:inline-flex;align-items:center;gap:6px;background:#23324b;color:var(--sub);border-radius:99px;padding:4px 9px;font-size:.78rem}.pillrow{display:flex;flex-wrap:wrap;gap:8px}.btn{border:1px solid #50637c;color:var(--text);background:#263752;border-radius:11px;padding:9px 13px;font-weight:650;min-height:40px;white-space:normal}.btn:hover{background:#334b66}.btn.primary{background:linear-gradient(110deg,#f3cf8a,#e7af74);color:#1b1b2e;border-color:#edc17b;font-weight:780}.btn.primary:hover{filter:brightness(1.08)}.btn.accent{background:#164844;border-color:#317f7b;color:#bffbf0}.btn.ghost{background:transparent;border-color:#44526a}.btn.small{padding:6px 10px;min-height:34px;font-size:.84rem}.btn[aria-pressed=true]{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);color:#fff4db}.panel{padding:21px;border:1px solid #354663;border-radius:var(--r);background:linear-gradient(140deg,rgba(24,37,61,.98),rgba(14,24,45,.98));box-shadow:var(--shadow);min-width:0}.panel .subhead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}.panel .subhead p{margin:5px 0 0;color:var(--sub);font-size:.85rem}.studio-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px}.stack{display:grid;gap:18px;min-width:0}.inline-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.flexgrow{flex:1 1 180px;min-width:0}.divider{height:1px;background:#324460;margin:17px 0}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.raga-title{color:var(--gold);font:normal 1.6rem Georgia,serif}.note-line{margin:10px 0;display:flex;align-items:flex-start;gap:10px}.note-line .lab{min-width:87px;color:var(--sub);font-size:.77rem;padding-top:4px}.note-chip{display:inline-block;min-width:30px;text-align:center;border-radius:8px;padding:5px 7px;background:#2e3d5b;border:1px solid #4d5e79;font-weight:750;font-family:ui-monospace,Consolas,monospace;font-size:.82rem;margin:2px 3px 2px 0}.muted{color:var(--sub)}.section-note{border-left:3px solid var(--gold);background:#202e44;padding:10px 13px;border-radius:0 10px 10px 0;font-size:.87rem;color:#d2dbea}.section-note b{color:var(--gold)}.stat{display:inline-flex;color:#cad4dd;font-size:.8rem;gap:4px}.stat b{color:var(--text)}.info-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.piano-shell{padding:14px 12px 17px;border-radius:18px;background:linear-gradient(#1e2c42,#0a1526);border:1px solid #354764;overflow:hidden}.piano-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:12px}.piano{height:clamp(150px,22vw,218px);position:relative;user-select:none;touch-action:manipulation;display:flex;isolation:isolate}.piano-key{position:relative;display:flex;align-items:end;justify-content:center;border:1px solid #8793a5;border-radius:0 0 7px 7px;padding:0 1px 10px;min-width:0;transition:background .06s;touch-action:manipulation}.piano-key.white{background:linear-gradient(180deg,#f9f5eb,#d6dbe2);color:#344053;flex:1;z-index:1;box-shadow:inset 0 -7px 12px rgba(48,57,71,.15)}.piano-key.black{position:absolute;top:0;height:63%;width:2.85%;background:linear-gradient(#263048,#0a1020);color:#d8e8ef;z-index:2;border-color:#090f1e;border-radius:0 0 5px 5px;box-shadow:3px 4px 7px #10162299}.piano-key.in-scale.white{background:linear-gradient(#ffffff,#e6eee6)}.piano-key.in-scale.black{background:linear-gradient(#344f5d,#152734)}.piano-key.out-scale{opacity:.65}.piano-key.tonic.white{background:linear-gradient(#fef5d4,#e2bf78)}.piano-key.tonic.black{background:linear-gradient(#ca9c57,#4f392c)}.piano-key.active.white,.piano-key.white:active{background:var(--aqua);transform:translateY(3px)}.piano-key.active.black,.piano-key.black:active{background:#47a9a3;transform:translateY(2px)}.piano-key .key-name{font-weight:800;font-size:clamp(.55rem,1vw,.76rem);white-space:nowrap;pointer-events:none}.piano-key .key-note{font-size:clamp(.49rem,.85vw,.65rem);opacity:.85;pointer-events:none}.piano-key.black .key-name{font-size:.58rem}.piano-key.black .key-note{font-size:.5rem}.key-body{display:flex;flex-direction:column;align-items:center;gap:1px;pointer-events:none}.keyhint{font-size:.66rem;color:var(--sub);margin-top:8px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.swara-pad{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.swara-pad button{border:1px solid #6e6482;border-radius:13px;background:linear-gradient(150deg,#34415c,#1b2840);padding:10px 2px;min-width:0;color:#fff}.swara-pad button:hover{border-color:var(--gold);background:#3d5372}.swara-pad .svara-syllable{display:block;font:normal clamp(1.03rem,2.5vw,1.4rem) Georgia,serif;color:var(--gold)}.swara-pad .svara-dev{font-size:.86rem;color:#dce4ee}.beat-grid{display:grid;grid-template-columns:repeat(var(--beatcols,8),minmax(0,1fr));gap:5px;margin:12px 0 6px}.beat{min-height:66px;padding:7px 2px;background:#182942;border:1px solid #445775;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#dae5f2}.beat .num{font-weight:800;font-variant-numeric:tabular-nums}.beat .bol{font-size:.69rem;color:#a3b3c8;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.beat.sam{border-color:#d8ac62;background:#3a342f}.beat.khali{border-style:dashed;border-color:#6aa4ae}.beat.on{background:#d9b46f!important;border-color:#fce0a0!important;color:#142037!important;box-shadow:0 0 15px #f4cb7655}.beat.on .bol{color:#25374d}.beatgroup{border-top:3px solid #567183;padding-top:7px}.beatgroup.sam{border-top-color:#f4cb76}.beatgroup.khali{border-top-color:#72c9d3}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:.77rem;color:var(--sub)}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--gold);margin-right:4px}.dot.c2{background:var(--aqua)}.dial{width:min(210px,42%);height:auto;display:block}.circlelabel{fill:#e6eff2;font:700 13px system-ui}.circlenum{fill:#e7c889;font:700 12px system-ui}.tala-visual{display:flex;gap:14px;align-items:center;justify-content:space-between}.meaning{font-size:.84rem;color:var(--sub);margin:8px 0 0}.modeband{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.modeband button{font-size:.8rem}.modeband button[aria-pressed=true]{background:#41526a}.feedback{min-height:25px;color:var(--aqua);font-weight:650;margin-top:8px}.library-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.library-item{border:1px solid #43546e;border-radius:13px;padding:13px;text-align:left;background:#15253c;color:var(--text);min-width:0}.library-item:hover{background:#263b56;border-color:var(--gold)}.library-item.selected{border-color:var(--gold);background:#373448}.library-item strong{display:block}.library-item small{display:block;margin-top:5px}.atlas-controls{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.atlas-controls input{flex:1 1 190px}.atlas-controls select{flex:0 1 175px}.full{grid-column:1/-1}.hidden,[hidden]{display:none!important}.view{display:none;animation:fade .18s ease}.view.active{display:block}@keyframes fade{from{opacity:.6;transform:translateY(6px)}to{opacity:1;transform:none}}.mel-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.mel-item{min-height:75px;background:#15243a;border:1px solid #42536d;border-radius:10px;color:var(--text);padding:10px 8px;text-align:left}.mel-item.selected{border-color:var(--gold);background:#3a3543}.mel-item:hover{border-color:var(--aqua)}.mel-item b{display:block;color:var(--gold);font-size:.76rem}.mel-item span{font-size:.81rem;word-break:break-word}.mel-item small{display:block;font-size:.66rem}.symbols{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.symbol{border:1px solid #435674;border-radius:16px;background:#15243c;color:var(--text);padding:13px 6px 11px;min-width:0;text-align:center}.symbol:hover,.symbol.active{border-color:var(--gold);background:#293750}.symbol .petal{height:57px;width:57px;max-width:95%;margin:0 auto 8px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--color);box-shadow:0 0 18px color-mix(in srgb,var(--color) 20%,transparent),inset 0 0 15px color-mix(in srgb,var(--color) 15%,transparent);color:var(--color);font-size:1.5rem}.symbol b{display:block}.symbol small{font-size:.68rem}.symbols-detail{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center;margin-top:18px}.mandala{display:block;width:100%;height:auto;filter:drop-shadow(0 0 10px #eec27b1f)}.meaningnote{background:#15253b;border:1px solid #485977;border-radius:12px;padding:15px;color:#bdcbdb}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.source-list{padding:0;list-style:none;display:grid;gap:10px}.source-list li{padding:14px;border:1px solid #43516a;border-radius:11px;background:#16243a}.source-list small{display:block;margin-top:4px}.lesson-layout{display:grid;grid-template-columns:minmax(190px,.7fr) minmax(0,1.3fr);gap:17px}.lesson-nav{display:grid;gap:8px;align-content:start}.lesson-nav button{text-align:left}.quiz-display{border:1px solid #50617a;border-radius:14px;padding:20px;background:#13243a}.quiz-big{font:normal 2.4rem Georgia,serif;color:var(--gold);margin:8px 0}.foot{padding:34px 0 65px;color:var(--muted);font-size:.78rem}.footline{border-top:1px solid #34445f;padding-top:19px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.alert{background:#382c33;border:1px solid #835a65;border-radius:12px;padding:12px;margin:8px 0;font-size:.84rem}.toggle{display:flex;gap:7px;align-items:center;font-size:.81rem;color:#ccd8e5}.meter-row{display:flex;gap:8px;flex-wrap:wrap}.meter-row .control{flex:1 1 95px}.mini-pill{border:1px solid #56657a;padding:5px 9px;border-radius:10px;color:var(--sub);font-size:.81rem}.num-big{font:normal 2.4rem Georgia,serif;color:var(--gold)}.list-tight{margin:8px 0 0;padding-left:20px;color:var(--sub)}.list-tight li{margin-bottom:6px}.footerlink{color:var(--gold)}
@@ -116,6 +116,104 @@ THE SOFTWARE. -->
 @media(max-width:680px){.compose-hero{padding:18px;grid-template-columns:1fr 100px}.compose-orbit{width:108px;height:108px}.compose-slots{gap:4px}.compose-slot{min-height:82px;border-radius:10px;padding:6px 1px}.compose-slot .index{font-size:.56rem}.compose-slot .letter{font-size:1.06rem}.compose-slot .pitch,.compose-slot .sarga{font-size:.6rem}.compose-settings{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.compose-flick-pair{grid-template-columns:1fr}.compose-flick-grid{grid-template-columns:repeat(4,1fr)}.compose-flick-key{min-height:57px}.compose-dual{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.compose-hero{grid-template-columns:1fr}.compose-orbit{display:none}.compose-slot .letter{font-size:.89rem}.compose-slot .pitch{font-size:.57rem}.compose-settings{gap:6px}.compose-actions .btn{padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.compose-slot{transition:none}}
+
+
+/* SVARA STUDIO v1.3 | Unified instrument surface. All original feature code remains intact. */
+:root{--bg:#080f19;--deep:#0c1725;--panel:#101f2e;--panel2:#162b3c;--line:#304a5b;--text:#f0f4ec;--sub:#b1c7d1;--muted:#8ba6b6;--gold:#ffd487;--aqua:#78e7d1;--pink:#ffa7c4;--orange:#ffc28f;--green:#a1e3b1;--focus:#a5ffe8;--r:18px}
+html{scroll-behavior:smooth}body{background:radial-gradient(ellipse 68% 24% at 55% -2%,#244b55,transparent 78%),#081019;color:var(--text);font-size:14px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(122deg,transparent 55%,rgba(94,181,169,.03)),repeating-linear-gradient(0deg,transparent 0 70px,#ffffff02 71px)}
+.topbar,.hero,#main>.globalbar,#main>.view{display:none!important}
+.shell{width:min(1560px,calc(100% - 36px))}
+#unified{display:grid;gap:15px;padding:15px 0 90px}
+.u-masthead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px}
+.u-brand{display:flex;align-items:center;gap:11px;min-width:0}
+.u-mark{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:radial-gradient(circle at 32% 25%,#377a77,#16313c 75%);border:1px solid #478e8a;color:#f9dfab;font:29px Georgia,serif;box-shadow:inset 0 1px 0 #ffffff35,0 8px 28px #020b13aa}
+.u-brandtext{display:flex;flex-direction:column;min-width:0;gap:0}.u-brandtext strong{font:700 19px/1.12 system-ui;letter-spacing:.12em}.u-brandtext small{font-size:10px;letter-spacing:.1em;color:#91b8b8;text-transform:uppercase}
+.u-headright{display:flex;align-items:center;gap:8px}.u-status{font-size:11px;color:var(--sub);max-width:240px;text-align:right}.u-status[role=status]{min-height:1em}
+.u-textbutton{min-height:40px;border-radius:12px;border:1px solid #456a76;background:#14313e;color:var(--text);padding:9px 13px;font-weight:700;white-space:nowrap}
+.u-textbutton:hover,.u-textbutton:focus-visible{border-color:var(--aqua);background:#224a52}
+.u-textbutton.u-primary{background:linear-gradient(145deg,#8bf9d8,#59c6bb);color:#081f25;border-color:#9bffe8;box-shadow:0 5px 18px #3cd7bf1e}
+.u-textbutton.u-stop{color:#ffc9c7;border-color:#66505c;background:#2b2834}
+.u-switchbar{position:sticky;top:0;z-index:12;padding:13px 15px 12px;border:1px solid #416b72;border-radius:18px;background:linear-gradient(135deg,rgba(19,42,51,.98),rgba(15,30,45,.98));box-shadow:0 14px 45px #020e1899, inset 0 1px 0 #d1fff012;backdrop-filter:blur(16px)}
+.u-switch-main{display:grid;grid-template-columns:minmax(200px,1.2fr) minmax(180px,.9fr) minmax(160px,.7fr);gap:13px;align-items:end}
+.u-control-label{display:block;margin:0 0 6px;color:#97bac3;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800}
+.u-switchbar select,.u-switchbar input[type=search]{min-width:0;width:100%;height:41px;padding:7px 12px;border:1px solid #58707c;border-radius:11px;background:#091e2c;color:#edf9ef;font:600 14px system-ui}
+.u-scale-controls{display:grid;grid-template-columns:minmax(120px,1fr) 38px 38px;gap:6px}
+.u-iconbutton{height:41px;width:38px;border:1px solid #456976;background:#183648;border-radius:11px;color:#d0f9ed;font-size:19px;font-weight:700}
+.u-iconbutton:hover{background:#255061;border-color:#79e7d1}
+.u-key-strip{display:flex;gap:5px;overflow-x:auto;overscroll-behavior-inline:contain;padding:2px 1px 6px;scrollbar-width:thin;scrollbar-color:#476878 transparent}
+.u-key{flex:1;min-width:38px;height:39px;border:1px solid #496376;background:#172f42;border-radius:10px;color:#c8d8e4;font-size:12px;font-weight:800;transition:background .13s,transform .13s}
+.u-key:hover{background:#2e5664;transform:translateY(-1px)}.u-key[aria-pressed=true]{color:#102c2e;border-color:#f5e0a8;background:linear-gradient(#ffdea0,#dcb873);box-shadow:0 0 0 2px #edc98425}
+.u-key-title{display:flex;align-items:center;gap:9px}.u-key-title .u-control-label{margin:0}.u-key-title .u-current{color:#f7d897;font-weight:800;font-size:13px}
+.u-switch-bottom{display:flex;align-items:center;justify-content:space-between;gap:11px;flex-wrap:wrap;margin-top:10px;border-top:1px solid #294958;padding-top:9px}
+.u-scale-identity{display:flex;align-items:center;gap:8px;flex:1;min-width:180px;overflow:hidden}.u-scale-identity strong{color:#fff2c8;white-space:nowrap}.u-scale-identity span{color:#98b5c0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+.u-quickopts{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.u-check{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:12px;color:var(--sub)}.u-check input{width:17px;height:17px}
+.u-actionsbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.u-actionsbar .u-textbutton{flex:0 1 auto}
+.u-presetrail{display:flex;gap:6px;overflow-x:auto;padding:0 1px 6px;scrollbar-width:thin}
+.u-preset{white-space:nowrap;border:1px solid #365563;background:#112c38;border-radius:99px;padding:6px 12px;min-height:34px;color:#b2d9d7;font-size:12px;font-weight:650}
+.u-preset:hover{border-color:var(--aqua)}.u-preset[aria-pressed=true]{background:#28544e;color:#dbffed;border-color:#7bd8bb}
+.u-stage{display:grid;gap:15px;grid-template-columns:minmax(0,1.5fr) minmax(260px,.62fr);align-items:start}
+.u-stage-card{min-width:0}.u-stage-card>.panel{margin:0;box-shadow:none;background:linear-gradient(146deg,#122536,#101c2c);border-color:#375563;padding:17px 18px;border-radius:18px}
+.u-stage-card .compose-head{margin-bottom:8px}.u-stage-card .compose-head .eyebrow{display:none}.u-stage-card .compose-head h3{font-size:1.2rem}.u-stage-card .compose-head .chip{display:none}
+.u-stage-card .compose-label{margin-bottom:5px}.u-stage-card .compose-typing textarea{min-height:49px;max-height:110px;padding:9px 13px;border-color:#4d6b7c;background:#081b29;font-size:1.2rem}
+.u-stage-card .compose-slots{margin:11px 0 8px;gap:5px}.u-stage-card .compose-slot{min-height:89px;padding:7px 2px;border-radius:11px}.u-stage-card .compose-slot .pitch{font-size:.69rem}.u-stage-card .compose-slot .sarga{font-size:.64rem}
+.u-stage-card .compose-dual{margin-top:10px;padding:9px 0;gap:14px}.u-stage-card .compose-actions{gap:6px;margin-top:4px}.u-stage-card .compose-actions .btn{min-height:43px}
+.u-stage-card .compose-mapping{font-size:.75rem}.u-stage-card .compose-note{font-size:.72rem}
+.u-stage-card .artguide{grid-template-columns:90px minmax(0,1fr);margin:6px 0 9px;padding:10px;gap:10px}.u-stage-card .artguide-art{min-height:95px}.u-stage-card .artguide-art svg{width:79px;height:79px}.u-stage-card .artguide-text h3{font-size:1.1rem}
+.u-stage-card #composerRagaInfo{font-size:.72rem;line-height:1.4;max-height:88px;overflow:auto}
+.u-stage-card .compose-head h3{letter-spacing:-.02em}.u-stage-card .compose-caption{font-size:.75rem}
+.u-inline-title{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.u-inline-title h2{font-size:1.04rem;font-weight:750;margin:0}.u-inline-title p{font-size:12px;color:var(--sub);margin:0}
+.u-playboard{display:grid;gap:15px;min-width:0}
+.u-playboard .panel{margin:0;box-shadow:none;background:linear-gradient(146deg,#112335,#0d1b2c);border-color:#385566}
+.u-playboard .subhead h2{font-size:1.18rem}.u-playboard .piano-shell{margin:0;border-radius:13px}.u-playboard .swara-pad{gap:5px}
+.u-phrase-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}.u-phrase-actions button{flex:1;min-width:100px}
+.u-rhythm-mini{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid #3b5564;border-radius:16px;padding:10px 13px;background:#0d1f2c;flex-wrap:wrap}
+.u-rhythm-mini select{width:min(320px,55vw);min-width:150px;background:#122d3b;color:#fff7de;border:1px solid #46677a;border-radius:9px;padding:8px 9px}
+.u-tala-leds{display:flex;align-items:center;gap:4px;flex:1;min-width:65px;max-width:300px;overflow:hidden}
+.u-tala-led{height:10px;flex:1;min-width:3px;border-radius:10px;background:#274c5b}.u-tala-led.first{background:#a87c48}.u-tala-led.active{background:#ffe29a;box-shadow:0 0 13px #ffd996bb}
+.u-drawers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.u-disclosure{min-width:0;border:1px solid #304b5c;border-radius:15px;background:linear-gradient(150deg,#122333,#0f1d2d);overflow:hidden}
+.u-disclosure>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:11px;min-height:56px;user-select:none;color:var(--text)}.u-disclosure>summary::-webkit-details-marker{display:none}.u-disclosure>summary::after{content:'⌄';color:#9db1bf;margin-left:auto;font-size:20px;transition:transform .2s}.u-disclosure[open]>summary::after{transform:rotate(180deg)}.u-disclosure>summary:hover{background:#1d3645}
+.u-disclosure>summary strong{font-size:14px}.u-disclosure>summary small{font-size:11px;color:var(--muted);font-weight:500;display:block;margin-top:2px}
+.u-drawer-icon{min-width:30px;width:30px;height:30px;border-radius:9px;background:#1c4451;color:#c0f2df;display:grid;place-items:center;font-size:16px}
+.u-disclosure>.u-drawer-body{padding:5px 13px 15px}
+.u-disclosure .panel{padding:12px;background:transparent;border:none;box-shadow:none}
+.u-disclosure .view,.u-disclosure .view.active{display:block!important;animation:none!important}
+.u-disclosure #view-ragas,.u-disclosure #view-talas,.u-disclosure #view-melakarta,.u-disclosure #view-symbols,.u-disclosure #view-learn,.u-disclosure #view-sources{margin:0}
+.u-disclosure .subhead h2{font-size:1.2rem}
+.u-disclosure .artguide{margin:8px 0}.u-disclosure .globalbar{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));margin:0}
+.u-disclosure .compose-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.u-disclosure .compose-flick-pair{gap:9px}
+.u-disclosure .library-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.u-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 2px;color:#789aa9;font-size:11px}.u-foot a{color:#a3decf}
+.u-sr-only{position:absolute!important;width:1px;height:1px;clip:rect(0,0,0,0);white-space:nowrap;overflow:hidden}
+@media(min-width:1250px){.u-stage{grid-template-columns:minmax(0,1.65fr) minmax(295px,.66fr)}.u-compose-wide{grid-column:1}.u-meaning{grid-column:2}}
+@media(max-width:1080px){.u-stage{grid-template-columns:minmax(0,1fr) minmax(270px,.8fr)}.u-switch-main{grid-template-columns:minmax(170px,1.2fr) minmax(150px,.9fr)}.u-switch-main .u-key-pick{grid-column:1/-1}.u-key{min-width:39px}}
+@media(max-width:760px){.shell{width:calc(100% - 20px)}#unified{padding:10px 0 80px;gap:10px}.u-switchbar{padding:10px;border-radius:14px}.u-switch-main{grid-template-columns:1fr;gap:8px}.u-switch-main .u-key-pick{grid-column:auto}.u-stage{grid-template-columns:1fr;gap:10px}.u-drawers{grid-template-columns:1fr;gap:8px}.u-headright .u-status{display:none}.u-masthead{gap:5px}.u-switch-bottom{flex-wrap:wrap;gap:8px}.u-scale-identity{flex:1 1 100%}.u-actionsbar{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.u-actionsbar .u-textbutton{padding:9px 4px;font-size:11px;min-width:0}.u-phrase-actions{gap:5px}.u-playboard .panel{padding:12px}.u-stage-card>.panel{padding:13px}.u-rhythm-mini{gap:8px}.u-switchbar{top:0}.u-brandtext strong{font-size:17px}.u-brandtext small{font-size:9px}.u-mark{width:39px;height:39px}.u-disclosure .globalbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){.u-key{min-width:38px}.u-switchbar .u-control-label{font-size:9px}.u-switchbar select{height:40px}.u-stage-card .compose-slot{min-height:75px}.u-stage-card .compose-slot .letter{font-size:1rem}.u-stage-card .compose-slot .index{font-size:.57rem}.u-stage-card .compose-slot .pitch{font-size:.61rem}.u-stage-card .compose-slot .sarga{font-size:.6rem}.u-stage-card .compose-typing textarea{font-size:1rem}.u-stage-card .artguide{grid-template-columns:68px 1fr}.u-stage-card .artguide-art svg{width:62px;height:62px}.u-stage-card .artguide-art{min-height:75px}.u-disclosure>.u-drawer-body{padding:0 5px 10px}}
+@media(prefers-reduced-motion:reduce){.u-key,.u-disclosure>summary::after{transition:none!important}}
+/* Contain touch-scroll strips in narrow viewport grid tracks. */
+#unified,.u-switchbar,.u-switch-main,.u-stage-card,.u-playboard{min-width:0;max-width:100%}
+.u-switch-main>div,.u-stage>*{min-width:0}
+.u-key-strip,.u-presetrail{width:100%;max-width:100%;overflow-x:auto}
+@media(max-width:760px){.u-switch-main{grid-template-columns:minmax(0,1fr)}.u-scale-controls{grid-template-columns:minmax(0,1fr) 38px 38px}.u-key-pick{min-width:0;overflow:hidden}.u-switch-bottom{min-width:0}.u-switchbar .u-actionsbar{min-width:0}.u-stage{grid-template-columns:minmax(0,1fr)}}
+.u-speed{display:flex;flex-direction:column;gap:5px;flex:0 1 210px;min-width:160px;color:#acc8ca;font-size:11px}.u-speed strong{color:#ffdea0}.u-speed input{width:100%;accent-color:#9de7d2}
+.u-mobile-dock{display:none}
+@media(max-width:760px){
+ #unified{display:flex;flex-direction:column;gap:10px;padding-bottom:90px}.u-stage{display:contents}
+ .u-masthead{order:1}.u-switchbar{order:2;position:static}.u-presetrail{order:3}#uCompose{order:4}#uPiano{order:5}#uIdentity{order:6}.u-rhythm-mini{order:7}.u-drawers{order:8}.u-foot{order:9}
+ .u-mobile-dock{display:flex;position:fixed;z-index:40;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));align-items:center;gap:6px;padding:7px;border:1px solid #6c9186;border-radius:17px;background:linear-gradient(160deg,#1b4145ee,#0e2231f5);box-shadow:0 8px 35px #000b, inset 0 1px 0 #ffffff24;backdrop-filter:blur(16px);max-width:calc(100vw - 16px)}
+ .u-mobile-dock label{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}.u-mobile-dock label small{font-size:9px;color:#a3d2cd;letter-spacing:.1em;font-weight:800}
+ .u-mobile-dock select{width:100%;min-width:0;max-width:100%;height:39px;background:#0b2937;color:#f5efcc;border:1px solid #467b83;border-radius:9px;padding:6px;font-size:12px}
+ .u-dock-key{display:flex;align-items:center;gap:1px;flex:0 0 auto}.u-dock-key strong{white-space:nowrap;min-width:38px;text-align:center;font-size:12px;color:#f8db98}.u-dock-key button,.u-dock-hear{min-width:31px;height:39px;border:1px solid #497585;border-radius:9px;background:#244b56;color:#e5fdef;font-weight:800;font-size:16px}
+ .u-dock-hear{min-width:37px;background:#91ecd0;color:#0c3234;border-color:#b1ffe7}
+ .u-speed{flex:1 1 100%}
+}
+@media(max-width:365px){.u-dock-hear{min-width:33px}.u-dock-key button{min-width:27px}.u-dock-key strong{min-width:34px}.u-mobile-dock{gap:4px}}
+/* Keep piano instructions visible while its three-octave keybed scrolls to Sa. */
+@media(max-width:680px){.u-playboard .piano-head,.u-playboard .keyhint{position:sticky;left:0;width:calc(100vw - 80px);max-width:100%;z-index:2}.u-playboard .piano-head{background:#1e2c42;padding:4px 0}}
 
 </style>
 </head>
@@ -634,6 +732,136 @@ function initComposer(){
 
 init();
 initComposer();
+</script>
+<script>
+/* Unified workspace adapter: moves existing modules without cloning IDs/audio engines. */
+(function(){
+'use strict';
+const $u=id=>document.getElementById(id);
+const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
+const mount=(host,el)=>{if(host&&el)host.appendChild(el)};
+const root=make('div');root.id='unified';
+root.innerHTML=`
+ <div class="u-masthead">
+  <div class="u-brand"><div class="u-mark" aria-hidden="true">ॐ</div><div class="u-brandtext"><strong>SVARA <span style="color:var(--gold)">PLAY</span></strong><small>Piano · rāga · rhythm · voice</small></div></div>
+  <div class="u-headright"><span id="uStatus" class="u-status" role="status" aria-live="polite">One space to play and explore.</span><button type="button" class="u-textbutton" id="uHelp">Explore ▾</button></div>
+ </div>
+ <section class="u-switchbar" aria-label="Always available musical controls">
+  <div class="u-switch-main">
+   <div><label class="u-control-label" for="uRaga">Rāga / scale · change instantly</label><div class="u-scale-controls"><select id="uRaga" aria-label="Select rāga or scale"></select><button type="button" class="u-iconbutton" id="uPrevRaga" aria-label="Previous rāga" title="Previous scale">‹</button><button type="button" class="u-iconbutton" id="uNextRaga" aria-label="Next rāga" title="Next scale">›</button></div></div>
+   <div class="u-key-pick"><div class="u-key-title"><span class="u-control-label">Choose your Sa · tonic</span><span id="uCurrentKey" class="u-current"></span></div><div id="uKeyStrip" class="u-key-strip" role="group" aria-label="Select Sa pitch class"></div></div>
+   <div><label class="u-control-label" for="uFamily">Explore a family</label><select id="uFamily"><option value="featured">Familiar rāgas</option><option value="all">All scales</option><option value="Hindustani">Hindustani rāgas</option><option value="Carnatic">Carnatic rāgas</option><option value="Thaat">10 thāṭs</option><option value="Melakarta">72 mēḷakartā</option></select></div>
+  </div>
+  <div class="u-switch-bottom">
+   <div class="u-scale-identity"><strong id="uScaleName">Yaman</strong><span id="uScaleMeaning"></span></div>
+   <div class="u-quickopts"><label class="u-check"><input type="checkbox" id="uAutoPreview"> Hear when selected</label></div>
+   <div class="u-actionsbar"><button class="u-textbutton u-primary" id="uHearScale" type="button">♫ Hear scale</button><button class="u-textbutton" id="uHearSignature" type="button">▶ Phrase</button><button class="u-textbutton u-stop" id="uStopAll" type="button">■ Stop</button></div>
+  </div>
+ </section>
+ <div class="u-presetrail" role="group" aria-label="Quick scale presets" id="uPresets"></div>
+ <div class="u-stage" id="uStage"><div id="uCompose" class="u-stage-card u-compose-wide"></div><div id="uIdentity" class="u-stage-card u-meaning"></div></div>
+ <div id="uPiano" class="u-playboard"></div>
+ <section class="u-rhythm-mini" aria-label="Rhythm companion"><div><div class="u-control-label">Tāla accompaniment</div><select id="uTala" aria-label="Choose tāla"></select></div><div class="u-tala-leds" id="uTalaLeds" aria-hidden="true"></div><button class="u-textbutton" id="uTalaToggle" aria-pressed="false" type="button">▶ Rhythm</button><button class="u-textbutton" id="uTalaDetails" type="button">Rhythm lab ▾</button><label class="u-speed"><span>Playback speed <strong id="uSpeedLabel">96</strong> BPM</span><input id="uSpeed" type="range" min="40" max="200" step="5" value="95" aria-label="Set scale, phrase and rhythm speed together"></label></section>
+ <div class="u-drawers" id="uDrawers" aria-label="Optional deep-dive tools"></div>
+ <aside class="u-mobile-dock" id="uMobileDock" aria-label="Quick musical controls">
+   <label for="uDockRaga"><small>RĀGA</small><select id="uDockRaga" aria-label="Quick change rāga without leaving piano"></select></label>
+   <div class="u-dock-key" role="group" aria-label="Quick change Sa"><button type="button" id="uDockKeyDown" aria-label="Previous tonic">−</button><strong id="uDockKeyName">Sa C</strong><button type="button" id="uDockKeyUp" aria-label="Next tonic">+</button></div>
+   <button type="button" class="u-dock-hear" id="uDockHear" aria-label="Hear selected scale">♫</button>
+ </aside>
+ <div class="u-foot"><span>Offline by design · musical knowledge is tradition-specific · v1.3</span><a href="#sources" id="uSourceLink">Sources & method</a></div>
+`;
+const main=$u('main');main.insertBefore(root,main.firstChild);
+const drawer=(id,title,sub,ico,element)=>{
+ const d=make('details','u-disclosure');d.id='uDrawer-'+id;
+ const summary=make('summary');const symbol=make('span','u-drawer-icon',ico);symbol.setAttribute('aria-hidden','true');const label=make('span');const name=make('strong','',title);const sm=make('small','',sub);label.append(name,sm);summary.append(symbol,label);
+ const body=make('div','u-drawer-body');mount(body,element);d.append(summary,body);$u('uDrawers').append(d);return d;
+};
+const composerPanel=$u('view-compose').querySelector('.compose-layout>.compose-stack>.panel');
+const composerSettings=composerPanel.querySelector('.compose-settings');
+drawer('mapping','Voice & mapping','Syllables, sound design and transposition','◈',composerSettings);
+const identityPanel=$u('view-compose').querySelectorAll('.compose-layout>.compose-stack')[1].querySelector('.panel');
+const notebookPanel=$u('view-compose').querySelectorAll('.compose-layout>.compose-stack')[1].querySelectorAll('.panel')[1];
+const quickstartPanel=$u('view-compose').querySelectorAll('.compose-layout>.compose-stack')[1].querySelectorAll('.panel')[2];
+const flickPanel=$u('view-compose').querySelector('.compose-layout>.compose-stack>.panel:nth-child(2)');
+const stack=$u('view-studio').querySelectorAll('.studio-grid>.stack');
+const ragaPanel=stack[0].querySelectorAll(':scope > .panel')[0];const pianoPanel=stack[0].querySelectorAll(':scope > .panel')[1];
+const talaPanel=stack[1].querySelectorAll(':scope > .panel')[0];const practicePanel=stack[1].querySelectorAll(':scope > .panel')[1];
+const composerHead=composerPanel.querySelector('.compose-head h3');if(composerHead)composerHead.textContent='Your seven-sound phrase';
+const identityHead=identityPanel.querySelector('.compose-head h3');if(identityHead)identityHead.textContent='The story behind the sound';
+const pianoHead=pianoPanel.querySelector('.subhead h2');if(pianoHead)pianoHead.textContent='Play the notes';
+const originalRagaSelect=composerPanel.querySelector('.compose-settings');
+mount($u('uCompose'),composerPanel);mount($u('uIdentity'),identityPanel);mount($u('uPiano'),pianoPanel);
+drawer('raga','Rāga details','Ascending, descending and signature phrases','♪',ragaPanel);
+drawer('rhythm','Rhythm lab','Beats, subdivisions, tempo, tihāī','◴',talaPanel);
+drawer('sanskrit','Sanskrit keyboard','Two-thumb consonants & vowels','अ',flickPanel);
+drawer('notebook','Notebook & export','Save, load, MIDI and JSON','▣',notebookPanel);
+drawer('practice','Ear training','Follow the svaras on piano','♬',practicePanel);
+drawer('scales','Rāga library','Browse all rāgas and thāṭs','☷',$u('view-ragas'));
+drawer('talas','Tāla library','Explore Hindustani and Carnatic rhythms','◉',$u('view-talas'));
+drawer('melakarta','72 mēḷakartā','Carnatic parent scale explorer','✧',$u('view-melakarta'));
+drawer('symbols','Art & symbolism','Chakras, lotus art and rāgamālā','✺',$u('view-symbols'));
+drawer('learn','Learning path','Nine short lessons for beginners','◐',$u('view-learn'));
+drawer('sources','Sources & method','Research, cultural context and limitations','↗',$u('view-sources'));
+drawer('settings','Sound settings','Tuning, octave, instrument and volume','⚙',main.querySelector(':scope > .globalbar'));
+drawer('guide','Quick start','Try a seven-letter melody in any rāga','?',quickstartPanel);
+// Preserve all handlers and unique ids. Only the structural parent elements change.
+function status(msg){$u('uStatus').textContent=msg}
+const NKEY=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+for(let i=0;i<12;i++){const b=make('button','u-key',NKEY[i]);b.type='button';b.dataset.key=String(i);b.title=`Set Sa to ${NKEY[i]}`;b.setAttribute('aria-label',`Set Sa to ${NKEY[i]}`);b.addEventListener('click',()=>{$u('tonic').value=String(i);$u('tonic').dispatchEvent(new Event('change',{bubbles:true}));syncHUD();status('Sa moved to '+NKEY[i]+'. Play the same phrase in the new key.');});$u('uKeyStrip').append(b)}
+const featuredIds=['yaman','bhoopali','bhairav','kalyani','bageshri','hamsadhwani','bilawal','todi'];
+const featured=featuredIds.map(id=>ALL_RAGAS.find(r=>r.id===id)).filter(Boolean);
+const presets=$u('uPresets');for(const r of ALL_RAGAS)$u('uDockRaga').add(new Option(r.name+(r.melaNumber?' · #'+r.melaNumber:''),r.id));featured.forEach(r=>{const b=make('button','u-preset',r.name);b.type='button';b.dataset.raga=r.id;b.addEventListener('click',()=>chooseRaga(r));presets.append(b)});
+function candidates(){const f=$u('uFamily').value;return f==='all'?ALL_RAGAS:f==='featured'?featured:ALL_RAGAS.filter(r=>r.family===f)}
+function populateRagas(){const sel=$u('uRaga'),f=$u('uFamily').value,opts=candidates();sel.replaceChildren();if(f==='all'){for(const family of ['Hindustani','Carnatic','Thaat','Melakarta']){const group=document.createElement('optgroup');group.label=family;for(const r of opts.filter(x=>x.family===family)){group.append(new Option(r.name+(r.melaNumber?' · #'+r.melaNumber:''),r.id))}sel.append(group)}}else for(const r of opts)sel.add(new Option(r.name+(r.melaNumber?' · #'+r.melaNumber:''),r.id));if(!opts.some(x=>x.id===state.raga.id)){$u('uFamily').value='all';populateRagas();return}sel.value=state.raga.id}
+function syncHUD(){if(!$u('unified'))return;const r=state.raga;
+ if(!candidates().some(x=>x.id===r.id))$u('uFamily').value='all';populateRagas();
+ $u('uDockRaga').value=r.id;$u('uDockKeyName').textContent='Sa '+NKEY[state.tonic];$u('uScaleName').textContent=r.name;$u('uScaleMeaning').textContent=[r.family,r.mood||r.parent||'Explore its characteristic melody'].filter(Boolean).join(' · ');
+ $u('uCurrentKey').textContent=NKEY[state.tonic];for(const k of $u('uKeyStrip').children)k.setAttribute('aria-pressed',String(Number(k.dataset.key)===state.tonic));
+ for(const b of presets.children)b.setAttribute('aria-pressed',String(b.dataset.raga===r.id));
+ $u('uAutoPreview').checked=state.autoPreview;$u('uTala').value=state.tala.id;$u('uTalaToggle').setAttribute('aria-pressed',String(state.rhythm));$u('uTalaToggle').textContent=state.rhythm?'■ Rhythm':'▶ Rhythm';
+ renderMiniBeats();}
+function renderMiniBeats(){const t=state.tala,total=t.groups.reduce((x,y)=>x+y,0),groupStarts=new Set();let n=0;for(const v of t.groups){groupStarts.add(n);n+=v}const box=$u('uTalaLeds');if(box.children.length!==total||box.dataset.id!==t.id){box.replaceChildren();for(let i=0;i<total;i++){const led=make('span','u-tala-led'+(groupStarts.has(i)?' first':''));led.dataset.i=i;box.append(led)}box.dataset.id=t.id}for(const el of box.children)el.classList.toggle('active',state.curBeat===Number(el.dataset.i));}
+function chooseRaga(r){if(!r)return;loadRaga(r,false,true);syncHUD();status(r.name+' · Sa '+NKEY[state.tonic]);}
+$u('uFamily').addEventListener('change',()=>{const list=candidates();if(!list.some(r=>r.id===state.raga.id)){chooseRaga(list[0]);}else populateRagas()});
+$u('uRaga').addEventListener('change',()=>chooseRaga(ALL_RAGAS.find(r=>r.id===$u('uRaga').value)));
+for(const [id,delta] of [['uPrevRaga',-1],['uNextRaga',1]])$u(id).addEventListener('click',()=>{const list=candidates(),index=Math.max(0,list.findIndex(r=>r.id===state.raga.id));chooseRaga(list[(index+delta+list.length)%list.length]);});
+$u('uAutoPreview').addEventListener('change',()=>{setAutoPreview($u('uAutoPreview').checked);status(state.autoPreview?'Scale preview on.':'Scale preview off.');});
+$u('uHearScale').addEventListener('click',()=>playSequence(fullScaleTokens(state.raga)));
+$u('uHearSignature').addEventListener('click',()=>$u('playPhrase').click());
+$u('uStopAll').addEventListener('click',()=>$u('composerStop').click());
+for(const t of TALAS)$u('uTala').add(new Option(`${t.name} · ${t.groups.reduce((a,b)=>a+b,0)}`,t.id));
+$u('uTala').addEventListener('change',()=>{loadTala(TALAS.find(t=>t.id===$u('uTala').value));syncHUD();status('Tāla: '+state.tala.name);});
+$u('uTalaToggle').addEventListener('click',()=>$u('rhythmPlay').click());
+$u('uTalaDetails').addEventListener('click',()=>openDrawer('rhythm'));
+$u('uDockRaga').addEventListener('change',()=>chooseRaga(ALL_RAGAS.find(r=>r.id===$u('uDockRaga').value)));
+for(const [id,delta] of [['uDockKeyDown',-1],['uDockKeyUp',1]])$u(id).addEventListener('click',()=>{const next=(state.tonic+delta+12)%12;$u('tonic').value=String(next);$u('tonic').dispatchEvent(new Event('change',{bubbles:true}));syncHUD()});
+$u('uDockHear').addEventListener('click',()=>$u('uHearScale').click());
+$u('uSpeed').value=String(Math.round(Number($u('composerTempo').value)/5)*5);
+function syncSpeedUi(){$u('uSpeedLabel').textContent=$u('uSpeed').value;}
+$u('uSpeed').addEventListener('input',()=>{const bpm=Number($u('uSpeed').value);$u('composerTempo').value=bpm;$u('composerTempo').dispatchEvent(new Event('input',{bubbles:true}));$u('scaleTempo').value=bpm;$u('scaleTempo').dispatchEvent(new Event('input',{bubbles:true}));$u('tempo').value=bpm;$u('tempo').dispatchEvent(new Event('input',{bubbles:true}));syncSpeedUi();status('Playback set to '+bpm+' BPM.');});
+$u('composerTempo').addEventListener('input',()=>{$u('uSpeed').value=String(Math.round(Number($u('composerTempo').value)/5)*5);syncSpeedUi();});syncSpeedUi();
+function openDrawer(id){const d=$u('uDrawer-'+id);if(!d)return;d.open=true;d.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'});}
+$u('uHelp').addEventListener('click',()=>openDrawer('guide'));
+$u('uSourceLink').addEventListener('click',e=>{e.preventDefault();openDrawer('sources')});
+// Existing lesson links and atlas controls now open the correct expandable tool, never a new view.
+const originalShowView=showView;
+showView=function(id,updateHash=true){const mapping={studio:null,compose:null,ragas:'scales',talas:'talas',melakarta:'melakarta',symbols:'symbols',learn:'learn',sources:'sources'};
+ if(id==='ragas')renderRagaCards();if(id==='talas')renderTalaCards();if(id==='melakarta')renderMelakarta();if(id==='symbols')renderSymbols();if(id==='learn')renderLessons();if(id==='sources')renderSources();
+ if(Object.prototype.hasOwnProperty.call(mapping,id)){const dest=mapping[id];if(dest)openDrawer(dest);else (id==='studio'?$u('uPiano'):$u('uCompose')).scrollIntoView({block:'start',behavior:'smooth'});}
+};
+const origLoadRaga=loadRaga;loadRaga=function(...args){const out=origLoadRaga(...args);syncHUD();return out};
+const origLoadTala=loadTala;loadTala=function(...args){const out=origLoadTala(...args);syncHUD();return out};
+const origRenderBeatActive=renderBeatActive;renderBeatActive=function(...args){const out=origRenderBeatActive(...args);renderMiniBeats();return out};
+const origStopRhythm=stopRhythm;stopRhythm=function(...args){const out=origStopRhythm(...args);syncHUD();return out};
+const origStartRhythm=startRhythm;startRhythm=async function(...args){const out=await origStartRhythm(...args);syncHUD();return out};
+$u('tonic').addEventListener('change',syncHUD);$u('ragaSelect').addEventListener('change',syncHUD);$u('composerRaga').addEventListener('change',syncHUD);$u('autoPreviewStudio').addEventListener('change',syncHUD);
+renderRagaCards();renderTalaCards();
+// Preserve conventional hash links without switching views.
+for(const v of document.querySelectorAll('.u-disclosure .view'))v.classList.add('active');
+if(location.hash==='#compose')$u('uCompose').scrollIntoView({block:'start'});
+syncHUD();
+})();
+
 </script>
 </body>
 </html>
