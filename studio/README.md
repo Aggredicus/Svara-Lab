@@ -15,7 +15,7 @@ Download `Svara_Play_v1.4.html` and open it directly in a Chromium-based, Firefo
 5. Press **⌖ Pin** to float the keyboard over the app, including when scrolling between music controls and text fields. **▾ Fold** collapses it into a compact live text preview. When pinned, drag its title to move it or activate **🔒 Lock** to keep the chosen position. **⌖ Unpin** returns it to the inline drawer. A compact phone-sized pinned layout provides larger keys in stacked consonant and vowel groups.
 6. Tap a text field or use **Write into** to choose where keyboard keystrokes go. The preview shows the current text and caret position even when the keyboard is pinned and the original field is outside the viewport. You can target the seven-sound phrase and in-app text search fields; ordinary checkboxes and selection controls are not text-editable.
 7. Use **Copy text**, **Copy selected**, **Paste**, or **Select all** in the keyboard toolbar. The phrase also has **Copy phrase** and **Paste phrase** shortcuts. On browsers that block clipboard reads (including some local-file contexts), **Paste** opens an in-app paste box; long-press and paste there, then tap **Insert pasted text**.
-8. In the pinned keyboard, **Device keyboard** is off by default for the composer text box to prevent the Android keyboard from covering the musical keys; switch it on if you prefer ordinary typing. Unpinning restores normal text-input behavior.
+8. In the pinned keyboard, **Device keyboard** is off by default for in-app text fields to prevent the Android keyboard from covering the musical keys; switch it on if you prefer ordinary typing. Unpinning restores normal text-input behavior.
 
 ## Sanskrit and input semantics
 
