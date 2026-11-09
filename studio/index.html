@@ -1280,5 +1280,191 @@ const copybar=by('gayatriCopyPlain').parentElement;by('gayatriRef').after(copyba
 drawList();drawSelection();
 })();
 </script>
+<style id="svara-mobile-flow-v18-style">
+/* Svara Play 1.8: compact app shell. No changes to v1.7 keyboard selectors or gestures. */
+#unified .v18-command{display:flex;align-items:end;gap:9px;min-width:0}
+#unified .v18-command>.v18-scale{min-width:0;flex:1}
+#unified .v18-scale-extras{min-width:0}
+#unified .v18-scale-extras>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px;color:#c7f4e6;font-size:12px;font-weight:750;min-height:34px}
+#unified .v18-scale-extras>summary::-webkit-details-marker{display:none}
+#unified .v18-scale-extras>summary::after{content:'⌄';color:#d4b878}
+#unified .v18-scale-extras[open]>summary::after{content:'⌃'}
+#unified .v18-extra-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;padding:8px 0 4px}
+#unified .v18-extra-body>.u-key-pick,#unified .v18-extra-body>.u-presetrail{grid-column:1/-1}
+#unified .v18-extra-body>.u-quickopts{align-self:end;min-height:36px}
+#unified .v18-extra-body .u-presetrail{margin:0}
+#unified .v18-phrase-extra,#unified .v18-piano-extra,#unified .v18-meaning{border-top:1px solid #34515e;margin-top:8px}
+#unified .v18-phrase-extra>summary,#unified .v18-piano-extra>summary,#unified .v18-meaning>summary{cursor:pointer;color:#9dcac7;font-size:12px;min-height:31px;padding:7px 2px;list-style:none;font-weight:650}
+#unified .v18-phrase-extra>summary::-webkit-details-marker,#unified .v18-piano-extra>summary::-webkit-details-marker,#unified .v18-meaning>summary::-webkit-details-marker{display:none}
+#unified .v18-phrase-extra>summary::before,#unified .v18-piano-extra>summary::before,#unified .v18-meaning>summary::before{content:'＋';font-weight:800;color:#e6cf98;margin-right:7px}
+#unified .v18-phrase-extra[open]>summary::before,#unified .v18-piano-extra[open]>summary::before,#unified .v18-meaning[open]>summary::before{content:'−'}
+#unified .v18-phrase-extra>*:not(summary),#unified .v18-piano-extra>*:not(summary){margin-top:9px}
+#unified .v18-meaning> .panel{border:none;box-shadow:none;margin:0;padding:8px;background:transparent}
+#unified .v18-meaning strong{color:#f6dba2}
+#unified .v18-app-nav{display:none}
+#unified .v18-app-nav button:focus-visible{outline:2px solid #fbe6a0;outline-offset:-3px}
+#unified .v18-screenhint{font-size:10px;color:#97bdba}
+@media(min-width:761px){
+ #unified .v18-command{align-items:end}
+ #unified .v18-command .u-dock-key{display:flex;align-items:center;gap:5px;flex:0 0 auto}
+ #unified .v18-command .u-dock-key button{background:#244b56;border:1px solid #507b83;border-radius:9px;color:#eaf6e9;height:41px;width:40px;font-size:18px}
+ #unified .v18-command .u-dock-key strong{color:#f5d18e;min-width:42px;text-align:center}
+ #unified .u-switch-main{display:block}
+ #unified .v18-extra-body{max-width:750px}
+ #unified .v18-command{max-width:900px}
+ #unified .v18-meaning{background:#102b36;border:1px solid #2f5863;border-radius:15px;padding:8px 13px}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:128px}
+ body{overscroll-behavior-y:contain}
+ .shell{width:calc(100% - 12px)!important}
+ #unified{gap:7px!important;padding:5px 0 calc(80px + env(safe-area-inset-bottom,0px))!important}
+ #unified .u-masthead{min-height:35px;padding:0 6px}
+ #unified .u-mark{width:29px;height:29px;border-radius:9px;font-size:20px}
+ #unified .u-brand{gap:7px}
+ #unified .u-brandtext strong{font-size:14px;letter-spacing:.07em}
+ #unified .u-brandtext small{font-size:9px;letter-spacing:.02em;text-transform:none}
+ #unified #uHelp{min-height:29px;padding:4px 9px;font-size:11px;border-radius:8px}
+ #unified .u-switchbar{position:sticky!important;top:0;z-index:24;padding:8px 9px 7px;border-radius:12px;background:linear-gradient(130deg,rgba(20,46,55,.985),rgba(11,28,41,.99));box-shadow:0 8px 18px #050f18b5}
+ #unified:has(.u-disclosure[open]) .u-switchbar{position:static!important}
+ #unified .u-switch-main{display:block}
+ #unified .v18-command{gap:6px;align-items:end}
+ #unified .v18-command .v18-scale{min-width:0}
+ #unified .v18-command .u-control-label{display:none}
+ #unified .u-scale-controls{grid-template-columns:minmax(0,1fr) 32px 32px;gap:4px}
+ #unified .u-scale-controls select{font-size:13px;font-weight:750;height:35px;padding:4px 7px;border-radius:8px}
+ #unified .u-scale-controls .u-iconbutton{width:32px;height:36px;border-radius:8px;font-size:17px}
+ #unified .v18-command .u-dock-key{display:flex;gap:2px;align-items:center;flex:0 0 auto}
+ #unified .v18-command .u-dock-key strong{font-size:11px;min-width:32px}
+ #unified .v18-command .u-dock-key button{height:36px;min-width:30px;padding:0;border-radius:8px;font-size:17px}
+ #unified .u-switch-bottom{margin-top:5px;padding-top:5px;gap:4px;display:flex;align-items:center}
+ #unified .u-scale-identity{min-width:0;flex:1 1 auto;max-width:100%;gap:5px;font-size:11px;line-height:14px}
+ #unified .u-scale-identity strong{font-size:11px}
+ #unified .u-scale-identity span{font-size:10px}
+ #unified .u-switch-bottom .u-actionsbar{display:grid;grid-template-columns:1fr 1fr 1fr;width:100%;gap:4px}
+ #unified .u-actionsbar .u-textbutton{min-height:36px;font-size:11px;padding:5px 3px;border-radius:8px}
+ #unified .v18-scale-extras>summary{min-height:23px;font-size:11px;padding:3px 1px}
+ #unified .v18-scale-extras:not([open]){max-height:23px}
+ #unified .v18-extra-body{grid-template-columns:1fr 1fr;gap:7px;padding:7px 0 4px}
+ #unified .v18-extra-body .u-control-label{font-size:9px;margin-bottom:4px}
+ #unified .v18-extra-body select{height:35px;font-size:12px;padding:5px}
+ #unified .v18-extra-body .u-key-strip{max-width:100%}
+ #unified .v18-extra-body .u-key{height:33px;min-width:34px}
+ #unified .v18-extra-body .u-presetrail{padding-bottom:1px}
+ #unified .u-stage-card>.panel,#unified .u-playboard .panel{padding:9px 10px;border-radius:12px}
+ #unified .u-stage-card .compose-head{margin-bottom:4px}
+ #unified .u-stage-card .compose-head h3,#unified .u-playboard .subhead h2{font-size:15px;line-height:1.15}
+ #unified .u-stage-card .compose-label{font-size:10px;margin-bottom:3px}
+ #unified .u-stage-card .compose-typing textarea{min-height:39px;height:40px;max-height:75px;padding:7px 8px;font-size:15px;border-radius:8px}
+ #unified .u-stage-card .compose-counter{font-size:10px}
+ #unified .u-stage-card .compose-slots{margin:6px 0 4px;gap:3px}
+ #unified .u-stage-card .compose-slot{min-height:59px;padding:4px 1px;border-radius:7px}
+ #unified .u-stage-card .compose-slot .letter{font-size:15px;line-height:1.1}
+ #unified .u-stage-card .compose-slot .index{font-size:9px}
+ #unified .u-stage-card .compose-slot .pitch,#unified .u-stage-card .compose-slot .sarga{font-size:9px}
+ #unified .u-stage-card #composerNotice{font-size:10px;line-height:1.35;max-height:28px;overflow:auto;padding:5px 7px}
+ #unified .u-stage-card .compose-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:5px}
+ #unified .u-stage-card .compose-actions .btn{min-height:34px;padding:5px 2px;font-size:10px;line-height:1.2;white-space:normal;border-radius:8px}
+ #unified .u-stage-card #composerStatus{font-size:10px;min-height:14px;margin:3px 0 0;line-height:1.4;max-height:42px;overflow:auto}
+ #unified .v18-phrase-extra{margin-top:3px}
+ #unified .v18-phrase-extra>summary,#unified .v18-piano-extra>summary{min-height:25px;padding:4px 2px;font-size:11px}
+ #unified .v18-phrase-extra .compose-dual{display:flex;gap:8px;flex-wrap:wrap;padding:6px 0}
+ #unified .v18-phrase-extra .compose-note{font-size:11px}
+ #unified .u-playboard .subhead{margin-bottom:7px}
+ #unified .u-playboard .subhead p,#unified .u-stage-card .compose-caption{font-size:11px}
+ #unified .u-playboard .piano-head{padding:5px;gap:5px}
+ #unified .u-playboard .piano-head .toggle{font-size:11px}
+ #unified .u-playboard .piano-shell{padding:3px 3px 6px}
+ #unified .u-playboard .swara-pad{margin-top:7px;gap:3px}
+ #unified .u-playboard .swara-pad button{min-width:0;padding:6px 0}
+ #unified .u-playboard .divider{margin:7px 0}
+ #unified .u-playboard .keyhint{font-size:10px}
+ #unified .u-rhythm-mini{border-radius:12px;padding:7px 8px;gap:6px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
+ #unified .u-rhythm-mini>.u-tala-leds{grid-column:1/-1;max-width:none;min-width:0;min-height:9px;order:3}
+ #unified .u-rhythm-mini select{width:100%;min-width:0;height:33px;padding:4px 6px;font-size:12px}
+ #unified .u-rhythm-mini>div:first-child{min-width:0}
+ #unified .u-rhythm-mini .u-control-label{font-size:9px;margin-bottom:3px}
+ #unified .u-rhythm-mini #uTalaToggle{min-height:33px;padding:5px 11px;font-size:11px;grid-column:2;grid-row:1}
+ #unified .u-rhythm-mini #uTalaDetails{font-size:10px;min-height:30px;padding:5px 8px;grid-column:2;grid-row:2}
+ #unified .u-rhythm-mini .u-speed{grid-column:1;grid-row:2;min-width:0;flex:auto;margin:0}
+ #unified .u-speed span{font-size:10px;white-space:nowrap}
+ #unified .u-speed input{margin:0;height:16px}
+ #unified .u-tala-led{height:7px}
+ #unified #uIdentity{margin:0}
+ #unified .v18-meaning{background:#102634;border:1px solid #2f505e;border-radius:11px;margin:0;padding:0 10px}
+ #unified .v18-meaning>summary{font-size:12px;min-height:36px;padding:10px 1px}
+ #unified .v18-meaning .panel{padding:4px 0 10px}
+ #unified .v18-meaning .compose-head{margin-bottom:4px}
+ #unified .u-drawers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ #unified .u-disclosure{border-radius:10px;min-width:0}
+ #unified .u-disclosure>summary{min-height:42px;padding:6px 7px;gap:6px}
+ #unified .u-disclosure>summary strong{font-size:11px;line-height:1.3}
+ #unified .u-disclosure>summary small{display:none}
+ #unified .u-disclosure>summary::after{font-size:16px}
+ #unified .u-drawer-icon{width:23px;min-width:23px;height:23px;font-size:13px;border-radius:7px}
+ #unified .u-disclosure[open]{grid-column:1/-1}
+ #unified .u-disclosure>.u-drawer-body{padding:4px 8px 11px}
+ #unified #gayatriLibrary{grid-column:1/-1;margin:0;border-radius:10px}
+ #unified #gayatriLibrary>summary{padding:8px 10px;min-height:41px}
+ #unified #gayatriLibrary>summary strong{font-size:12px}
+ #unified #gayatriLibrary>summary small{font-size:10px}
+ #unified .u-foot{font-size:10px}
+ #unified .v18-app-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;z-index:50;bottom:calc(5px + env(safe-area-inset-bottom,0px));left:7px;right:7px;padding:4px;gap:3px;border:1px solid #67978d;border-radius:15px;background:linear-gradient(135deg,#1c4547f4,#112d3ef8);box-shadow:0 6px 28px #000b;backdrop-filter:blur(18px)}
+ #unified .v18-app-nav button{border:none;border-radius:10px;background:transparent;color:#b9dcd9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;min-height:44px;padding:4px 1px;font-size:10px;font-weight:650;min-width:0}
+ #unified .v18-app-nav button b{font-size:17px;line-height:20px;color:#d7f3e9;font-weight:500}
+ #unified .v18-app-nav button[aria-current=page]{background:#367568;color:#fff4d0}
+ #unified .v18-app-nav button[aria-current=page] b{color:#fff0b6}
+ /* The v1.7 keyboard stays in its original position and dimensions. Hide only the new nav while it is pinned. */
+ body:has(#kbFloat:not([hidden])) #unified .v18-app-nav{display:none!important}
+ /* Both panels stay on the same document; navigation only scrolls, never replaces a view. */
+}
+@media(max-width:360px){#unified .v18-command{gap:3px}#unified .u-scale-controls{grid-template-columns:minmax(0,1fr) 27px 27px;gap:3px}#unified .v18-command .u-dock-key button{min-width:25px}#unified .v18-command .u-dock-key strong{min-width:28px;font-size:10px}#unified .u-actionsbar .u-textbutton{font-size:10px}#unified .u-stage-card .compose-actions .btn{font-size:9px}}
+@media(prefers-reduced-motion:reduce){#unified *{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<script id="svara-mobile-flow-v18-script">
+/* v1.8: DOM-moving adapter. Never clones or reimplements existing music/keyboard engines. */
+(()=>{'use strict';
+const el=id=>document.getElementById(id), un=el('unified');if(!un||un.dataset.mobileFlow==='1')return;un.dataset.mobileFlow='1';
+const main=un.querySelector('.u-switch-main');const oldFamily=main.children[2],keyPick=main.children[1],oldScale=main.children[0];
+const command=document.createElement('div');command.className='v18-command';
+oldScale.classList.add('v18-scale');command.append(oldScale);
+const legacyDock=el('uMobileDock');const dockKey=legacyDock.querySelector('.u-dock-key');command.append(dockKey);
+const more=document.createElement('details');more.className='v18-scale-extras';more.id='v18ScalesMore';
+const summary=document.createElement('summary');summary.textContent='Keys · families · favorites';summary.setAttribute('aria-label','Show chromatic keys, families, favorite scales and auto preview');
+const body=document.createElement('div');body.className='v18-extra-body';body.append(oldFamily,keyPick,un.querySelector('.u-quickopts'),el('uPresets'));more.append(summary,body);
+main.replaceChildren(command,more);
+legacyDock.style.display='none';legacyDock.setAttribute('aria-hidden','true');
+// Keep supporting controls in the DOM so existing event handlers and HUD synchronization remain intact.
+const composer=el('uCompose'),composerPanel=composer.querySelector('.panel');
+const detail=document.createElement('details');detail.className='v18-phrase-extra';detail.id='v18PhraseMore';
+const detailTitle=document.createElement('summary');detailTitle.textContent='Timing · mapping notes';detail.append(detailTitle);
+for(const sel of ['.compose-dual','#composerTiming','.compose-note']){const node=composerPanel.querySelector(sel);if(node)detail.append(node)}composerPanel.append(detail);
+const piano=el('uPiano'),pianoPanel=piano.querySelector('.panel');
+const tips=document.createElement('details');tips.className='v18-piano-extra';tips.id='v18PianoTips';
+const tipsTitle=document.createElement('summary');tipsTitle.textContent='Tuning · piano tips';tips.append(tipsTitle);
+for(const selector of ['.keyhint','#toggleTuning']){
+ const n=pianoPanel.querySelector(selector);if(!n)continue;
+ if(selector==='#toggleTuning') {const parent=n.closest('.inline-controls');if(parent)tips.append(parent);else tips.append(n)}else tips.append(n)
+}pianoPanel.append(tips);
+const identity=el('uIdentity'),artPanel=identity.querySelector('.panel');if(artPanel){const d=document.createElement('details');d.className='v18-meaning';d.id='v18Meaning';const head=document.createElement('summary');head.innerHTML='✦ &nbsp; Story and symbolism <strong id="v18MeaningName"></strong>';d.append(head,artPanel);identity.append(d)}
+const mantra=el('gayatriLibrary'),drawers=el('uDrawers');if(mantra&&drawers)drawers.prepend(mantra);
+const h=composerPanel.querySelector('.compose-head h3');if(h)h.textContent='Your seven sounds';
+const nav=document.createElement('nav');nav.className='v18-app-nav';nav.id='v18BottomNav';nav.setAttribute('aria-label','Quick access, same workspace');
+const items=[['play','♫','Play'],['write','✎','Write'],['beat','◉','Beat'],['mantras','ॐ','Mantras'],['explore','✦','Explore']];
+const targets={play:()=>el('uPiano'),write:()=>el('uCompose'),beat:()=>un.querySelector('.u-rhythm-mini'),mantras:()=>el('gayatriLibrary'),explore:()=>el('uDrawers')};
+const go=id=>{const t=targets[id]?.();if(!t)return;if(id==='mantras'&&t.tagName==='DETAILS')t.open=true;
+ nav.querySelectorAll('button').forEach(b=>b.setAttribute('aria-current',b.dataset.go===id?'page':'false'));
+ t.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
+};
+for(const [id,icon,name] of items){const b=document.createElement('button');b.type='button';b.dataset.go=id;b.setAttribute('aria-label',name);b.setAttribute('aria-current',id==='write'?'page':'false');b.innerHTML='<b aria-hidden="true">'+icon+'</b><span>'+name+'</span>';b.addEventListener('click',()=>go(id));nav.append(b)}
+un.insertBefore(nav,un.querySelector('.u-foot'));
+const meaningName=el('v18MeaningName');const label=el('uScaleName');const updateMeaning=()=>{meaningName.textContent=label.textContent?('· '+label.textContent):''};updateMeaning();new MutationObserver(updateMeaning).observe(label,{childList:true,subtree:true,characterData:true});
+// Provide an accessible on-screen key to jump directly to the optional controls.
+if(el('uHelp')){el('uHelp').textContent='Help';el('uHelp').setAttribute('title','Open quick start guide')}
+const footer=un.querySelector('.u-foot span');if(footer)footer.textContent='SVARA PLAY v1.8 · offline · one continuous workspace';
+// Responsive resizing does not switch views or change audio state.
+window.__svaraFlowV18={version:'1.8.0',go,keyboardUntouched:true};
+})();
+</script>
 </body>
 </html>
