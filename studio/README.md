@@ -1,3 +1,11 @@
+# Current development release: Svara Play v1.5
+
+The compact pinned Sanskrit keyboard now shows five Devanāgarī variants per key without arrows, places edit utilities directly in the two-thumb grids, and fits within half the viewport without scrolling its keys. **[Read v1.5 release notes](./RELEASE_v1.5.md)** and **[v1.5 QA report](./QA_REPORT_v1.5.md)**.
+
+The full original VĀṆĪ application at repository root and previous release branches remain intact.
+
+---
+
 # Svara Play v1.4 — Gesture Keyboard
 
 Svara Play is an **offline, single-file** Indian classical music learning studio. Version 1.4 improves the Sanskrit modal keyboard while preserving the v1.3 music studio, piano, seven-sound composer, rāga and tāla explorers, 72 melakarta scales, lessons, symbolic references, MIDI/JSON export, and local notebook.
