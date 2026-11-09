@@ -1,3 +1,11 @@
+# Current release: Svara Play v1.7 — thumb-optimized editing
+
+The approved compact modal keyboard visuals are preserved. Its eight utility actions have been moved to thumb-friendly positions based on measured spacing/virāma incidence and an explicitly hypothetical frequency model. Details: [v1.7 notes](./README_v1.7.md), [design lock](./KEYBOARD_DESIGN_LOCK.md), [QA evidence](./QA_REPORT_v1.7.md), and [tests](./tests/test_thumb_ergonomics.py).
+
+All previous version notes follow unchanged.
+
+---
+
 # Current development release: Svara Play v1.6 — Gāyatrī mantra library
 
 The unified offline Svara Play studio now includes **38 sourced mantra selections**: 11 source-attested accent-marked Ṛgvedic verses, 18 Mahānārāyaṇa Upaniṣad Gāyatrī-form invocations, and nine later devotional variants. A source-aware reader shows above/below Vedic accent marks, with plain/marked clipboard copy and a full-length editor compatible with the pinned two-thumb Sanskrit keyboard.
