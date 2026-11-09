@@ -1,33 +1,29 @@
-# Svara Play v1.3 — QA and release decision
+# Svara Play v1.4 — release QA report
 
-**Scope:** Major interface reorganization without removing the v1.2 musical engines. The user can change keys, rāgas and rhythms without switching views, on desktop and mobile. New v1.3 changes are isolated in a new branch.
+**Target:** `feature/svara-modal-keyboard-v1.4` of `Aggredicus/Svara-Lab`. The earlier `main`, v1.2, and v1.3 branches are not modified.
 
-## Verified in current development environment
+## Automated verification
 
-- **192/192** automated browser checks passed using Chromium and Playwright at **1440×900**, **390×844**, and **360×750**; additionally ran exploratory 768×1024 layout checks.
-- New adapter's JavaScript passed `node --check`; no uncaught browser JavaScript exceptions in regression scenarios.
-- No unintended horizontal page overflow on tested widths, including when all 14 advanced expandable sections are open. Piano and preset/key rails scroll *within their own containers*.
-- Twelve Sa controls update tonic, pianist key highlights, composer pitches, and persistent mobile dock. Direct select, quick scale chips, next/previous and family selection update musical state and all editor selectors, including melakarta #65.
-- All 72 parent-scale options, the catalog of rāgas/thāṭs, and 54 tāla options remain accessible; 14 expandable tools expose the existing education, Sanskrit keyboard, rhythm, and settings components.
-- The shared speed slider changes phrase, scale and rhythm tempo inputs. Preview-on-select can be disabled or enabled without leaving the workspace.
-- Playing the phrase with tāla starts the rhythm; **Stop** stops the current melody and percussion; loop and stop work; rhythm can be independently started/stopped.
-- Local save works. Downloaded MIDI was verified to contain `MThd` and `MTrk`; exported JSON parsed correctly with schema `svara-seven-sounds`.
-- Screenshots were visually reviewed in the phone and desktop viewports. Resolved initial mobile overflow and piano-header clipping when horizontally scrolling the keybed.
+- **192 / 192 passed** — previous v1.3 Playwright regression checks on 1440×900, 390×844, and 360×750 Chromium viewports: scale/key synchronization, all 72 melakarta scales, rāga/tāla catalogs, studio/audio controls, stop all, loops, drawers, pitch and MIDI/JSON exports, no horizontal page overflow, no JS errors.
+- **108 / 108 passed** — new v1.4 keyboard checks across the same three viewports: center tapping, swipes up/right/down/left, hold-and-tap directional menu, vowel mātrā, cursor position preservation, pin/unpin, collapse/expand, position lock, live preview, mobile keyboard suppression toggle, copy-all, copy-selection, clipboard paste, denied-clipboard manual-paste fallback, target switching to in-app search field, no page errors/overflow.
+- **Touch emulation:** Chromium DevTools `Input.dispatchTouchEvent` successfully exercised a real touch-style right-swipe (selects `ग`), long-hold menu and left-choice tap (selects `ङ`), and two simultaneous thumbs with reverse release order (correct consonant-vowel result `कि`). These are three separate checks outside the 300 test assertions above.
+- **JavaScript:** all inline scripts passed Node's syntax check.
+- **Security:** no external runtime assets or networking; existing restrictive no-network CSP preserved; dynamic clipboard / text preview content uses text nodes; test-only mocks not shipped in app.
 
-## Security and regressions
+## Findings corrected during implementation
 
-- Content security policy remains restrictive: no external network connections, libraries, scripts, or images.
-- The new layout moves the original existing nodes and preserves single unique IDs and event handlers rather than rendering a second independent state machine.
-- Existing saved composition schema is retained. Import, export and downloadable files remain user-initiated actions.
-- No changes are made to the root app at `index.html` or to the original v1.2 branch or default branch.
-- Reproducible test script included at `studio/tests/test_studio.py`.
+1. Original flick controls did not visibly map each direction and exposed no hold-to-choose menu.
+2. Copied text fallback could temporarily redirect the keyboard's target to the hidden copy textarea; that temporary element is now excluded.
+3. Collapsing the keyboard initially only affected the pinned surface; both inline and pinned modes now collapse correctly.
+4. Original small phone layout displayed eight tiny flick keys per row; pinned mobile keyboard now stacks the consonant/vowel grids with larger keys, while the editing preview remains sticky while scrolling.
+5. Two-finger input could lose a character and invert ordering; pointer gestures now reserve an input ticket on touch-down and commit in press order.
 
-## Not yet verified
+## Known limitations and release gate
 
-1. **Physical Android / iOS** touch gestures, device sound latency, Web Audio unlock behavior, and OS text keyboard interaction.
-2. **Perceptual fidelity** of Sanskrit pronunciation, synthetic vowel sound and Indian musical ornaments; professional music/speaker review recommended.
-3. **Direct `file://` launch in automated browser:** testing policy blocks navigation with `net::ERR_BLOCKED_BY_ADMINISTRATOR`. The application was loaded in memory; direct file opening should be checked on a real device.
-4. CI workflow and GitHub Pages deployment were not enabled or changed.
-5. A full adversarial security audit has not been performed. No security guarantee is implied by passing browser checks.
+- Automated browser emulation is not identical to testing on physical Pixel/Android and iOS devices; check gesture reliability, safe-area docking, keyboard suppression, font shaping, voice/audio latency, and clipboard permission variations on hardware.
+- When clipboard reads are blocked by browser security, a manual paste box is provided instead of silent failure.
+- A pinned keyboard can obscure app controls by design; users may collapse, drag (when unlocked), unpin, or scroll its contents.
+- Scientific, educational, historical, and phonetic caveats from v1.3 remain; no claim of authentic gamakas or accurate classical Sanskrit pronunciation.
+- No GitHub-hosted CI status is claimed for this branch; this report describes local Chromium runs.
 
-**Decision:** Functional feature-branch candidate PASS (browser automation). Hardware and cultural/musical review outstanding before a polished public launch claim.
+**Release status:** branch-ready standalone HTML feature build; local automated tests pass. Physical hardware/user acceptance review remains open.
