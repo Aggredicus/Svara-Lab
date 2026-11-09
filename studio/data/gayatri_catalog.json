@@ -1,0 +1,629 @@
+[
+  {
+    "id": "savitri",
+    "name": "Sāvitrī Gāyatrī · Savitṛ",
+    "group": "vedic",
+    "ref": "Ṛgveda 3.62.10",
+    "lines": [
+      "तत्स॑वि॒तुर्वरे॑ण्यं॒",
+      "भर्गो॑ दे॒वस्य॑ धीमहि",
+      "धियो॒ यो नः॑ प्रचो॒दया॑त्"
+    ],
+    "source": "https://vedshala.org/gayatri-mantra",
+    "theme": "Illumination, understanding, the radiance of Savitṛ",
+    "meter": "Nicṛd Gāyatrī: the transmitted vareṇyaṃ gives a short first pāda; vareṇiyam is a metrical expansion.",
+    "note": "The widely used ॐ भूर्भुवः स्वः is a separate recitational preface, not part of Ṛgveda 3.62.10. Compare editions: the source here follows the cited Śākala transcription.",
+    "featured": true,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-1",
+    "name": "Agni · invocation",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.1",
+    "lines": [
+      "अ॒ग्निमी॑ळे पु॒रोहि॑तं",
+      "य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म्",
+      "होता॑रं रत्न॒धात॑मम्"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "I praise Agni, ritual priest and bearer of gifts",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": true,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-2",
+    "name": "Agni · ancient seers",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.2",
+    "lines": [
+      "अ॒ग्निः पूर्वे॑भि॒रृषि॑भि॒रीड्यो॒ नूत॑नैरु॒त",
+      "स दे॒वाँ एह व॑क्षति"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Agni praised by ancient and contemporary seers",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-3",
+    "name": "Agni · nourishment",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.3",
+    "lines": [
+      "अ॒ग्निना॑ र॒यिम॑श्नव॒त्पोष॑मे॒व दि॒वेदि॑वे",
+      "य॒शसं॑ वी॒रव॑त्तमम्"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Growth, abundance and strength",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-4",
+    "name": "Agni · sacrifice",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.4",
+    "lines": [
+      "अग्ने॒ यं य॒ज्ञम॑ध्व॒रं वि॒श्वतः॑ परि॒भूरसि॑",
+      "स इद्दे॒वेषु॑ गच्छति"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Agni carries the rite to the gods",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-5",
+    "name": "Agni · wise priest",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.5",
+    "lines": [
+      "अ॒ग्निर्होता॑ क॒विक्र॑तुः स॒त्यश्चि॒त्रश्र॑वस्तमः",
+      "दे॒वो दे॒वेभि॒रा ग॑मत्"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Insight, truthful invocation",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-6",
+    "name": "Agni · blessing",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.6",
+    "lines": [
+      "यद॒ङ्ग दा॒शुषे॒ त्वमग्ने॑ भ॒द्रं क॑रि॒ष्यसि॑",
+      "तवेत्तत्स॒त्यम॑ङ्गिरः"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "A blessing bestowed on the worshipper",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-7",
+    "name": "Agni · daily devotion",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.7",
+    "lines": [
+      "उप॑ त्वाग्ने दि॒वेदि॑वे॒ दोषा॑वस्तर्धि॒या व॒यम्",
+      "नमो॒ भर॑न्त॒ एम॑सि"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Daily reverence and thought",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": true,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-8",
+    "name": "Agni · sacred order",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.8",
+    "lines": [
+      "राज॑न्तमध्व॒राणां॑ गो॒पामृ॒तस्य॒ दीदि॑विम्",
+      "वर्ध॑मानं॒ स्वे दमे॑"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Guardianship of ṛta, radiant presence",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "agni-9",
+    "name": "Agni · gracious presence",
+    "group": "vedic",
+    "ref": "Ṛgveda 1.1.9",
+    "lines": [
+      "स नः॑ पि॒तेव॑ सू॒नवेऽग्ने॑ सूपाय॒नो भ॑व",
+      "सच॑स्वा नः स्व॒स्तये॑"
+    ],
+    "source": "https://www.vedicsamhita.in/vedas/rigveda/1/1",
+    "theme": "Approachability and well-being",
+    "meter": "Gāyatrī (Ṛgvedic classification). The first two pādas may be joined in the printed line.",
+    "featured": false,
+    "hasAccents": true
+  },
+  {
+    "id": "sarasvati-rv",
+    "name": "Sarasvatī · river and sacred speech",
+    "group": "vedic",
+    "ref": "Ṛgveda 6.61.7",
+    "lines": [
+      "उ॒त स्या नः॒ सर॑स्वती घो॒रा हिर॑ण्यवर्तनिः",
+      "वृ॒त्र॒घ्नी व॑ष्टि सुष्टु॒तिम्"
+    ],
+    "source": "https://vmlt.in/rigveda/06/061/7",
+    "theme": "Powerful Sarasvatī receives praise; golden path, strength and inspiration.",
+    "meter": "Gāyatrī (Ṛgvedic classification). Accents follow cited Śākala text.",
+    "featured": true,
+    "hasAccents": true
+  },
+  {
+    "id": "mnu-1",
+    "name": "Rudra · expanded",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.1",
+    "lines": [
+      "तत्पुरुषस्य विद्महे",
+      "सहस्राक्षस्य महादेवस्य धीमहि",
+      "तन्नो रुद्रः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Expanded invocation: not a strict three-by-eight reading",
+    "meter": "Expanded Gāyatrī-form; not a verified 8+8+8 pāda scan.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-2",
+    "name": "Rudra · Mahādeva",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.2",
+    "lines": [
+      "तत्पुरुषाय विद्महे",
+      "महादेवाय धीमहि",
+      "तन्नो रुद्रः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Śiva / Rudra, great god",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-3",
+    "name": "Nandī · bull",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.3",
+    "lines": [
+      "तत्पुरुषाय विद्महे",
+      "नन्दिकेश्वराय धीमहि",
+      "तन्नो वृषभः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Nandikeśvara and the bull",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-4",
+    "name": "Gaṇeśa · Vakratuṇḍa",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.4",
+    "lines": [
+      "तत्पुरुषाय विद्महे",
+      "वक्रतुण्डाय धीमहि",
+      "तन्नो दन्ती प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The curved-trunked, tusked one",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-5",
+    "name": "Skanda · Ṣaṇmukha",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.5",
+    "lines": [
+      "षण्मुखाय विद्महे",
+      "महासेनाय धीमहि",
+      "तन्नः षष्ठः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Six-faced Skanda, divine commander",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-6",
+    "name": "Agni · Vaiśvānara",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.6",
+    "lines": [
+      "पावकाय विद्महे",
+      "सप्तजिह्वाय धीमहि",
+      "तन्नो वैश्वानरः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Agni as purifier and seven-tongued fire",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-7",
+    "name": "Agni · Lālela",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.7",
+    "lines": [
+      "वैश्वानराय विद्महे",
+      "लालेलाय धीमहि",
+      "तन्नो अग्निः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Vaiśvānara fire: source preserves a less familiar epithet",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-8",
+    "name": "Sūrya · Divākara",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.8",
+    "lines": [
+      "भास्कराय विद्महे",
+      "दिवाकराय धीमहि",
+      "तन्नः सूर्यः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The sun as maker of light and day",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-9",
+    "name": "Āditya · great radiance",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.9",
+    "lines": [
+      "दिवाकराय विद्महे",
+      "महाद्युतिकराय धीमहि",
+      "तन्न आदित्यः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The sun, creator of splendour",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-10",
+    "name": "Bhānu · thousand rays",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.10",
+    "lines": [
+      "आदित्याय विद्महे",
+      "सहस्रकिरणाय धीमहि",
+      "तन्नो भानुः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The thousand-rayed sun",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-11",
+    "name": "Vṛṣabha · bull",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.11",
+    "lines": [
+      "तीक्ष्ण शृंगाय विद्महे",
+      "वक्रपादाय धीमहि",
+      "तन्नो वृषभः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Bull, sharp horns and bent hoof",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-12",
+    "name": "Durgā · Kātyāyanī",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.12",
+    "lines": [
+      "कात्यायन्यै विद्महे",
+      "कन्याकुमार्यै धीमहि",
+      "तन्नो दुर्गा प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Durgā as Kātyāyanī and maiden goddess",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-13",
+    "name": "Durgā · Bhagavatī",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.13",
+    "lines": [
+      "महाशूलिन्यै विद्महे",
+      "महादुर्गायै धीमहि",
+      "तन्नो भगवती प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The great trident-bearer",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-14",
+    "name": "Gaurī · auspicious one",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.14",
+    "lines": [
+      "सुभगायै विद्महे",
+      "काममालिन्यै धीमहि",
+      "तन्नो गौरी प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Gaurī, auspicious and garlanded",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-15",
+    "name": "Garuḍa · winged one",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.15",
+    "lines": [
+      "तत्पुरुषाय विद्महे",
+      "सुपर्णपक्षाय धीमहि",
+      "तन्नो गरुडः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Garuḍa and the splendid wings",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-16",
+    "name": "Nārāyaṇa · Viṣṇu",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.16",
+    "lines": [
+      "नारायणाय विद्महे",
+      "वासुदेवाय धीमहि",
+      "तन्नो विष्णुः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Nārāyaṇa, Vāsudeva and Viṣṇu",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-17",
+    "name": "Nṛsiṃha · lion-form",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.17",
+    "lines": [
+      "नृसिंहाय विद्महे",
+      "वज्रनखाय धीमहि",
+      "तन्नः सिंहः प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "The lion-form, thunderbolt claws",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "mnu-18",
+    "name": "Brahmā · four-faced",
+    "group": "upanishad",
+    "ref": "Mahānārāyaṇa Upaniṣad 3.18",
+    "lines": [
+      "चतुर्मुखाय विद्महे",
+      "कमण्डलुधराय धीमहि",
+      "तन्नो ब्रह्मा प्रचोदयात्"
+    ],
+    "source": "https://adiveda.in/reading/upanishad/mahanarayana-upanishad/",
+    "theme": "Four-faced Brahmā, holding a water-pot",
+    "meter": "Gāyatrī-form invocation; individual pāda counts and recension may vary.",
+    "note": "This transcription is unaccented in the cited edition; Vedic pitch marks have not been reconstructed.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-hanuman",
+    "name": "Hanumān · son of Añjanā",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "अञ्जनासुताय विद्महे",
+      "वायुपुत्राय धीमहि",
+      "तन्नो मारुतिः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Devotional Gāyatrī-style invocation to Hanumān",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-sarasvati",
+    "name": "Sarasvatī · Vāgdevī",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "वाग्देव्यै च विद्महे",
+      "विरिञ्चिपत्न्यै च धीमहि",
+      "तन्नो वाणी प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Voice, learning and the goddess of speech",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-lakshmi",
+    "name": "Lakṣmī · Mahādevī",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "महादेव्यै च विद्महे",
+      "विष्णुपत्न्यै च धीमहि",
+      "तन्नो लक्ष्मीः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Lakṣmī as consort of Viṣṇu; a circulating devotional variant",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-rama",
+    "name": "Rāma · Sītāvallabha",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "दाशरथाय विद्महे",
+      "सीतावल्लभाय धीमहि",
+      "तन्नो रामः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Rāma as son of Daśaratha and beloved of Sītā",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": true,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-krishna",
+    "name": "Kṛṣṇa · Govinda",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "गोविन्दाय विद्महे",
+      "गोपीवल्लभाय धीमहि",
+      "तन्नः कृष्णः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Kṛṣṇa as Govinda and beloved of the gopīs",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-sita",
+    "name": "Sītā · Bhūmijā",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "जनकनन्दिन्यै विद्महे",
+      "भूमिजायै धीमहि",
+      "तन्नो सीता प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Sītā, daughter of Janaka and the earth",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-ganesha",
+    "name": "Gaṇeśa · Ekadanta",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "एकदंष्ट्राय विद्महे",
+      "वक्रतुण्डाय धीमहि",
+      "तन्नो बुद्धिः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "One-tusked Gaṇeśa; a devotional variant invoking intellect",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-durga",
+    "name": "Durgā · Girijā",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "गिरिजायै विद्महे",
+      "शिवप्रियायै धीमहि",
+      "तन्नो दुर्गा प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Durgā as daughter of the mountain and beloved of Śiva",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": false,
+    "hasAccents": false
+  },
+  {
+    "id": "dev-shiva",
+    "name": "Śiva · Rudramūrti",
+    "group": "devotional",
+    "ref": "Popular Gāyatrī-style devotional compilation",
+    "lines": [
+      "महादेवाय विद्महे",
+      "रुद्रमूर्तये धीमहि",
+      "तन्नः शिवः प्रचोदयात्"
+    ],
+    "source": "https://sanskritdocuments.org/doc_z_misc_major_works/gaayatriimantraaH_devanagari.html",
+    "theme": "Śiva in his Rudra aspect",
+    "meter": "Popular Gāyatrī-style formula; 8+8+8 scansion and textual history not independently verified.",
+    "note": "This is a devotional text, not presented as an accent-bearing Ṛgvedic verse. No authentic accent marks are supplied.",
+    "featured": false,
+    "hasAccents": false
+  }
+]
