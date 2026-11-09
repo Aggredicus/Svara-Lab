@@ -1,0 +1,85 @@
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+ROOT=Path(__file__).resolve().parents[1]
+HTML=(ROOT/'index.html').read_text()
+checks=0;fails=[]
+def check(flag,msg):
+ global checks
+ checks+=1
+ if not flag:fails.append(msg);print('FAIL:',msg,flush=True)
+with sync_playwright() as p:
+ browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--autoplay-policy=no-user-gesture-required'])
+ for w,h in [(1440,900),(390,844),(360,750)]:
+  ctx=browser.new_context(viewport={'width':w,'height':h},accept_downloads=True,is_mobile=w<500,has_touch=w<500)
+  page=ctx.new_page();errors=[];page.on('pageerror',lambda err:errors.append(str(err)))
+  page.set_content(HTML,wait_until='load');page.add_style_tag(content='*,html{scroll-behavior:auto!important;transition:none!important;animation:none!important}')
+  page.set_default_timeout(6000)
+  prefix=str(w)
+  val=lambda :page.locator('#composerInput').input_value()
+  page.locator('#composerInput').fill('')
+  page.evaluate('document.querySelector("#uDrawer-sanskrit").open=true')
+  btn=page.locator('#composerConsonants button').first
+  def gesture(direction):
+   btn.scroll_into_view_if_needed();box=btn.bounding_box();cx=box['x']+box['width']/2;cy=box['y']+box['height']/2
+   page.mouse.move(cx,cy);page.mouse.down();page.wait_for_timeout(65)
+   if direction=='up':page.mouse.move(cx,cy-48,steps=5)
+   elif direction=='right':page.mouse.move(cx+48,cy,steps=5)
+   elif direction=='down':page.mouse.move(cx,cy+48,steps=5)
+   elif direction=='left':page.mouse.move(cx-48,cy,steps=5)
+   page.mouse.up();page.wait_for_timeout(50)
+  gesture('center');check(val()=='क',prefix+' center inserts क '+val())
+  for direction,expect in [('up','ख'),('right','ग'),('down','घ'),('left','ङ')]:
+   page.locator('#composerInput').fill('');gesture(direction);check(val()==expect,prefix+' swipe '+direction+' -> '+expect+' got '+val())
+  page.locator('#composerInput').fill('');btn.scroll_into_view_if_needed();box=btn.bounding_box();cx=box['x']+box['width']/2;cy=box['y']+box['height']/2
+  page.mouse.move(cx,cy);page.mouse.down();page.wait_for_timeout(470);page.mouse.up();check(page.locator('#kbChoiceMenu').is_visible(),prefix+' held menu stays open')
+  page.locator('#kbChoiceMenu [data-direction="right"]').click();check(val()=='ग',prefix+' tapped right variant from held menu')
+  check(not page.locator('#kbChoiceMenu').is_visible(),prefix+' choice menu dismisses')
+  page.locator('#composerInput').fill('क');byV=page.locator('#composerVowels button').first;byV.scroll_into_view_if_needed();box=byV.bounding_box();cx=box['x']+box['width']/2;cy=box['y']+box['height']/2
+  page.mouse.move(cx,cy);page.mouse.down();page.mouse.move(cx,cy-43,steps=4);page.mouse.up();check(val()=='का',prefix+' vowel mātrā after consonant')
+  page.locator('#composerInput').fill('नमस्ते');page.locator('#composerInput').evaluate('(e)=>{e.focus();e.setSelectionRange(3,3);e.dispatchEvent(new Event("select"));}')
+  page.locator('#kbPin').click();check(page.locator('#kbFloat').is_visible(),prefix+' pinned visible')
+  check(page.evaluate('SvaraKeyboardInfo.getState().pinned'),prefix+' pin state')
+  check(page.locator('#kbPreviewText').inner_text().replace(' ','').find('नमस्ते')>=0,prefix+' preview live')
+  page.locator('#kbLock').click();check(page.evaluate('SvaraKeyboardInfo.getState().locked'),prefix+' position locked')
+  page.locator('#kbCollapse').click();check(page.evaluate('SvaraKeyboardInfo.getState().collapsed'),prefix+' collapsed')
+  check(not page.locator('#composerConsonants').is_visible(),prefix+' keys hidden folded')
+  check(page.locator('#kbSystemInput').is_checked()==False,prefix+' system keyboard off by default')
+  check(page.locator('#composerInput').get_attribute('inputmode')=='none',prefix+' native keyboard suppressed pinned')
+  check(page.locator('#kbPreviewText').is_visible(),prefix+' preview stays visible folded')
+  page.locator('#kbCollapse').click();check(page.locator('#composerConsonants').is_visible(),prefix+' keys restore')
+  page.locator('#kbSystemInput').check();check(page.locator('#composerInput').get_attribute('inputmode')=='text',prefix+' native keyboard opt-in')
+  page.locator('#kbSystemInput').uncheck()
+  check(page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'),prefix+' no horizontal overflow pinned')
+  page.locator('#composerInput').evaluate('(e)=>{e.focus();e.setSelectionRange(0,0);e.dispatchEvent(new Event("select"));}')
+  btn=page.locator('#composerConsonants button').first
+  gesture('center');check(val().startswith('कनमस्ते'),prefix+' caret insertion position preserved '+val())
+  page.evaluate('Object.defineProperty(navigator,"clipboard",{configurable:true,value:{readText:async()=>" सागर",writeText:async value=>window.__clipboard=value}})')
+  page.locator('#kbCopy').click();page.wait_for_timeout(70)
+  check(page.evaluate('window.__clipboard')==val(),prefix+' full text copied')
+  page.locator('#composerInput').evaluate('(e)=>{e.focus();e.setSelectionRange(0,1);e.dispatchEvent(new Event("select"));}')
+  page.locator('#kbCopySelection').click();page.wait_for_timeout(50)
+  check(page.evaluate('window.__clipboard')=='क',prefix+' selected text copied')
+  page.locator('#composerInput').evaluate('(e)=>{e.focus();e.setSelectionRange(e.value.length,e.value.length);e.dispatchEvent(new Event("select"));}')
+  page.locator('#kbPaste').click();page.wait_for_timeout(50)
+  check(val().endswith(' सागर'),prefix+' read clipboard paste '+val())
+  page.evaluate('Object.defineProperty(navigator,"clipboard",{configurable:true,value:{readText:async()=>{throw Error("denied")},writeText:async value=>{}}})')
+  page.locator('#kbPaste').click();check(page.locator('#kbPasteHelp').is_visible(),prefix+' paste fallback UI')
+  page.locator('#kbPasteStage').fill(' राम');page.locator('#kbPasteInsert').click();check(val().endswith(' राम'),prefix+' manual paste fallback '+val())
+  page.locator('#kbPin').click();check(not page.locator('#kbFloat').is_visible(),prefix+' unpin returns inline')
+  check(page.locator('#composerInput').get_attribute('inputmode')=='text',prefix+' native keyboard restored inline')
+  page.locator('#kbCollapse').click();check(not page.locator('#composerConsonants').is_visible(),prefix+' inline fold works')
+  page.locator('#kbCollapse').click();check(page.locator('#composerConsonants').is_visible(),prefix+' inline expand works')
+  check(page.locator('#uDrawer-sanskrit').evaluate('(e)=>e.open'),prefix+' inline drawer opens')
+  page.locator('#uDrawer-scales').evaluate('(e)=>e.open=true')
+  page.locator('#ragaSearch').fill('')
+  page.locator('#ragaSearch').focus()
+  page.locator('#kbPin').click()
+  check(page.evaluate('SvaraKeyboardInfo.getState().target')=='ragaSearch',prefix+' switch target on focus')
+  page.locator('#composerConsonants button').first.click()
+  check(page.locator('#ragaSearch').input_value()=='क',prefix+' type into search field')
+  check(page.locator('#composerInput').input_value().endswith(' राम'),prefix+' original phrase remains unchanged')
+  check(len(errors)==0,prefix+' no page JS errors '+str(errors))
+  ctx.close()
+ browser.close()
+print('CHECKS',checks,'FAILED',len(fails))
+if fails:print('\n'.join(fails));raise SystemExit(1)
