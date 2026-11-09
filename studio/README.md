@@ -1,3 +1,16 @@
+# Current development release: Svara Play v1.6 — Gāyatrī mantra library
+
+The unified offline Svara Play studio now includes **38 sourced mantra selections**: 11 source-attested accent-marked Ṛgvedic verses, 18 Mahānārāyaṇa Upaniṣad Gāyatrī-form invocations, and nine later devotional variants. A source-aware reader shows above/below Vedic accent marks, with plain/marked clipboard copy and a full-length editor compatible with the pinned two-thumb Sanskrit keyboard.
+
+- **[v1.6 usage and source notes](./README_GAYATRI_v1.6.md)**
+- **[v1.6 QA report](./QA_GAYATRI_v1.6.md)**
+- **[Catalog metadata](./data/gayatri_catalog.json)**
+- **[New Playwright tests](./tests/test_gayatri.py)**
+
+All earlier studio release work is preserved below.
+
+---
+
 # Current development release: Svara Play v1.5
 
 The compact pinned Sanskrit keyboard now shows five Devanāgarī variants per key without arrows, places edit utilities directly in the two-thumb grids, and fits within half the viewport without scrolling its keys. **[Read v1.5 release notes](./RELEASE_v1.5.md)** and **[v1.5 QA report](./QA_REPORT_v1.5.md)**.
