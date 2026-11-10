@@ -27,7 +27,7 @@ Open `Svara_Play_v1.8.html` directly in a modern Android, iOS, or desktop browse
 
 ### Keyboard design locked
 
-**No changes to the v1.7 keyboard implementation or its styling** were made for this release. The v1.4 five-way keyboard script and styles and the v1.5 compact two-thumb keyboard style were compared byte-for-byte against v1.7. v1.7 utility ergonomics are preserved. The new application navigation hides only while the keyboard is pinned.
+**No changes to the v1.7 keyboard implementation or its styling** were made for this release. The v1.4 five-way keyboard script and styles and the v1.5 compact two-thumb keyboard style were compared byte-for-byte against v1.7. v1.7 utility ergonomics are preserved. The new bottom navigation stays available beneath the pinned keyboard, using the space already reserved for the old dock.
 
 ### Musical and scholarly limitations
 
