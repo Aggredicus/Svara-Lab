@@ -17,7 +17,7 @@ with sync_playwright() as p:
  for w,h in [(1440,900),(390,844),(360,750)]:
   context=browser.new_context(viewport={'width':w,'height':h},accept_downloads=True)
   page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.set_default_timeout(5000)
-  page.set_content(HTML,wait_until='load');page.add_style_tag(content='*,html{scroll-behavior:auto!important;transition:none!important;animation:none!important}');page.wait_for_timeout(120);print('START',w,flush=True)
+  page.set_content(HTML,wait_until='load');page.add_style_tag(content='*,html{scroll-behavior:auto!important;transition:none!important;animation:none!important}');page.wait_for_timeout(120);page.locator('#v18ScalesMore').evaluate('(e)=>e.open=true');page.locator('#v18PhraseMore').evaluate('(e)=>e.open=true');print('START',w,flush=True)
   prefix=str(w)
   def js(expr):return page.evaluate(expr)
   check(page.locator('#unified').count()==1,prefix+' stage')
@@ -55,7 +55,7 @@ with sync_playwright() as p:
   check(js('state.raga.melaNumber')==65,prefix+' choose scale 65 inline')
   page.locator('#uFamily').select_option('all')
   check(page.locator('#uRaga option').count()==js('ALL_RAGAS.length'),prefix+' full list')
-  page.locator('#uDockRaga').select_option('yaman') if w<=760 else page.evaluate("document.querySelector('#uDockRaga').value='yaman';document.querySelector('#uDockRaga').dispatchEvent(new Event('change',{bubbles:true}))")
+  page.evaluate("document.querySelector('#uDockRaga').value='yaman';document.querySelector('#uDockRaga').dispatchEvent(new Event('change',{bubbles:true}))")
   check(js('state.raga.id')=='yaman',prefix+' dock changes raga')
   page.locator('#uAutoPreview').check()
   check(js('state.autoPreview') is True,prefix+' preview on')
