@@ -1,3 +1,16 @@
+# Current development release: Svara Play v1.8 — Mobile Flow
+
+The approved v1.7 two-thumb Sanskrit keyboard is preserved exactly. The rest of the application now uses a compact persistent rāga/Sa control strip, short performance panels, collapsible advanced settings and five bottom shortcuts **Play / Write / Beat / Mantras / Explore**, all within one continuous workspace. The bottom shortcuts remain accessible beneath the pinned keyboard.
+
+- [v1.8 usage and preservation notes](./README_v1.8.md)
+- [v1.8 QA report (785 local automated checks)](./QA_REPORT_v1.8.md)
+- [Mobile-flow browser regression](./tests/test_mobile_flow.py)
+- [Adjusted full-studio browser regression](./tests/test_studio.py)
+
+Earlier version documentation follows unmodified below.
+
+---
+
 # Current release: Svara Play v1.7 — thumb-optimized editing
 
 The approved compact modal keyboard visuals are preserved. Its eight utility actions have been moved to thumb-friendly positions based on measured spacing/virāma incidence and an explicitly hypothetical frequency model. Details: [v1.7 notes](./README_v1.7.md), [design lock](./KEYBOARD_DESIGN_LOCK.md), [QA evidence](./QA_REPORT_v1.7.md), and [tests](./tests/test_thumb_ergonomics.py).
