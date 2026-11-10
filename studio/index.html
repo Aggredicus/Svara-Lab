@@ -1304,6 +1304,7 @@ drawList();drawSelection();
 #unified .v18-app-nav{display:none}
 #unified .v18-app-nav button:focus-visible{outline:2px solid #fbe6a0;outline-offset:-3px}
 #unified .v18-screenhint{font-size:10px;color:#97bdba}
+.shell > .foot{display:none!important}
 @media(min-width:761px){
  #unified .v18-command{align-items:end}
  #unified .v18-command .u-dock-key{display:flex;align-items:center;gap:5px;flex:0 0 auto}
@@ -1414,8 +1415,7 @@ drawList();drawSelection();
  #unified .v18-app-nav button b{font-size:17px;line-height:20px;color:#d7f3e9;font-weight:500}
  #unified .v18-app-nav button[aria-current=page]{background:#367568;color:#fff4d0}
  #unified .v18-app-nav button[aria-current=page] b{color:#fff0b6}
- /* The v1.7 keyboard stays in its original position and dimensions. Hide only the new nav while it is pinned. */
- body:has(#kbFloat:not([hidden])) #unified .v18-app-nav{display:none!important}
+ /* The v1.7 keyboard has always sat above a bottom rail. Keep the new navigation in that reserved area. */
  /* Both panels stay on the same document; navigation only scrolls, never replaces a view. */
 }
 @media(max-width:360px){#unified .v18-command{gap:3px}#unified .u-scale-controls{grid-template-columns:minmax(0,1fr) 27px 27px;gap:3px}#unified .v18-command .u-dock-key button{min-width:25px}#unified .v18-command .u-dock-key strong{min-width:28px;font-size:10px}#unified .u-actionsbar .u-textbutton{font-size:10px}#unified .u-stage-card .compose-actions .btn{font-size:9px}}
