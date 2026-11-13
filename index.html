@@ -833,9 +833,9 @@ function renderTextPCM(text,{sr=24000,pace=1,params=state.params,maxSegments=420
   if(seg.type==='v'){
    const v=VOWELS.find(x=>x.id===seg.id)||VOWELS[0],sec=(v.length===1?.235:.34)/pace;
    const prev=parsed.segments[j-1],prevName=prev?.type==='c'?prev.name:null;
-   const onset=vowelOnsetFromConsonant(prevName,v.f);
+   const tuned=effectiveFormants(v),onset=vowelOnsetFromConsonant(prevName,tuned);
    const prevTraits=prevName?segmentFeatures(prevName):null;
-   const pcm=makePCM(v,{sr,params:{...params,attack:6,release:72,depth:0},kind:'one',seconds:sec,normalize:true,
+   const pcm=makePCM(v,{sr,params:{...params,attack:6,release:72,depth:0},kind:'one',seconds:sec,normalize:true,formants:tuned,
     onsetFormants:onset,onsetBreath:prevTraits?.breathy?.42:prevTraits?.aspirated?.20:0});
    audio=pcm.data;
   }else if(seg.type==='c'){gesture=articulationGesture(seg.name,pace);audio=makeConsonantPCM(seg.name,sr,params,pace);}
@@ -1077,9 +1077,9 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
 .svara-footer{font-size:10px;color:#95b6c3;line-height:1.3;min-height:12px}
 @media(max-width:850px){
  .svara-studio-body{grid-template-columns:1fr;grid-template-rows:minmax(160px,.91fr) minmax(0,1.09fr);gap:5px}
- .svara-figure{padding:3px 6px;flex-direction:row;align-items:stretch}
- .svara-figure svg{width:74%;height:100%;flex:1}
- .svara-figure .svara-figcap{width:25%;align-self:center;font-size:9px}
+ .svara-figure{padding:3px 6px;flex-direction:column;align-items:stretch}
+ .svara-figure svg{width:100%;height:100%;flex:1}
+ .svara-figure .svara-figcap{width:100%;align-self:stretch;font-size:9px;max-height:28px;overflow:hidden}
  .svara-controls{padding:5px;gap:3px}
  .svara-selected{min-height:38px;grid-template-columns:auto 1fr;gap:5px}
  .svara-glyph{min-width:45px;font-size:26px;padding:1px 6px}
@@ -1191,9 +1191,9 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
   bottomLip.setAttribute('transform',`translate(0 ${f(-6*closingLip)})`);
   const ph=item.name?segmentFeatures(item.name):null;
   const glottisOpen=ph?.aspirated&&(phase==='ASPIRATION'||phase==='BREATHY VOICING');
-  folds.setAttribute('transform',`translate(0 318) scale(1 ${glottisOpen?1.7:(ph?.voiced||isNasal)?.48:.85}) translate(0 -318)`);
+  folds.setAttribute('transform',`translate(0 318) scale(1 ${glottisOpen?1.7:(ph?.voiced||isNasal)?0.48:0.85}) translate(0 -318)`);
   const loud=figure.classList.contains('speaking');
-  oral.setAttribute('opacity',String(loud?(isNasal?.13:air*(phase==='CLOSURE'?.08:1)):0));
+  oral.setAttribute('opacity',String(loud?(isNasal?0.13:air*(phase==='CLOSURE'?0.08:1)):0));
   nasal.setAttribute('opacity',String(loud&&isNasal?air*.95:0));
   gestureReadout.textContent=phase;
  }
