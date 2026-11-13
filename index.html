@@ -1060,6 +1060,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
   vowel:'An open vocal tract produces a sustained resonant vowel.'
  };
  const coords={velar:[154,133],palatal:[189,132],retroflex:[224,131],dental:[278,150],labial:[302,177],glottal:[109,227],nasal:[168,142],vowel:[215,178]};
+ const ipa={k:'k',kh:'kʰ',g:'ɡ',gh:'ɡʱ','ṅ':'ŋ',c:'t͡ʃ',ch:'t͡ʃʰ',j:'d͡ʒ',jh:'d͡ʒʱ','ñ':'ɲ','ṭ':'ʈ','ṭh':'ʈʰ','ḍ':'ɖ','ḍh':'ɖʱ','ṇ':'ɳ',t:'t̪',th:'t̪ʰ',d:'d̪',dh:'d̪ʱ',n:'n̪',p:'p',ph:'pʰ',b:'b',bh:'bʱ',m:'m'};
  const grid=document.getElementById('svaraVargas'),vowel=document.getElementById('svaraVowel');
  const consonants=C_GROUPS.slice(0,5);
  const entries=[];
@@ -1070,7 +1071,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
    const obj={dev:part[0],name:part[1],place:names[row],grade:n};
    entries.push(obj);
    const btn=document.createElement('button');btn.type='button';btn.dataset.phone=obj.name;
-   btn.setAttribute('aria-label',obj.dev+' '+obj.name+', '+obj.place+', '+(n===1||n===3?'aspirated':'unaspirated'));
+   btn.setAttribute('aria-label',obj.dev+' '+obj.name+', '+obj.place+', '+(['voiceless unaspirated','voiceless aspirated','voiced unaspirated','voiced aspirated','nasal'][n]));
    btn.setAttribute('aria-pressed','false');
    const glyph=document.createElement('b');glyph.lang='sa';glyph.textContent=obj.dev;
    const roman=document.createElement('small');roman.textContent=obj.name;
@@ -1090,7 +1091,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
   const [x,y]=coords[place]||coords.vowel;
   const up=place==='velar'?138:place==='palatal'?130:place==='retroflex'?126:place==='dental'?145:place==='labial'?188:175;
   document.getElementById('svaraGlyph').textContent=item.dev||'अ';
-  document.getElementById('svaraRoman').textContent=item.type==='v'?(item.iast+' · /'+item.ipa+'/'):(item.name+'a · /'+item.name+'/');
+  document.getElementById('svaraRoman').textContent=item.type==='v'?(item.iast+' · /'+item.ipa+'/'):(item.name+'a · /'+(ipa[item.name]||item.name)+'/');
   let detail=description[place]||description.vowel;
   if(item.grade!==undefined){
    const grade=['voiceless · unaspirated','voiceless · aspirated','voiced · unaspirated','voiced · aspirated','nasal'][item.grade];
