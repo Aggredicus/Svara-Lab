@@ -2,6 +2,14 @@
 
 Offline, touch-first Sanskrit formant synthesizer and two-thumb gesture composer.
 
+## Articulation Studio (experimental development branch, 2026-11-13)
+
+The **◎ Voice** home screen now places an original vocal-tract cutaway at the center of the interface. Tap a consonant in the five Sanskrit vargas, explore the tongue/velum position and release type, or select one of the 14 vowels. Hear the generated letter, inspect the live audio trace, and play a whole composition; **⌨ Type** preserves the compact two-thumb keyboard.
+
+This first step is inspired by the architecture of [CHIMERA Vocal Synth](https://github.com/Aggredicus/chimera-vocal-synth), which is MIT-licensed (Jameson Hodge, 2026). No CHIMERA code or assets have been copied into Svara Lab. Svara's existing GPL-3.0 source/filter synthesis remains fully offline in a single HTML file. Sanskrit articulation, voiced aspiration, stop releases, anusvāra and Roman IAST parsing are better distinguished, but **the diagram is qualitative and the synthetic pronunciation is not validated by Sanskrit speakers**. Full physical vocal-tract modeling through CHIMERA's Rust/WASM engine is a separately scoped future step.
+
+See [implementation review, source attribution and roadmap](docs/CHIMERA_ARTICULATION_INTEGRATION.md). Offline tests: `node qa/2026-11-13/test_articulation.mjs`.
+
 ## Quick start
 
 Open **[index.html](./index.html)** in a modern browser. No account, network access, build step, installation, or package manager is needed. The audio engine needs a user tap to start in many browsers. For GitHub Pages, deploy the repository root on the default branch after reviewing and merging this release.
