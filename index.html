@@ -772,7 +772,14 @@ function makeConsonantPCM(name,sr,params,pace){
  return out;
 }
 function renderTextPCM(text,{sr=24000,pace=1,params=state.params,maxSegments=420}={}){
- const parsed=parseSanskritText(text);if(!parsed.segments.length)throw Error('Enter Sanskrit text first');if(parsed.segments.length>maxSegments)throw Error('Phrase is too long. Use 420 phonemes or fewer per render.');
+ const parsed=parseSanskritText(text);if(!parsed.segments.length)throw Error('Enter Sanskrit text first');
+ // Anusvāra adapts its nasal place before a following stop; preserve written spelling.
+ for(let i=0;i<parsed.segments.length-1;i++){
+  if(parsed.segments[i].name!=='ṃ')continue;
+  const next=parsed.segments[i+1];if(next.type!=='c')continue;
+  const place=ARTIC_PLACE[next.name];const native={velar:'ṅ',palatal:'ñ',retroflex:'ṇ',dental:'n',labial:'m'}[place];
+  if(native)parsed.segments[i]={...parsed.segments[i],name:native,original:'ṃ'};
+ }if(parsed.segments.length>maxSegments)throw Error('Phrase is too long. Use 420 phonemes or fewer per render.');
  const clips=[];let estDuration=0;for(const seg of parsed.segments){let audio;if(seg.type==='v'){const v=VOWELS.find(x=>x.id===seg.id)||VOWELS[0],sec=(v.length===1?.19:.30)/pace;const pcm=makePCM(v,{sr,params:{...params,attack:8,release:85},kind:'one',seconds:sec,normalize:true});audio=pcm.data}
  else if(seg.type==='c')audio=makeConsonantPCM(seg.name,sr,params,pace);
  else audio=new Float32Array(Math.ceil(sr*seg.sec/pace));clips.push(audio);estDuration+=audio.length/sr;
@@ -1123,11 +1130,11 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
  function focusText(text){try{const seg=parseSanskritText(text).segments.find(s=>s.type==='c'||s.type==='v');focusSegment(seg)}catch(_){}}
  function track(pcm,source,manual=false){
   renderStamp++;
-  active={pcm,source,manual,stamp:renderStamp,start:source.context.currentTime};
+  active={pcm,source,manual,stamp:renderStamp,start:source.context.currentTime,index:-1,restore:current};
   figure.classList.add('speaking');
   source.addEventListener('ended',()=>{if(active?.source===source)stop()},{once:true});
  }
- function stop(){active=null;figure.classList.remove('speaking');status.textContent='READY · LOCAL'}
+ function stop(){const former=active;active=null;if(former?.manual&&former.source){try{former.source.stop()}catch(_){}}if(former?.restore)select(former.restore);figure.classList.remove('speaking');status.textContent='READY · LOCAL'}
  function render(){
   requestAnimationFrame(render);
   if(document.hidden)return;
@@ -1136,7 +1143,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
    const now=Math.max(0,(source.context.currentTime-start)*source.playbackRate.value);
    const times=pcm.timeline||[];
    let index=0;for(let i=0;i<times.length;i++){if(times[i]<=now)index=i;else break}
-   focusSegment(pcm.segments[index]);
+   if(index!==active.index){active.index=index;focusSegment(pcm.segments[index])}
    if(now>pcm.duration+0.07)stop();
   }
   if(analyser && active){
