@@ -24,3 +24,7 @@ jobs:
         run: node qa/2026-11-13/test_articulation.mjs
       - name: Verify audible phoneme contrasts and timed anatomy
         run: node qa/2026-11-13/test_phoneme_dynamics.mjs
+      - name: Install headless Chrome test harness
+        run: npm install --no-save playwright@1.56.1
+      - name: Smoke test audio and animation on mobile Chrome
+        run: node qa/2026-11-13/test_browser.mjs
