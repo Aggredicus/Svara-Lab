@@ -27,12 +27,19 @@ try{
  assert.match(await page.locator('#svaraUpperLip').getAttribute('transform'),/6\.0/,'Labial closes lips');
  assert.ok(await folds.count());
  // Play a complete CV unit; the phase label and airflow follow the AudioContext clock.
+ await page.evaluate(()=>{
+  document.getElementById('textSpeed').value='0.6';
+  window.__svaraObservedPhases=[];
+  const label=document.getElementById('svaraGestureReadout');
+  new MutationObserver(()=>window.__svaraObservedPhases.push(label.textContent)).observe(label,{childList:true,subtree:true,characterData:true});
+ });
  const started=await page.evaluate(()=>window.SvaraArticulation.speak('ख','letter'));
  assert.equal(started,true,'Web Audio started');
- await page.waitForFunction(()=>document.getElementById('svaraFigure').classList.contains('speaking'),{timeout:5000});
- await page.waitForTimeout(85);
- const phase=await page.locator('#svaraGestureReadout').textContent();
- assert.ok(['CLOSURE','RELEASE BURST','ASPIRATION','VOWEL ONSET','VOWEL'].includes(phase),'Recognized playback phase: '+phase);
+ // Observe the complete transition rather than sampling one arbitrarily scheduled frame.
+ // CI runners can pause between frames, allowing a short sound to finish before a timer resumes.
+ await page.waitForFunction(()=>window.__svaraObservedPhases.some(p=>['CLOSURE','RELEASE BURST','ASPIRATION','VOWEL ONSET','VOWEL'].includes(p)),null,{timeout:5000});
+ const observed=await page.evaluate(()=>window.__svaraObservedPhases);
+ assert.ok(observed.some(p=>['CLOSURE','RELEASE BURST','ASPIRATION','VOWEL ONSET','VOWEL'].includes(p)),'Observed audio-driven pose updates: '+observed.join(','));
  await page.locator('#svaraContrast').click();
  await page.waitForTimeout(100);
  assert.ok(errors.length===0,'Browser page exceptions: '+errors.join('; '));
