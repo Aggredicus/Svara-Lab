@@ -1117,7 +1117,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
   nasal:'The velum lowers to allow airflow through the nose.',
   vowel:'An open vocal tract produces a sustained resonant vowel.'
  };
- const coords={velar:[154,133],palatal:[189,132],retroflex:[224,131],dental:[278,150],labial:[302,177],glottal:[109,227],nasal:[168,142],vowel:[215,178]};
+ const coords={velar:[355,176],palatal:[269,174],retroflex:[217,180],dental:[179,184],labial:[135,201],glottal:[422,316],nasal:[389,183],vowel:[283,198]};
  const ipa={k:'k',kh:'kʰ',g:'ɡ',gh:'ɡʱ','ṅ':'ŋ',c:'t͡ʃ',ch:'t͡ʃʰ',j:'d͡ʒ',jh:'d͡ʒʱ','ñ':'ɲ','ṭ':'ʈ','ṭh':'ʈʰ','ḍ':'ɖ','ḍh':'ɖʱ','ṇ':'ɳ',t:'t̪',th:'t̪ʰ',d:'d̪',dh:'d̪ʱ',n:'n̪',p:'p',ph:'pʰ',b:'b',bh:'bʱ',m:'m'};
  const grid=document.getElementById('svaraVargas'),vowel=document.getElementById('svaraVowel');
  const consonants=C_GROUPS.slice(0,5);
@@ -1140,14 +1140,67 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
  }
  for(const v of VOWELS){const opt=new Option(v.dev+' '+v.iast+' /'+v.ipa+'/',v.id);vowel.appendChild(opt)}
  let current=entries[0],active=null,renderStamp=0;
- const contact=document.getElementById('svaraContact'),tongue=document.getElementById('svaraTongue'),velum=document.getElementById('svaraVelum');
+
+ const contact=document.getElementById('svaraContact'),halo=document.getElementById('svaraContactHalo');
+ const tongue=document.getElementById('svaraTongue'),fibers=document.getElementById('svaraTongueFibers');
+ const velum=document.getElementById('svaraVelum'),oral=document.getElementById('svaraOralFlow'),nasal=document.getElementById('svaraNasalFlow');
+ const topLip=document.getElementById('svaraUpperLip'),bottomLip=document.getElementById('svaraLowerLip');
+ const folds=document.getElementById('svaraVocalFolds'),gestureReadout=document.getElementById('svaraGestureReadout');
  const trace=document.getElementById('svaraTrace'),figure=document.getElementById('svaraFigure'),status=document.getElementById('svaraStudioStatus');
+ const REST={tx:173,ty:222,mx:283,my:202,bx:353,by:214};
+ const POSES={
+  velar:{tx:173,ty:215,mx:294,my:183,bx:351,by:172},
+  palatal:{tx:174,ty:211,mx:267,my:177,bx:354,by:207},
+  retroflex:{tx:218,ty:181,mx:276,my:204,bx:354,by:214},
+  dental:{tx:177,ty:186,mx:266,my:205,bx:353,by:213},
+  labial:{tx:173,ty:223,mx:281,my:204,bx:351,by:216},
+  nasal:{tx:174,ty:213,mx:283,my:194,bx:352,by:185},
+  glottal:REST,vowel:REST
+ };
+ function anatomyPlace(item){return item.place||(item.type==='v'?'vowel':ARTIC_PLACE[item.name]||'vowel')}
+ function visualGesture(gesture,elapsed){
+  if(!gesture)return {phase:'VOWEL',drive:.25,air:.75};
+  if(!gesture.stop)return {phase:gesture.nasal?'NASAL AIRFLOW':gesture.sonorant?'RESONANCE':'FRICATION',drive:gesture.nasal?.85:.45,air:.85};
+  if(elapsed<gesture.closure)return {phase:'CLOSURE',drive:smooth(elapsed/.028),air:0};
+  const burstAt=elapsed-gesture.closure;
+  if(burstAt<gesture.burst)return {phase:'RELEASE BURST',drive:Math.max(.10,1-burstAt/gesture.burst),air:.84};
+  const breathAt=burstAt-gesture.burst;
+  if(breathAt<gesture.aspiration)return {phase:gesture.aspirated?(gesture.breathy?'BREATHY VOICING':'ASPIRATION'):'VOICE ONSET',drive:.14,air:.92};
+  return {phase:'VOWEL ONSET',drive:.18,air:.8};
+ }
+ function updatePose(item,drive=1,phase='CONTACT',air=0){
+  const place=anatomyPlace(item);
+  const isNasal=item.grade===4||Boolean(item.name&&segmentFeatures(item.name).nasal);
+  const vowelItem=item.type==='v'?item:null;
+  const goal=place==='vowel'&&vowelItem?
+   (/^(i|ii|e|ai)$/.test(vowelItem.id)?{tx:172,ty:215,mx:275,my:186,bx:354,by:207}:
+    /^(u|uu|o|au)$/.test(vowelItem.id)?{tx:173,ty:217,mx:279,my:202,bx:356,by:185}:REST):
+   POSES[place]||REST;
+  const v=Math.max(0,Math.min(1,drive)),mix=key=>lerp(REST[key],goal[key],v);
+  const tx=mix('tx'),ty=mix('ty'),mx=mix('mx'),my=mix('my'),bx=mix('bx'),by=mix('by'),f=n=>Number(n).toFixed(1);
+  tongue.setAttribute('d',`M${f(tx)} ${f(ty)} C${f(tx+28)} ${f(ty-19)} ${f(mx-35)} ${f(my+2)} ${f(mx)} ${f(my)} C${f(mx+35)} ${f(my-13)} ${f(bx-17)} ${f(by-10)} ${f(bx)} ${f(by)} Q380 220 394 245 L390 257 Q332 263 289 250 C241 245 203 244 173 238Z`);
+  fibers.setAttribute('d',`M${f(tx+14)} ${f(ty+6)} Q${f(mx-6)} ${f(my+3)} ${f(bx+8)} ${f(by+20)} M${f(tx+28)} ${f(ty+14)} Q${f(mx+20)} ${f(my+19)} 367 244`);
+  const [cx,cy]=coords[place]||coords.vowel;
+  contact.setAttribute('cx',String(cx));contact.setAttribute('cy',String(cy));
+  halo.setAttribute('cx',String(cx));halo.setAttribute('cy',String(cy));
+  halo.setAttribute('opacity',place==='vowel'?'.20':String(.25+.75*v));
+  halo.setAttribute('r',String(7+6*v));
+  velum.setAttribute('transform',`rotate(${isNasal?19*v:0} 357 166)`);
+  const closingLip=place==='labial'?v:0;
+  topLip.setAttribute('transform',`translate(0 ${f(6*closingLip)})`);
+  bottomLip.setAttribute('transform',`translate(0 ${f(-6*closingLip)})`);
+  const ph=item.name?segmentFeatures(item.name):null;
+  const glottisOpen=ph?.aspirated&&(phase==='ASPIRATION'||phase==='BREATHY VOICING');
+  folds.setAttribute('transform',`translate(0 318) scale(1 ${glottisOpen?1.7:(ph?.voiced||isNasal)?.48:.85}) translate(0 -318)`);
+  const loud=figure.classList.contains('speaking');
+  oral.setAttribute('opacity',String(loud?(isNasal?.13:air*(phase==='CLOSURE'?.08:1)):0));
+  nasal.setAttribute('opacity',String(loud&&isNasal?air*.95:0));
+  gestureReadout.textContent=phase;
+ }
  function select(item){
   if(!item)return;
   current=item;
-  const place=item.place||(item.type==='v'?'vowel':ARTIC_PLACE[item.name]||'vowel');
-  const [x,y]=coords[place]||coords.vowel;
-  const up=place==='velar'?138:place==='palatal'?130:place==='retroflex'?126:place==='dental'?145:place==='labial'?188:175;
+  const place=anatomyPlace(item);
   document.getElementById('svaraGlyph').textContent=item.dev||'अ';
   document.getElementById('svaraRoman').textContent=item.type==='v'?(item.iast+' · /'+item.ipa+'/'):(item.name+'a · /'+(ipa[item.name]||item.name)+'/');
   let detail=description[place]||description.vowel;
@@ -1156,12 +1209,9 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
    detail=grade+'. '+detail;
   }else if(item.type==='v')detail=item.tip||detail;
   document.getElementById('svaraArticDescription').textContent=detail;
-  document.getElementById('svaraFigureCaption').textContent=description[place]||description.vowel;
+  document.getElementById('svaraFigureCaption').textContent=(description[place]||description.vowel)+' Observe closure, release and airflow during playback.';
   document.getElementById('svaraPlaceLabel').textContent=place.toUpperCase();
-  contact.setAttribute('cx',String(x));contact.setAttribute('cy',String(y));
-  tongue.setAttribute('d','M113 210 C146 196 '+(x-50)+' '+(up+17)+' '+x+' '+up+' C'+(x+27)+' '+(up-3)+' 270 183 285 189 L286 211 Q220 221 113 228Z');
-  velum.setAttribute('transform',item.grade===4?'rotate(21 174 125)':'rotate(0 174 125)');
-  document.getElementById('svaraGlottis').setAttribute('height',item.grade===1||item.grade===3?'17':'10');
+  if(!active)updatePose(item,1,'CONTACT',0);
   grid.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.phone===item.name && item.type!=='v')));
   if(item.type==='v'){vowel.value=item.id;state.selected=item.id;refresh()}
  }
@@ -1174,7 +1224,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
    const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;gain.gain.value=.8;
    source.connect(gain).connect(analyser);
    source.start();track(pcm,source,true);
-   status.textContent=kind==='phrase'?'SPEAKING PHRASE':'PRONOUNCING';
+   status.textContent=kind==='phrase'?'SPEAKING PHRASE':kind==='contrast'?'LISTEN FOR THE CONTRAST':'PRONOUNCING';
    source.addEventListener('ended',()=>{try{gain.disconnect()}catch(_){}},{once:true});
    return true;
   }catch(e){status.textContent='AUDIO UNAVAILABLE';notify('Articulation audio: '+e.message);return false}
@@ -1193,7 +1243,7 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
   figure.classList.add('speaking');
   source.addEventListener('ended',()=>{if(active?.source===source)stop()},{once:true});
  }
- function stop(){const former=active;active=null;if(former?.manual&&former.source){try{former.source.stop()}catch(_){}}if(former?.restore)select(former.restore);figure.classList.remove('speaking');status.textContent='READY · LOCAL'}
+ function stop(){const former=active;active=null;if(former?.manual&&former.source){try{former.source.stop()}catch(_){}}if(former?.restore)select(former.restore);figure.classList.remove('speaking');updatePose(current,1,'CONTACT',0);status.textContent='READY · LOCAL'}
  function render(){
   requestAnimationFrame(render);
   if(document.hidden)return;
@@ -1203,17 +1253,30 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
    const times=pcm.timeline||[];
    let index=0;for(let i=0;i<times.length;i++){if(times[i]<=now)index=i;else break}
    if(index!==active.index){active.index=index;focusSegment(pcm.segments[index])}
+   const seg=pcm.segments[index],gesture=pcm.gestures?.[index],elapsed=now-times[index];
+   const action=seg?.type==='v'?{phase:'VOWEL',drive:.7,air:.78}:seg?.type==='p'?{phase:'PAUSE',drive:0,air:0}:visualGesture(gesture,elapsed);
+   updatePose(current,action.drive,action.phase,action.air);
    if(now>pcm.duration+0.07)stop();
   }
   if(analyser && active){
    const samples=new Uint8Array(analyser.fftSize);analyser.getByteTimeDomainData(samples);
    let p='';for(let i=0;i<75;i++){const sample=samples[Math.floor(i*(samples.length-1)/74)]||128;
-    const x=338+i*1.12,y=150+(sample-128)*.46;
+    const x=487+i*1.56,y=113+(sample-128)*.27;
     p+=(i?' L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
    trace.setAttribute('d',p);
-  }else trace.setAttribute('d','M338 150 L420 150');
+  }else trace.setAttribute('d','M487 113 L605 113');
  }
- document.getElementById('svaraHear').addEventListener('click',()=>speak(current.type==='v'?current.dev:current.dev,'letter'));
+ document.getElementById('svaraHear').addEventListener('click',()=>speak(current.dev,'letter'));
+ document.getElementById('svaraContrast').addEventListener('click',()=>{
+  if(current.type==='v'){
+   const second=VOWELS.find(v=>v.id===(current.id==='a'?'aa':'a'))||VOWELS[0];
+   return speak(current.dev+' '+second.dev+' '+current.dev,'contrast');
+  }
+  const row=consonants.find(g=>g.parts.some(p=>p?.[1]===current.name));
+  if(!row)return speak(current.dev,'letter');
+  const n=row.parts.findIndex(p=>p?.[1]===current.name),partner=row.parts[n===0?1:n===1?0:n===2?3:n===3?2:2];
+  speak(current.dev+' '+partner[0]+' '+current.dev,'contrast');
+ });
  document.getElementById('svaraSpeak').addEventListener('click',()=>{
   const phrase=composer.text.trim();if(!phrase){notify('Type Sanskrit in the Type tab first');window.SvaraCockpit.activate('compose');return}
   speak(phrase,'phrase');
