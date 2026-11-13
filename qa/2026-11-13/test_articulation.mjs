@@ -12,7 +12,7 @@ const html=readFileSync(resolve(here,'../../index.html'),'utf8');
 const scripts=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
 assert.ok(scripts.length>=4,'Main studio + support scripts are present');
 for(const src of scripts)new vm.Script(src); // parse every script, without requiring a browser
-assert.match(html,/id="svaraVargas"/);
+assert.match(html,/svaraVargas/); // The studio UI is a JSON-encoded template within the final script.
 assert.match(html,/svara-artic-script/);
 assert.match(html,/SvaraCockpit\.activate\('all'\)/);
 assert.ok(!/<script[^>]+\bsrc=/.test(html),'No fetched script dependency');
