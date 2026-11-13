@@ -2,13 +2,19 @@
 
 Offline, touch-first Sanskrit formant synthesizer and two-thumb gesture composer.
 
-## Articulation Studio (experimental development branch, 2026-11-13)
+## Articulation Studio — timed anatomy and contrast synthesis (2026-11-13)
 
-The **◎ Voice** home screen now places an original vocal-tract cutaway at the center of the interface. Tap a consonant in the five Sanskrit vargas, explore the tongue/velum position and release type, or select one of the 14 vowels. Hear the generated letter, inspect the live audio trace, and play a whole composition; **⌨ Type** preserves the compact two-thumb keyboard.
+**◎ Voice** is the default home screen and retains the existing compact Sanskrit keyboard under **⌨ Type**. The sagittal human head, teeth, palate, nasal cavity, tongue, velum, epiglottis, pharynx, larynx and vocal folds are redrawn as an original SVG (no licensed anatomical image copied). Its geometry is an **anatomically informed instructional approximation**; it is **not scaled or registered from an individual human CT/MRI scan**.
 
-This first step is inspired by the architecture of [CHIMERA Vocal Synth](https://github.com/Aggredicus/chimera-vocal-synth), which is MIT-licensed (Jameson Hodge, 2026). No CHIMERA code or assets have been copied into Svara Lab. Svara's existing GPL-3.0 source/filter synthesis remains fully offline in a single HTML file. Sanskrit articulation, voiced aspiration, stop releases, anusvāra and Roman IAST parsing are better distinguished, but **the diagram is qualitative and the synthetic pronunciation is not validated by Sanskrit speakers**. Full physical vocal-tract modeling through CHIMERA's Rust/WASM engine is a separately scoped future step.
+Tap any of the 25 Sanskrit varga consonants. An audio-clock-driven gestural score animates the tongue, labial closure, velum, visible glottal opening and oral/nasal airflow through stop closure, burst, aspiration and following vowel. The **⇄ Compare** button alternates a consonant with its adjacent voicing/aspiration contrast; nasals compare with the corresponding voiced stop. Vowels adjust tongue height/backness in the visualization. The tracing waveform is read from Web Audio's analyser.
 
-See [implementation review, source attribution and roadmap](docs/CHIMERA_ARTICULATION_INTEGRATION.md). Offline tests: `node qa/2026-11-13/test_articulation.mjs`.
+A revised deterministic **on-device source/filter speech renderer** now uses spectral burst-place differences (velar, palatal affricate, retroflex, dental, bilabial), weak prevoicing for voiced stops, aspiration duration, breathy/murmured voicing for voiced aspirates, nasal place-dependent resonances with approximate antiresonances, and consonant-to-vowel formant transitions. The audio and SVG share timing metadata. This intentionally remains an *acoustically informed model*, not a physically calibrated simulation, native-speaker reference recording, or production-quality Sanskrit TTS. **Listening validation with Sanskrit experts is essential** before teaching precise pronunciation.
+
+All source remains a **single offline index.html** without remote runtime dependencies, user uploads or analytics. The user-provided image concept was treated as a visual reference; the shipped anatomical SVG is independently authored. CHIMERA Vocal Synth remains an architectural reference; neither its Rust FDTD engine nor its external assets are bundled.
+
+**Automated checks:** `node qa/2026-11-13/test_articulation.mjs` and `node qa/2026-11-13/test_phoneme_dynamics.mjs`. A CI-only Playwright/Chromium mobile test exercises live geometry, audio, comparison and 390px viewport. Tests cannot verify native pronunciation authenticity.
+
+Sources, licensing, phonetic choices, limitations and upgrade plans: [CHIMERA integration report](docs/CHIMERA_ARTICULATION_INTEGRATION.md).
 
 ## Quick start
 
