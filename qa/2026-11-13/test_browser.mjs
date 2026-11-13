@@ -36,5 +36,16 @@ try{
  await page.locator('#svaraContrast').click();
  await page.waitForTimeout(100);
  assert.ok(errors.length===0,'Browser page exceptions: '+errors.join('; '));
- console.log('PASS — mobile Chrome loaded, 25 sounds, anatomical gestures, velum, lips, audio and comparison; width '+dimensions.scrollWidth);
+ const desktop=await browser.newPage({viewport:{width:1440,height:900}});
+ desktop.on('pageerror',e=>errors.push('desktop: '+e.message));
+ await desktop.goto('file://'+resolve(root,'index.html'),{waitUntil:'load'});
+ assert.equal(await desktop.locator('#svaraVargas button').count(),25);
+ const fig=await desktop.locator('#svaraFigure svg').boundingBox();
+ assert.ok(fig.width>300 && fig.height>150,'Desktop head illustration visible: '+JSON.stringify(fig));
+ const wide=await desktop.evaluate(()=>({viewport:innerWidth,body:document.documentElement.scrollWidth}));
+ assert.ok(wide.body<=wide.viewport+3,'Desktop horizontal overflow');
+ await desktop.locator('#svaraType').click();
+ await desktop.locator('#consonantFlick').waitFor();
+ assert.ok(errors.length===0,'Page errors: '+errors.join('; '));
+ console.log('PASS — mobile and desktop Chrome; 25 sounds, anatomical gestures, velum, lips, audio and comparison; widths '+dimensions.scrollWidth+'/'+wide.body);
 }finally{await browser.close()}
