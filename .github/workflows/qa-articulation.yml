@@ -1,0 +1,26 @@
+name: Articulation regression tests
+on:
+  push:
+    branches:
+      - main
+      - feat/animated-anatomical-phonetics
+    paths:
+      - index.html
+      - 'qa/**'
+      - '.github/workflows/qa-articulation.yml'
+  pull_request:
+    paths:
+      - index.html
+      - 'qa/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-phonetics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original articulation tests
+        run: node qa/2026-11-13/test_articulation.mjs
+      - name: Verify audible phoneme contrasts and timed anatomy
+        run: node qa/2026-11-13/test_phoneme_dynamics.mjs
