@@ -404,19 +404,20 @@ function makePCM(v,opts={}){
  const isLoop=kind==='loop',nSec=isLoop?(opts.seconds||state.loopSeconds):(opts.seconds||(v.length===1?state.shortSeconds:state.longSeconds));
  const release=Math.max(.025,params.release/1000),total=isLoop?nSec+release+.10:nSec;const n=Math.ceil(total*sr),pcm=new Float32Array(n);
  const formShift=Math.pow(2,params.tract/100),isDiphthong=Boolean(v.end),end=v.end||form;
+ const onsetFormants=opts.onsetFormants||null,onsetBreath=opts.onsetBreath||0;
  const vibRate=params.vibrato/10,vibAmt=params.depth,op=params.openness/100;
  const br=params.brightness/100,breath=params.breath/100;let phase=0,noiseState=0,seed=0x918afed1,lp=0;
  const banks=[biquad(form[0]*formShift,75,sr),biquad(form[1]*formShift,120,sr),biquad(form[2]*formShift,190,sr)];
  let loopStart=0,loopEnd=0;const att=params.attack/1000,shorter=Math.max(.012,Math.min(att,total*.22));let maxAbs=0;
  for(let i=0;i<n;i++){
  const t=i/sr,within=Math.min(t,nSec),morph=isDiphthong?smooth((t-.10)/Math.max(.15,isLoop?.36:nSec*.63)):0;
- if((i&127)===0){for(let j=0;j<3;j++){const f=lerp(form[j],end[j],morph)*formShift;const old=banks[j],nw=biquad(f,[75,120,190][j]*(1+.3*(1-br)),sr);nw.x1=old.x1;nw.x2=old.x2;nw.y1=old.y1;nw.y2=old.y2;banks[j]=nw}}
+ if((i&127)===0){for(let j=0;j<3;j++){const baseF=lerp(form[j],end[j],morph);const f=lerp(baseF,onsetFormants?onsetFormants[j]:baseF,Math.exp(-t/.060))*formShift;const old=banks[j],nw=biquad(f,[75,120,190][j]*(1+.3*(1-br)),sr);nw.x1=old.x1;nw.x2=old.x2;nw.y1=old.y1;nw.y2=old.y2;banks[j]=nw}}
  const pitch=base*Math.pow(2,(vibAmt*Math.sin(2*Math.PI*vibRate*t)/1200));const d=clamp(pitch/sr,.001,.035);phase+=d;if(phase>=1)phase-=1;
  // PolyBLEP saw with open-quotient body / periodic burst excitation.
  const saw=2*phase-1-polyBlep(phase,d);const glottal=Math.sin(Math.PI*Math.min(phase/op,1))**2*(phase<op?1:0);
  const osc=(.32+.65*br)*saw+(.67-.37*br)*(glottal-.32);
  seed=(Math.imul(seed,1664525)+1013904223)>>>0;const white=(seed/4294967296-.5)*2;noiseState=.85*noiseState+.15*white;
- const exc=osc + breath*(.22*white+.38*noiseState);
+ const exc=osc + (breath+onsetBreath*Math.exp(-t/.075))*(.22*white+.38*noiseState);
  // Gentle preemphasis: adds upper harmonics without external plugin / network.
  lp=lp*.65+exc*.35;const source=exc*(.6+.4*br)+(.25*br)*(exc-lp);
  const f1=filterStep(banks[0],source),f2=filterStep(banks[1],source),f3=filterStep(banks[2],source);
@@ -732,45 +733,92 @@ function segmentFeatures(name){
   // Distinguish a voiced aspirated stop (breathy release) from a voiceless aspirated stop.
   breathy:aspirated&&voiced};
 }
+
+/* Timed acoustic gestures share one plan with the animation. These are phonetic
+   approximations, not a reconstructed vocal tract, reference recording, or FDTD. */
+const PLACE_ACOUSTICS={
+ velar:{burst:2350,bw:950,asp:1450,nasal:[260,1130,2210],onset:[620,1800,2600]},
+ palatal:{burst:3700,bw:1250,asp:3500,nasal:[255,1810,2780],onset:[395,2580,3170]},
+ retroflex:{burst:1900,bw:700,asp:2100,nasal:[255,1280,1890],onset:[470,1290,1810]},
+ dental:{burst:4700,bw:1450,asp:3500,nasal:[260,1570,2510],onset:[490,1830,2830]},
+ labial:{burst:1050,bw:1450,asp:1150,nasal:[250,840,1980],onset:[460,930,2260]},
+ glottal:{burst:1600,bw:1000,asp:1450,nasal:[245,1100,2100],onset:[570,1440,2380]}
+};
+function articulationGesture(name,pace=1){
+ const ph=segmentFeatures(name),speed=Math.max(.45,Number(pace)||1);
+ if(ph.stop){
+  const closure=(ph.voiced?.075:.067)/speed;
+  const burst=(ph.place==='palatal'?.046:.013)/speed; // palatal c/j are affricated.
+  const aspiration=(ph.aspirated?(ph.voiced?.092:.125):ph.voiced?.013:.025)/speed;
+  const transition=.026/speed;
+  return {name,...ph,closure,burst,aspiration,transition,
+   total:closure+burst+aspiration+transition};
+ }
+ const total=(ph.nasal?.195:ph.sonorant?.145:.165)/speed;
+ return {name,...ph,closure:0,burst:0,aspiration:0,transition:total,total};
+}
+function vowelOnsetFromConsonant(name,formants){
+ const ph=segmentFeatures(name),model=PLACE_ACOUSTICS[ph.place];
+ if(!model||(!ph.stop&&!ph.nasal))return null;
+ return formants.map((f,i)=>lerp(f,model.onset[i],i===0?.32:i===1?.50:.40));
+}
 function makeConsonantPCM(name,sr,params,pace){
- const ph=segmentFeatures(name);
- const sec=(ph.stop?(ph.aspirated?.158:.103):ph.nasal?.146:ph.sonorant?.102:.132)/Math.max(.45,pace);
- const n=Math.max(32,Math.ceil(sec*sr)),out=new Float32Array(n);
+ const gesture=articulationGesture(name,pace),ph=gesture,n=Math.max(32,Math.ceil(gesture.total*sr)),out=new Float32Array(n);
+ const model=PLACE_ACOUSTICS[ph.place]||PLACE_ACOUSTICS.glottal;
+ const frequency=clamp(Number(params.pitch)||196,75,420),tau=Math.PI*2;
+ let seed=(0xA327C91+Array.from(name).reduce((sum,c)=>sum+c.codePointAt(0),0))>>>0;
+ let low=0,phase=0,prev=0;
+ const peakFilter=biquad(Math.min(sr*.43,model.burst),model.bw,sr);
+ const airyFilter=biquad(Math.min(sr*.43,model.asp),Math.max(500,model.bw*1.35),sr);
  if(ph.nasal||ph.sonorant){
-  const formants=ph.nasal?[245,950,1990]:name==='r'?[490,1280,2160]:name==='y'?[310,2190,2950]:name==='v'?[320,1120,2380]:[400,1460,2580];
-  const rendered=makePCM(VOWELS[0],{sr,params:{...params,attack:6,release:35,depth:0},formants,kind:'one',seconds:sec,normalize:true});
-  for(let i=0;i<n;i++){const t=i/n,fade=smooth(Math.min(t/.11,(1-t)/.14,1));out[i]=(rendered.data[i]||0)*fade*(ph.nasal?.36:.46)}
+  const formants=ph.nasal?model.nasal:name==='r'?[480,1180,1700]:name==='y'?[300,2380,3000]:name==='v'?[330,1000,2160]:[420,1440,2400];
+  const rendered=makePCM(VOWELS[0],{sr,params:{...params,attack:6,release:36,depth:0,breath:3},formants,kind:'one',seconds:gesture.total,normalize:true});
+  const antiDelay=Math.max(1,Math.round(sr/({velar:980,palatal:1320,retroflex:1580,dental:2050,labial:2650}[ph.place]||1450)));
+  for(let i=0;i<n;i++){
+   const t=i/(n-1),fade=smooth(Math.min(t/.14,(1-t)/.17,1)),x=rendered.data[i]||0;
+   // Nasals have damped harmonics and an antiresonant cancellation notch.
+   const cancelled=ph.nasal?x-.38*(rendered.data[Math.max(0,i-antiDelay)]||0):x;
+   out[i]=clamp(cancelled*fade*(ph.nasal?.70:.67),-.78,.78);
+  }
   return out;
  }
- const center=Math.min(sr*.43,{velar:2050,palatal:3100,retroflex:1750,dental:3650,labial:1100,glottal:1250}[ph.place]||3000);
- const filter=biquad(center,ph.stop?850:1100,sr);
- let seed=0xA327C91,low=0,high=0,phase=0;
- const frequency=Math.max(75,params.pitch||196),closing=ph.stop?.45:0;
  for(let i=0;i<n;i++){
-  const t=i/(n-1);
+  const t=i/sr;
   seed=(Math.imul(seed,1664525)+1013904223)>>>0;
-  const noise=seed/2147483648-1;low=.85*low+.15*noise;
-  high=filterStep(filter,noise);
+  const white=seed/2147483648-1;low=.80*low+.20*white;
+  const burstNoise=filterStep(peakFilter,white);
+  const breathNoise=filterStep(airyFilter,.78*white+.22*low);
   phase+=frequency/sr;if(phase>=1)phase-=1;
-  const voicing=Math.sin(2*Math.PI*phase);
-  let sound=0;
+  const pulse=Math.sin(tau*phase)+.38*Math.sin(tau*2*phase);
+  let y=0;
   if(ph.stop){
-   const release=(t-closing)*sec;
-   // Closure -> burst -> optional prolonged turbulent air -> vowel onset.
-   const burst=Math.exp(-Math.pow(release/.006,2));
-   const aspiration=ph.aspirated&&release>0 ? Math.exp(-release/(ph.breathy?.045:.060)) : 0;
-   const closingVoice=ph.voiced&&t<closing?.064*voicing:0;
-   const breathyVoice=ph.breathy&&release>0 ? .045*voicing*Math.exp(-release/.075):0;
-   sound=closingVoice+breathyVoice+high*(.55*burst+.23*aspiration);
+   if(t<gesture.closure){
+    // Audible pre-voicing for saghoṣa, silence for aghoṣa.
+    y=ph.voiced?(.105*pulse+.023*low)*smooth(t/.016):low*.008;
+   }else if(t<gesture.closure+gesture.burst){
+    const u=(t-gesture.closure)/Math.max(.001,gesture.burst);
+    // Place-coded spectral burst, longer affrication for c/j.
+    y=burstNoise*(ph.place==='palatal'?.55*Math.sin(Math.PI*u)**.55:.82*Math.exp(-u*3))
+      +(ph.voiced?.055*pulse:0);
+   }else if(t<gesture.closure+gesture.burst+gesture.aspiration){
+    const u=(t-gesture.closure-gesture.burst)/Math.max(.001,gesture.aspiration);
+    const aspirationEnvelope=Math.pow(1-u,.45);
+    if(ph.aspirated){
+     // Voiced aspirates use breathy/murmured voicing, not just an /h/ following /g/.
+     y=aspirationEnvelope*(ph.breathy?(.24*pulse+.28*breathNoise):.56*breathNoise);
+    }else y=aspirationEnvelope*(ph.voiced?(.24*pulse+.06*breathNoise):.24*breathNoise);
+   }else{
+    y=(ph.voiced?.15*pulse:.12*breathNoise)*Math.exp(-(t-gesture.closure-gesture.burst-gesture.aspiration)/.024);
+   }
   }else{
-   const hiss=ph.place==='glottal'?(low*.40+noise*.12):high*.40;
-   sound=hiss*(.22+.78*Math.sin(Math.PI*t));
+   y=(ph.place==='glottal'?.42*low:.58*burstNoise)*Math.sin(Math.PI*t/gesture.total)**.7;
   }
-  const fade=smooth(Math.min(t/.06,(1-t)/.07,1));
-  out[i]=clamp(sound*fade,-.55,.55);
+  const fade=smooth(Math.min(t/.004,(gesture.total-t)/.009,1));
+  out[i]=clamp(y*fade,-.78,.78);
  }
  return out;
 }
+
 function renderTextPCM(text,{sr=24000,pace=1,params=state.params,maxSegments=420}={}){
  const parsed=parseSanskritText(text);if(!parsed.segments.length)throw Error('Enter Sanskrit text first');
  // Anusvāra adapts its nasal place before a following stop; preserve written spelling.
@@ -780,16 +828,27 @@ function renderTextPCM(text,{sr=24000,pace=1,params=state.params,maxSegments=420
   const place=ARTIC_PLACE[next.name];const native={velar:'ṅ',palatal:'ñ',retroflex:'ṇ',dental:'n',labial:'m'}[place];
   if(native)parsed.segments[i]={...parsed.segments[i],name:native,original:'ṃ'};
  }if(parsed.segments.length>maxSegments)throw Error('Phrase is too long. Use 420 phonemes or fewer per render.');
- const clips=[];let estDuration=0;for(const seg of parsed.segments){let audio;if(seg.type==='v'){const v=VOWELS.find(x=>x.id===seg.id)||VOWELS[0],sec=(v.length===1?.19:.30)/pace;const pcm=makePCM(v,{sr,params:{...params,attack:8,release:85},kind:'one',seconds:sec,normalize:true});audio=pcm.data}
- else if(seg.type==='c')audio=makeConsonantPCM(seg.name,sr,params,pace);
- else audio=new Float32Array(Math.ceil(sr*seg.sec/pace));clips.push(audio);estDuration+=audio.length/sr;
- if(estDuration>95)throw Error('Phrase exceeds 95 seconds. Reduce the text or increase pace.')}
+ const clips=[],gestures=[];let estDuration=0;
+ for(let j=0;j<parsed.segments.length;j++){const seg=parsed.segments[j];let audio,gesture=null;
+  if(seg.type==='v'){
+   const v=VOWELS.find(x=>x.id===seg.id)||VOWELS[0],sec=(v.length===1?.235:.34)/pace;
+   const prev=parsed.segments[j-1],prevName=prev?.type==='c'?prev.name:null;
+   const onset=vowelOnsetFromConsonant(prevName,v.f);
+   const prevTraits=prevName?segmentFeatures(prevName):null;
+   const pcm=makePCM(v,{sr,params:{...params,attack:6,release:72,depth:0},kind:'one',seconds:sec,normalize:true,
+    onsetFormants:onset,onsetBreath:prevTraits?.breathy?.42:prevTraits?.aspirated?.20:0});
+   audio=pcm.data;
+  }else if(seg.type==='c'){gesture=articulationGesture(seg.name,pace);audio=makeConsonantPCM(seg.name,sr,params,pace);}
+  else audio=new Float32Array(Math.ceil(sr*seg.sec/pace));
+  clips.push(audio);gestures.push(gesture);estDuration+=audio.length/sr;
+  if(estDuration>95)throw Error('Phrase exceeds 95 seconds. Reduce the text or increase pace.');
+ }
  const overlap=Math.round(sr*.004),lens=clips.map(c=>c.length),combinedLen=lens.reduce((acc,len,j)=>acc+len-(j?Math.min(overlap,len,clips[j-1].length):0),0);
  const result=new Float32Array(combinedLen),timestamps=[];let offset=0;
  for(let j=0;j<clips.length;j++){const clip=clips[j],ov=j?Math.min(overlap,clip.length,clips[j-1].length):0;offset-=ov;timestamps.push(offset/sr);
  for(let k=0;k<clip.length;k++){let fade=k<ov?(k/(ov||1)):1;if(j<clips.length-1&&k>=clip.length-overlap)fade=Math.min(fade,(clip.length-k)/overlap);result[offset+k]+=clip[k]*fade*.85}offset+=clip.length;}
  const edge=Math.min(Math.floor(sr*.008),Math.floor(result.length/2));for(let k=0;k<edge;k++){const w=k/edge;result[k]*=w;result[result.length-1-k]*=w}let peak=0,nonzero=0;for(const x of result){peak=Math.max(peak,Math.abs(x));if(Math.abs(x)>.001)nonzero++}if(peak>.96){const g=.96/peak;for(let i=0;i<result.length;i++)result[i]*=g}
- return {data:result,sr,kind:'one',midi:state.root,loopStart:0,loopEnd:0,segments:parsed.segments,timeline:timestamps,unsupported:parsed.unsupported,duration:result.length/sr,nonzero}}
+ return {data:result,sr,kind:'one',midi:state.root,loopStart:0,loopEnd:0,segments:parsed.segments,timeline:timestamps,unsupported:parsed.unsupported,duration:result.length/sr,nonzero,clipLengths:clips.map(c=>c.length/sr),gestures}}
 const TEXT_TRACK='speech-track';let speechEpoch=0;
 function stopComposedText(){speechEpoch++;releaseVoice(TEXT_TRACK);window.SvaraArticulation?.stop?.();$('textPlayStatus').textContent='STOPPED';}
 async function playComposedText(){const text=composer.text.trim();if(!text){notify('Type a Sanskrit word first');return false}stopComposedText();const mine=++speechEpoch;const status=$('textPlayStatus');status.textContent='RENDERING…';try{
@@ -802,7 +861,7 @@ function setupTextPlayback(){const status=$('textPlayStatus');$('playText').addE
  $('exportSpeech').addEventListener('click',()=>{try{const text=composer.text.trim();if(!text)throw Error('Type a Sanskrit phrase first');status.textContent='RENDERING WAV…';const pcm=renderTextPCM(text,{sr:32000,pace:Number($('textSpeed').value)});const blob=new Blob([wavEncode(pcm)],{type:'audio/wav'});download(blob,'SVARA_LAB_TEXT_'+new Date().toISOString().slice(0,10)+'.wav');status.textContent='WAV EXPORTED';}catch(e){status.textContent='EXPORT FAILED';notify(e.message)}});
 }
 
-window.SvaraTest={auditionLetter,runLetterAudit,previewForFlick,transliterateSanskrit,parseSanskritText,renderTextPCM,acceptTypedText,playComposedText,stopComposedText,composeEvents,composerEvent,commitFlick,C_GROUPS,V_GROUPS,MATRAS,SIGNS,getComposer:()=>({...composer,events:[...composer.events]}),setExpression,getExpression:()=>({...performanceState}),getActiveVoices:()=>[...live].map(([id,v])=>({id,source:v.source,expression:v.expression,gain:v.gain,hold:v.hold,vowel:v.vowel})),directionOf,makePCM,wavEncode,readWav,zipFiles,parseZip,crc32,runQA,estimatePitch,sampleDiagnostics,VOWELS,PRESETS,getState:()=>state,select:id=>{state.selected=id;refresh()},renderPads,exportPack,voiceSnapshot,applyPatch};init();
+window.SvaraTest={auditionLetter,runLetterAudit,previewForFlick,transliterateSanskrit,parseSanskritText,renderTextPCM,makeConsonantPCM,segmentFeatures,articulationGesture,vowelOnsetFromConsonant,acceptTypedText,playComposedText,stopComposedText,composeEvents,composerEvent,commitFlick,C_GROUPS,V_GROUPS,MATRAS,SIGNS,getComposer:()=>({...composer,events:[...composer.events]}),setExpression,getExpression:()=>({...performanceState}),getActiveVoices:()=>[...live].map(([id,v])=>({id,source:v.source,expression:v.expression,gain:v.gain,hold:v.hold,vowel:v.vowel})),directionOf,makePCM,wavEncode,readWav,zipFiles,parseZip,crc32,runQA,estimatePitch,sampleDiagnostics,VOWELS,PRESETS,getState:()=>state,select:id=>{state.selected=id;refresh()},renderPads,exportPack,voiceSnapshot,applyPatch};init();
 </script>
 
 
