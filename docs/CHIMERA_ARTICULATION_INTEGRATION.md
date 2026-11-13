@@ -43,3 +43,27 @@ Recommended native-speaker test corpus: each place × five stop grades in common
 In a separate phase, implement a Sanskrit syllable-to-phoneme front end against CHIMERA's language-independent backend. Provide explicit place, aspiration and breathy-voice gestures, build Rust to WASM and run DSP in an AudioWorklet; feed actual geometry and spectral telemetry into the visual component. Audit licensing and reference data, benchmark mobile CPU/latency, validate hearing with speakers, and keep the original JavaScript engine as a fallback.
 
 A WASM/AudioWorklet package typically needs a secure browser context, which may be incompatible with simply opening index.html through file://. Do not silently add network dependencies or defeat browser security just to preserve a single-file launch.
+
+## Second increment: audiovisual articulation (2026-11-13)
+
+Branch: `feat/animated-anatomical-phonetics`.
+
+- Replaced the former schematic with a layered, SVG sagittal head and vocal tract: face points left; hard palate and nasal space lie above the oral cavity; the pharynx and larynx sit posterior/inferior to the tongue. Original illustration, not a measured clinical scan.
+- Replaced hard-coded contact snapping with frame-by-frame kinematic tongue geometry, velar lowering for nasals, lip closure for labials, and a vocal-fold aperture indicator; oral/nasal airflow and phase readouts follow the shared phoneme score.
+- Added a common `articulationGesture` function with stop closure, place-sensitive release burst (including longer palatal affrication), aspiration duration and transition to vowel; visual and PCM tracks share its timing. Waveform feedback is derived from the Web Audio analyser.
+- Reworked consonant audio for five distinct burst spectra; added weak prevoicing, breathy/murmured voice for voiced aspirates, differentiated nasal spectral poles and simple antiformant cancellation; an onset formant trajectory on the following vowel supports place cues.
+- Added the **Compare** button (e.g. ka–kha–ka) for perceptual A/B exploration; all 25 consonants remain individually playable. The original two-thumb keyboard, formant controls, WAV export and offline single-file launch are preserved.
+- Acoustic tests validate phase duration, all 25 phones, finite bounded PCM, prevoicing energy, aspiration ratio, place-coded spectral differences, homorganic nasal difference, and distinct vowel onset resonances. Chromium CI verifies mobile rendering, UI initialization, touch selection, tongue/velum/lip changes and Web Audio source startup.
+
+### Phonetic and anatomical references
+
+- [IGNCA, *Arrangement of the Syllabary*](https://ignca.gov.in/Asi_data/3374.pdf) — canonical five places and manners of consonants.
+- [Joseph & Janda, *On the Unity of Sanskrit Aspiration* (1988)](https://bpb-us-w2.wpmucdn.com/u.osu.edu/dist/4/105142/files/2021/05/1988sktaspiration.pdf) — the separate voiceless-aspirated and voiced-aspirated series.
+- [University of Iowa, *Sounds of Speech*](https://soundsofspeech.uiowa.edu/) — animated sagittal articulation and speech anatomy as a pedagogical pattern; its image assets, sound clips and code have **not** been used.
+- [Sanskrit Guide: Five Places of Pronunciation](https://sanskritguide.com/03_Chapter_3_Five_Birthplaces_of_Sound.html) — pedagogical dental/retroflex/palatal and nasal distinctions.
+
+### Accuracy boundaries and next validation
+
+SVG head proportions and tongue targets are **illustrative anatomical estimates**, not patient-specific coordinates or a measured vocal-tract area function. Source/filter sound is *contrast enhanced* but not a validated Sanskrit pronunciation model; the tongue/velum shape does **not physically determine the spectrum**, both are driven by a shared idealized gesture plan. In particular, palatal affrication, phonation of voiced aspirates, real nasal antiformants, long vowels and accent patterns vary with tradition/speaker and require recordings and perceptual tests. Browser automation proves functionality, not acoustic accuracy.
+
+Recommended next steps: (1) obtain opt-in, properly licensed reference pronunciations for all 25 stops/nasals plus 14 vowels in common CV frames; (2) native-speaker ABX, dental–retroflex confusion matrix and VOT/breathiness measurement; (3) fit tract geometry using published midsagittal MRI/EMA data with suitable consent/license and annotate distances; (4) implement a separately packaged Rust/WASM physical airway engine from permitted CHIMERA modules with licenses retained; (5) verify mobile CPU and Safari/WebKit compatibility. Keep the local JS engine as guaranteed offline fallback.
