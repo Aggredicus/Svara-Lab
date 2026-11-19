@@ -14,7 +14,8 @@ assert.ok(scripts.length>=4,'Main studio + support scripts are present');
 for(const src of scripts)new vm.Script(src); // parse every script, without requiring a browser
 assert.match(html,/svaraVargas/); // The studio UI is a JSON-encoded template within the final script.
 assert.match(html,/svara-artic-script/);
-assert.match(html,/SvaraCockpit\.activate\('all'\)/);
+assert.match(html,/SvaraCockpit\.activate\('compose'\)/,'Approved keyboard restored as startup view');
+assert.match(html,/id="svara-study-script"/,'Built-in Sanskrit reference is present');
 assert.ok(!/<script[^>]+\bsrc=/.test(html),'No fetched script dependency');
 
 const main=scripts[0],entry=main.lastIndexOf('window.SvaraTest=');
