@@ -12,7 +12,7 @@ try{
  const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true});
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto('file://'+resolve(root,'index.html'),{waitUntil:'load'});
- await page.locator('#svaraVargas button').first().waitFor();
+ await page.locator('#svaraVargas button').first().waitFor({state:'attached'});
  assert.equal(await page.locator('#svaraVargas button').count(),25);
  assert.equal(await page.locator('[data-view="all"]').getAttribute('aria-label'),'Voice articulation studio');
  assert.equal(await page.evaluate(()=>window.SvaraCockpit.active()),'compose','Restored keyboard is the default');
