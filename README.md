@@ -16,6 +16,11 @@ All source remains a **single offline index.html** without remote runtime depend
 
 Sources, licensing, phonetic choices, limitations and upgrade plans: [CHIMERA integration report](docs/CHIMERA_ARTICULATION_INTEGRATION.md).
 
+
+## Māheśvara Sūtras reference and keyboard restoration (November 2026)
+
+The approved **v1.7 compact two-thumb keyboard** is again the default **⌨ Type** launch view. **⌨ Pop-out** opens the same live keyboard as a dialog from any workspace, without copying the composer. **📖 Reference** opens a sidecar/bottom sheet containing the verified 14 Māheśvara Sūtras (Devanāgarī + IAST + English sound gloss), the vowel and varga charts, places of articulation, pratyāhāras, and key sandhi rules. The optional **Illustrations** shelf lets you import the seven illustrated PNG pages from your device once and keeps them offline in IndexedDB. It does not upload images. Voice, playback, DAW export, and sound-engine code are preserved. [Details, limitations, and sources](docs/MAHESVARA_REFERENCE_KEYBOARD.md).
+
 ## Quick start
 
 Open **[index.html](./index.html)** in a modern browser. No account, network access, build step, installation, or package manager is needed. The audio engine needs a user tap to start in many browsers. For GitHub Pages, deploy the repository root on the default branch after reviewing and merging this release.
