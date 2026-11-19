@@ -1333,6 +1333,8 @@ body.cockpit #workspaceDeck[data-active='all'] #overview{
 .svara-keyboard-shell{display:flex;flex-direction:column;min-height:0;width:min(1180px,100%);max-height:100%;border:1px solid #66c5ac;border-radius:15px;background:#0a192b;box-shadow:0 20px 80px #000c;overflow:hidden}
 .svara-keyboard-title{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:7px 11px;background:#143145;color:#eafff6;flex:0 0 auto}
 .svara-keyboard-title strong{font-size:12px}
+.svara-keyboard-title>div{margin-right:auto}
+@media(max-width:850px){body.cockpit.svara-modal-open .svara-reference{top:52px;bottom:auto;height:min(35dvh,285px)}body.cockpit.svara-modal-open .svara-keyboard-layer #composePanel .thumbhalf{min-height:0}}
 .svara-keyboard-title small{display:block;color:#a4c6d5;font-size:9px}
 body.cockpit .svara-keyboard-layer #composePanel{display:flex!important;flex:1 1 auto;min-height:0;height:auto!important;overflow:hidden;padding:8px;position:relative}
 body.cockpit .svara-keyboard-layer #composePanel .flicklayout{min-height:90px}
@@ -1365,7 +1367,7 @@ launch.append(keyboardBtn,guideBtn);doc.body.appendChild(launch);
 // Reparent the REAL keyboard, never a clone; all v1.7 gestures, events and local composition remain live.
 var marker=doc.createComment("Original v1.7 composer position");composer.parentNode.insertBefore(marker,composer);
 var keyboardLayer=doc.createElement("div");keyboardLayer.className="svara-keyboard-layer";keyboardLayer.hidden=true;keyboardLayer.id="svaraKeyboardLayer";
-keyboardLayer.innerHTML='<div class="svara-keyboard-shell" role="dialog" aria-modal="true" aria-label="Compact Sanskrit keyboard"><div class="svara-keyboard-title"><div><strong>Two-thumb Sanskrit keyboard</strong><small>Original v1.7 five-direction keys · text and sound preserved</small></div><button type="button" id="svaraCloseKeyboard" aria-label="Close keyboard dialog">✕ Close</button></div><div id="svaraKeyboardMount" style="display:flex;flex:1;min-height:0;flex-direction:column"></div></div>';
+keyboardLayer.innerHTML='<div class="svara-keyboard-shell" role="dialog" aria-modal="true" aria-label="Compact Sanskrit keyboard"><div class="svara-keyboard-title"><div><strong>Two-thumb Sanskrit keyboard</strong><small>Original v1.7 five-direction keys · text and sound preserved</small></div><button type="button" id="svaraOpenGuideFromKeyboard" aria-label="Open phonology reference alongside keyboard">📖 Guide</button><button type="button" id="svaraCloseKeyboard" aria-label="Close keyboard dialog">✕ Close</button></div><div id="svaraKeyboardMount" style="display:flex;flex:1;min-height:0;flex-direction:column"></div></div>';
 doc.body.appendChild(keyboardLayer);
 var keyMount=doc.getElementById("svaraKeyboardMount");
 function openKeyboard(){
@@ -1518,6 +1520,7 @@ getDb().then(function(db){if(!db)return;for(var i=0;i<7;i++){(function(index){tr
 function openGuide(){guide.hidden=false;guideBtn.setAttribute("aria-expanded","true");setView(current)}
 function closeGuide(){guide.hidden=true;guideBtn.setAttribute("aria-expanded","false");guideBtn.focus()}
 guideBtn.addEventListener("click",function(){if(guide.hidden)openGuide();else closeGuide()});
+doc.getElementById("svaraOpenGuideFromKeyboard").addEventListener("click",function(){if(guide.hidden)openGuide();else closeGuide()});
 doc.getElementById("svaraCloseReference").addEventListener("click",closeGuide);
 doc.addEventListener("keydown",function(e){if(e.key!=="Escape")return;if(!guide.hidden){closeGuide();e.preventDefault()}else if(!keyboardLayer.hidden){closeKeyboard();e.preventDefault()}});
 setView("sutras");
